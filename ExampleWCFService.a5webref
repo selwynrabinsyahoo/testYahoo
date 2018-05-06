@@ -1,0 +1,114 @@
+{ 
+	"name": "ExampleWCFService", "serviceName": "CustomerService", 
+	"clientClassName": "CustomerServiceClient", 
+	"serviceType": "WCF", 
+	"serviceURL": "", 
+	"wsdlURL": "http:\/\/localhost:8777\/ExampleWCFService?wsdl", 
+	"assemblyName": "ExampleWCFService.dll", 
+	"method": [
+		{ 
+		"name": "ListCustomers", 
+		"returnType": "ListCustomersResponse", 
+		"xbasicReturnType": "P", "returnTypeIsArray": "false", "returnXbasicElementType": "P", 
+		"argument": [
+					{ "name": "Request", "type": "ListCustomersRequest", "xbasicType": "P", "usage": "Input", "isArray": "false", "xbasicElementType": "P" }
+					] 
+				},
+		{ 
+		"name": "ListProducts", 
+		"returnType": "ListProductsResponse", 
+		"xbasicReturnType": "P", "returnTypeIsArray": "false", "returnXbasicElementType": "P", 
+		"argument": [
+					{ "name": "Request", "type": "ListProductsRequest", "xbasicType": "P", "usage": "Input", "isArray": "false", "xbasicElementType": "P" }
+					] 
+				},
+		{ 
+		"name": "GetCustomer", 
+		"returnType": "GetCustomerResponse", 
+		"xbasicReturnType": "P", "returnTypeIsArray": "false", "returnXbasicElementType": "P", 
+		"argument": [
+					{ "name": "Request", "type": "GetCustomerRequest", "xbasicType": "P", "usage": "Input", "isArray": "false", "xbasicElementType": "P" }
+					] 
+				}
+	],
+	"type": [
+		{ 
+		"name": "ListCustomersResponse", 
+		"property": [
+			{ "name": "ListCustomersResult", "type": "ArrayOfstring", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" }
+			] 
+		}
+,		{ 
+		"name": "ListProductsResponse", 
+		"property": [
+			{ "name": "ListProductsResult", "type": "ArrayOfstring", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" }
+			] 
+		}
+,		{ 
+		"name": "GetCustomerResponse", 
+		"property": [
+			{ "name": "GetCustomerResult", "type": "Customer", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" }
+			] 
+		}
+,		{ 
+		"name": "ArrayOfstring", 
+		"property": [
+			{ "name": "string", "type": "string[]", "xbasicType": "P", "isArray": "true", "xbasicElementType": "C" }
+			] 
+		}
+,		{ 
+		"name": "Customer", 
+		"property": [
+			{ "name": "City", "type": "string", "xbasicType": "C", "isArray": "false", "xbasicElementType": "C" },
+			{ "name": "CompanyName", "type": "string", "xbasicType": "C", "isArray": "false", "xbasicElementType": "C" },
+			{ "name": "IsActive", "type": "boolean", "xbasicType": "L", "isArray": "false", "xbasicElementType": "L" },
+			{ "name": "Order", "type": "ArrayOfOrder", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" },
+			{ "name": "State", "type": "string", "xbasicType": "C", "isArray": "false", "xbasicElementType": "C" },
+			{ "name": "StreetAddress", "type": "string", "xbasicType": "C", "isArray": "false", "xbasicElementType": "C" }
+			] 
+		}
+,		{ 
+		"name": "ArrayOfOrder", 
+		"property": [
+			{ "name": "Order", "type": "Order[]", "xbasicType": "P", "isArray": "true", "xbasicElementType": "P" }
+			] 
+		}
+,		{ 
+		"name": "Order", 
+		"property": [
+			{ "name": "CreateDate", "type": "dateTime", "xbasicType": "T", "isArray": "false", "xbasicElementType": "T" },
+			{ "name": "Item", "type": "ArrayOfOrderItem", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" },
+			{ "name": "OpenDate", "type": "dateTime", "xbasicType": "T", "isArray": "false", "xbasicElementType": "T" },
+			{ "name": "ShipDate", "type": "dateTime", "xbasicType": "T", "isArray": "false", "xbasicElementType": "T" }
+			] 
+		}
+,		{ 
+		"name": "ArrayOfOrderItem", 
+		"property": [
+			{ "name": "OrderItem", "type": "OrderItem[]", "xbasicType": "P", "isArray": "true", "xbasicElementType": "P" }
+			] 
+		}
+,		{ 
+		"name": "OrderItem", 
+		"property": [
+			{ "name": "Product", "type": "Product", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" },
+			{ "name": "Quantity", "type": "int", "xbasicType": "N", "isArray": "false", "xbasicElementType": "N" }
+			] 
+		}
+,		{ 
+		"name": "Product", 
+		"property": [
+			{ "name": "Name", "type": "string", "xbasicType": "C", "isArray": "false", "xbasicElementType": "C" },
+			{ "name": "Price", "type": "decimal", "xbasicType": "N", "isArray": "false", "xbasicElementType": "N" },
+			{ "name": "UnitOfMeasure", "type": "UnitOfMeasure", "xbasicType": "P", "isArray": "false", "xbasicElementType": "P" }
+			] 
+		}
+,		{ 
+		"name": "GetCustomerRequest", 
+		"property": [
+			{ "name": "Name", "type": "string", "xbasicType": "C", "isArray": "false", "xbasicElementType": "C" }
+			] 
+		}
+	],
+	 "wsdl": "<?xml version=\"1.0\" encoding=\"utf-8\"?><wsdl:definitions name=\"CustomerService\" targetNamespace=\"http:\/\/tempuri.org\/\" xmlns:wsdl=\"http:\/\/schemas.xmlsoap.org\/wsdl\/\" xmlns:xsd=\"http:\/\/www.w3.org\/2001\/XMLSchema\" xmlns:soapenc=\"http:\/\/schemas.xmlsoap.org\/soap\/encoding\/\" xmlns:wsu=\"http:\/\/docs.oasis-open.org\/wss\/2004\/01\/oasis-200401-wss-wssecurity-utility-1.0.xsd\" xmlns:soap=\"http:\/\/schemas.xmlsoap.org\/wsdl\/soap\/\" xmlns:soap12=\"http:\/\/schemas.xmlsoap.org\/wsdl\/soap12\/\" xmlns:tns=\"http:\/\/tempuri.org\/\" xmlns:wsa=\"http:\/\/schemas.xmlsoap.org\/ws\/2004\/08\/addressing\" xmlns:wsx=\"http:\/\/schemas.xmlsoap.org\/ws\/2004\/09\/mex\" xmlns:wsap=\"http:\/\/schemas.xmlsoap.org\/ws\/2004\/08\/addressing\/policy\" xmlns:wsaw=\"http:\/\/www.w3.org\/2006\/05\/addressing\/wsdl\" xmlns:msc=\"http:\/\/schemas.microsoft.com\/ws\/2005\/12\/wsdl\/contract\" xmlns:wsp=\"http:\/\/schemas.xmlsoap.org\/ws\/2004\/09\/policy\" xmlns:wsa10=\"http:\/\/www.w3.org\/2005\/08\/addressing\" xmlns:wsam=\"http:\/\/www.w3.org\/2007\/05\/addressing\/metadata\"><wsdl:types><xsd:schema targetNamespace=\"http:\/\/tempuri.org\/Imports\"><xsd:import schemaLocation=\"http:\/\/localhost:8777\/ExampleWCFService?xsd=xsd0\" namespace=\"http:\/\/tempuri.org\/\"\/><xsd:import schemaLocation=\"http:\/\/localhost:8777\/ExampleWCFService?xsd=xsd1\" namespace=\"http:\/\/schemas.microsoft.com\/2003\/10\/Serialization\/\"\/><xsd:import schemaLocation=\"http:\/\/localhost:8777\/ExampleWCFService?xsd=xsd2\" namespace=\"http:\/\/schemas.microsoft.com\/2003\/10\/Serialization\/Arrays\"\/><xsd:import schemaLocation=\"http:\/\/localhost:8777\/ExampleWCFService?xsd=xsd3\" namespace=\"http:\/\/schemas.datacontract.org\/2004\/07\/ExampleWCFService\"\/><\/xsd:schema><\/wsdl:types><wsdl:message name=\"ICustomerService_ListCustomers_InputMessage\"><wsdl:part name=\"parameters\" element=\"tns:ListCustomers\"\/><\/wsdl:message><wsdl:message name=\"ICustomerService_ListCustomers_OutputMessage\"><wsdl:part name=\"parameters\" element=\"tns:ListCustomersResponse\"\/><\/wsdl:message><wsdl:message name=\"ICustomerService_ListProducts_InputMessage\"><wsdl:part name=\"parameters\" element=\"tns:ListProducts\"\/><\/wsdl:message><wsdl:message name=\"ICustomerService_ListProducts_OutputMessage\"><wsdl:part name=\"parameters\" element=\"tns:ListProductsResponse\"\/><\/wsdl:message><wsdl:message name=\"ICustomerService_GetCustomer_InputMessage\"><wsdl:part name=\"parameters\" element=\"tns:GetCustomer\"\/><\/wsdl:message><wsdl:message name=\"ICustomerService_GetCustomer_OutputMessage\"><wsdl:part name=\"parameters\" element=\"tns:GetCustomerResponse\"\/><\/wsdl:message><wsdl:portType name=\"ICustomerService\"><wsdl:operation name=\"ListCustomers\"><wsdl:input wsaw:Action=\"http:\/\/tempuri.org\/ICustomerService\/ListCustomers\" message=\"tns:ICustomerService_ListCustomers_InputMessage\"\/><wsdl:output wsaw:Action=\"http:\/\/tempuri.org\/ICustomerService\/ListCustomersResponse\" message=\"tns:ICustomerService_ListCustomers_OutputMessage\"\/><\/wsdl:operation><wsdl:operation name=\"ListProducts\"><wsdl:input wsaw:Action=\"http:\/\/tempuri.org\/ICustomerService\/ListProducts\" message=\"tns:ICustomerService_ListProducts_InputMessage\"\/><wsdl:output wsaw:Action=\"http:\/\/tempuri.org\/ICustomerService\/ListProductsResponse\" message=\"tns:ICustomerService_ListProducts_OutputMessage\"\/><\/wsdl:operation><wsdl:operation name=\"GetCustomer\"><wsdl:input wsaw:Action=\"http:\/\/tempuri.org\/ICustomerService\/GetCustomer\" message=\"tns:ICustomerService_GetCustomer_InputMessage\"\/><wsdl:output wsaw:Action=\"http:\/\/tempuri.org\/ICustomerService\/GetCustomerResponse\" message=\"tns:ICustomerService_GetCustomer_OutputMessage\"\/><\/wsdl:operation><\/wsdl:portType><wsdl:binding name=\"BasicHttpBinding_ICustomerService\" type=\"tns:ICustomerService\"><soap:binding transport=\"http:\/\/schemas.xmlsoap.org\/soap\/http\"\/><wsdl:operation name=\"ListCustomers\"><soap:operation soapAction=\"http:\/\/tempuri.org\/ICustomerService\/ListCustomers\" style=\"document\"\/><wsdl:input><soap:body use=\"literal\"\/><\/wsdl:input><wsdl:output><soap:body use=\"literal\"\/><\/wsdl:output><\/wsdl:operation><wsdl:operation name=\"ListProducts\"><soap:operation soapAction=\"http:\/\/tempuri.org\/ICustomerService\/ListProducts\" style=\"document\"\/><wsdl:input><soap:body use=\"literal\"\/><\/wsdl:input><wsdl:output><soap:body use=\"literal\"\/><\/wsdl:output><\/wsdl:operation><wsdl:operation name=\"GetCustomer\"><soap:operation soapAction=\"http:\/\/tempuri.org\/ICustomerService\/GetCustomer\" style=\"document\"\/><wsdl:input><soap:body use=\"literal\"\/><\/wsdl:input><wsdl:output><soap:body use=\"literal\"\/><\/wsdl:output><\/wsdl:operation><\/wsdl:binding><wsdl:service name=\"CustomerService\"><wsdl:port name=\"BasicHttpBinding_ICustomerService\" binding=\"tns:BasicHttpBinding_ICustomerService\"><soap:address location=\"http:\/\/localhost:8777\/ExampleWCFService\"\/><\/wsdl:port><\/wsdl:service><\/wsdl:definitions>"
+}
