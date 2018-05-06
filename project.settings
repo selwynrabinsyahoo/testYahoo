@@ -1,0 +1,131 @@
+<publishADConfiguration=.F.>
+<securityStoreType="BuiltInSecurityTables">
+<default_page="">
+<local<target_folder="">
+>
+<vars="">
+<aliases="">
+<db<files="">
+>
+<NamedResourceProviders="">
+<PublishLock="">
+<PublishLockPassword="">
+<misc<RestrictWebDataPublish=.F.>
+<AutoRestrictWebDataPublish=.F.>
+<WebDataPublished=.F.>
+<DefaultValuePublishSupportFiles=.T.>
+<DefaultValuePublishSelectedOnly=.F.>
+<DefaultflagCheckBeforePublish=.T.>
+<SecurityGuid="410c211dafcd46628e310f3735cfe92d">
+<PublishAsBinary=.F.>
+<DefaultValueCheckSecurityAllowed=.F.>
+<DefaultValueCreateAEX=.F.>
+>
+<rtClk<CheckSecurityAllowed=.F.>
+<CheckBeforePublish=.F.>
+<PublishSupportFiles=.T.>
+<PublishSelectedOnly=.F.>
+<UseInBuilders=.F.>
+<CreateAEX=.F.>
+>
+<profiles<[1]<name="Profile1">
+<lan<port=10444>
+<target_folder="">
+<hostname="http://SELWYN2016">
+<server_port=80>
+>
+<local<target_folder="C:\A5Webroot">
+>
+<publishing_type="Publish Locally">
+<vars="">
+<aliases=<<%str%
+<arrVars<[1]<name="[PathAlias.ADB_Path]">
+<value="">
+<type="C">
+>
+>
+%str%>
+<default_page="index.a5w">
+<ftp<address="">
+<lPassive=.F.>
+<username="">
+<password="">
+<path="">
+<port=21>
+<FTPProgram="InternalOptimized">
+>
+<db<publish=.F.>
+<path="">
+<files="">
+>
+<NamedResourceProviders="">
+<PublishLock="">
+<PublishLockPassword="">
+<misc<DefaultValuePublishDatabaseLibrary=.F.>
+<PublishAsBinary=.F.>
+<restrictWebDataPublish=.F.>
+<AutoRestrictWebDataPublish=.F.>
+<WebDataPublished=.F.>
+<SecurityGuid="6dee66940f0a406c880248d6d58c3714">
+>
+<securityStoreType="">
+<StorageConnectionStrings=<<%str%
+<arrVars<[1]<name="alphamediacapture">
+<value="(default value)">
+>
+>
+%str%>
+<AlphaDAOConnectionStrings=<<%str%
+<arrVars<[1]<name="access_northwind">
+<value="(default value)">
+>
+<[2]<name="airport">
+<value="(default value)">
+>
+<[3]<name="conn">
+<value="(default value)">
+>
+<[4]<name="Connection1">
+<value="(default value)">
+>
+<[5]<name="contactmanager">
+<value="(default value)">
+>
+<[6]<name="Engineering">
+<value="(default value)">
+>
+<[7]<name="maria_test">
+<value="(default value)">
+>
+<[8]<name="MemApp">
+<value="(default value)">
+>
+<[9]<name="memapp1">
+<value="(default value)">
+>
+<[10]<name="mysql_movies">
+<value="(default value)">
+>
+<[11]<name="mysql_northwind">
+<value="(default value)">
+>
+<[12]<name="mysql_s3">
+<value="(default value)">
+>
+<[13]<name="northwind">
+<value="(default value)">
+>
+<[14]<name="postgres_test">
+<value="(default value)">
+>
+<[15]<name="sqlserver_northwind">
+<value="(default value)">
+>
+<[16]<name="tracker">
+<value="(default value)">
+>
+>
+%str%>
+>
+>
+<activeDirectory>
