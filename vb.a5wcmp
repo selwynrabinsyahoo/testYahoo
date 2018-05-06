@@ -1,0 +1,818 @@
+{
+    "$schema": "UX",
+    "$definition": {
+        "builderType": "Dialog2",
+        "info": {
+            "createdBy": "Selwyn",
+            "dateCreated": "2016-3-31",
+            "dateLastEdited": "2016-3-31"
+        },
+        "guid": "0b7c4192-98ba-487a-8ed6-73e7a7339f5f",
+        "style_name": "iOS7",
+        "componentName": "vb",
+        "componentFilename": "C:\\a5v12\\packages\\AJAX_webComponents.WebProjects\\S3.WebProject\\vb.a5wcmp",
+        "page_fields": [
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=5e26e81c-3245-46b3-a0ad-51e62fca6e09}{I:'star'} [StarRating] �",
+                "displayODFlat": "{Data=5e26e81c-3245-46b3-a0ad-51e62fca6e09}{I:'star'} [StarRating]",
+                "displayOD": "{B=White,Light Blue}{Data=5e26e81c-3245-46b3-a0ad-51e62fca6e09}{I:'star'} [StarRating]",
+                "displayODtree": "{B=White,Light Blue}{Data=5e26e81c-3245-46b3-a0ad-51e62fca6e09}{I:'star'} [StarRating] �",
+                "idInternal": "5e26e81c-3245-46b3-a0ad-51e62fca6e09",
+                "parentContainer": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "repeatingSectionParentId": -1,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.STARRATING\" for=\"{grid.componentname}.V.R{grid.rownumber}.STARRATING\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Star Rating</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.STARRATING\" name=\"V.R{grid.rownumber}.STARRATING\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.STARRATING.CONTROL\"  class=\"{grid.componentName}_STARRATING\" style=\"overflow: auto; width: 100%; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'STARRATING': {info: {controlType: 'DataBoundCustomControl'}, hiddenVal: false, type: 'control', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                },
+                "crc": "4294904205",
+                "v": {
+                    "controlType": "DataBoundCustomControl",
+                    "variableName": "StarRating",
+                    "type": "Character",
+                    "maxLength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "textboxSubTheme": "",
+                    "textboxAutocorrect": true,
+                    "textboxAutoCapitalize": true,
+                    "label": "Star Rating",
+                    "class": "<Default>",
+                    "breakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "labelClass": "<Default>",
+                    "labelPosition": "Above",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "repeatingSectionColumnHeading": "<FieldLabel>",
+                    "embeddedJavascriptControl": true,
+                    "helpIcon": "images/$$generic.help.png.a5image",
+                    "showHelpIcon": "None",
+                    "helpIconBehavior": "ShowHelpOnClick",
+                    "clientSideFormat": {
+                        "type": "Mask"
+                    },
+                    "onChange_ValidationOption": "Client-side only",
+                    "dataBinding": {
+                        "updateable": true,
+                        "image": {
+                            "type": "JPG",
+                            "noImageFoundImage": "<None>",
+                            "newRecordImage": "<None>"
+                        }
+                    },
+                    "customControl": {
+                        "height": "",
+                        "width": "4in",
+                        "fillPanelContainer": false,
+                        "definitionJSON": "{\n\tnumberOfStars: 8,\n\tcolor: '#8aef7a',\n\tjavascriptEvents: {\n\t\tonDraw: '',\n\t\tonBeforeDraw: '',\n\t\tonBeforePopulate: '',\n\t\tonPopulate: '',\n\t\tonBeforeSelect: '',\n\t\tonSelect: '',\n\t\tonSelectComplete: '',\n\t\tonClick: '',\n\t\tonDblClick: '',\n\t\tonRightClick: '',\n\t\tonDown: '',\n\t\tonUp: '',\n\t\tonSwipe: '',\n\t\tonDownHold: '',\n\t\tonFocus: '',\n\t\tonBlur: '',\n\t\tonInitialize: ''\n\t},\n\tsubtype: 'StarRating',\n\tsettingsJSON: '{\\n\\tinputId: \\'{variablename}\\',\\n\\ttheme: \\'{dialog.style}\\',\\n\\tmultiple: false,\\n\\tseparator: \\'\\\\\\\\n\\',\\n\\tloopNavigate: false,\\n\\tloopNavigateNullSelection: true,\\n\\tallowNullSelecttion: true,\\n\\tallowNullDeselection: true,\\n\\tautoRefresh: true,\\n\\tscroll: false,\\n\\tlayout: \\'default\\',\\n\\tlayouts: {\\n\\t\\tdefault: {\\n\\t\\t\\ttype: \\'template\\',\\n\\t\\t\\ttemplate: \\'<div>\\\\n\\\\t<div class=\"star {*if [temp].value >=1}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"1\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=2}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"2\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=3}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"3\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=4}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"4\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=5}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"5\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=6}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"6\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=7}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"7\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\t<div class=\"star {*if [temp].value >=8}selected{*endif} \" style=\"display:inline-block;\" a5-item=\"starclick\" a5-value=\"8\">\\\\n\\\\t\\\\t<svg width=\"30\" height=\"30\" viewBox=\"0 0 15 15\" ><path d=\"M 3,14 L 4.5,9 L 1,6 L 5.5,5.5 L 7.5,1 L 9.5,5.5 L 14,6 L 10.5,9.5 L 12,14 L 7.5,11 L 3,14 z\"  /></svg>\\\\n\\\\t</div>\\\\n\\\\n</div>\\'\\n\\t\\t}\\n\\t},\\n\\titems: {\\n\\t\\tstarclick: {\\n\\t\\t\\tselectable: true,\\n\\t\\t\\tselectedClassName: \\'actualStartSelected\\',\\n\\t\\t\\titemname: \\'starclick\\'\\n\\t\\t}\\n\\t}\\n}',\n\tdataJSON: '{}',\n\tcss: '.star { padding: 2px; fill: #EEE; cursor:pointer; }\\n.selected { fill: #8aef7a;}\\n.actualStarSelected {  fill: #8aef7a; stroke: #8aef7a; }\\n',\n\tjavascript: '',\n\tmethodForDefiningControl: 'Specify Now'\n}",
+                        "subtype": "StarRating",
+                        "class": "",
+                        "style": ""
+                    },
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "precalc": {
+                        "controlHTMLInPanelCard": "in panel card",
+                        "javascript_dataBoundCustomControlData": "{dialog.object}._dataBoundCustomControlData['STARRATING'] = [[dialog.dataBoundCustomControlData.StarRating]]; ",
+                        "javascript_dataBoundCustomControlSettings": "{dialog.object}._dataBoundCustomControlSettings['STARRATING'] = [[dialog.dataBoundCustomControlSettings.StarRating]]; ",
+                        "javascript_dataBoundCustomControl": "{dialog.object}._controls['STARRATING'] =  { type: 'dataBoundCustomControl',  data: {dialog.object}._dataBoundCustomControlData['STARRATING'],  onInitialize: function() { if(this._onInitialize) {this._onInitialize();} },  settings: {dialog.object}._dataBoundCustomControlSettings['STARRATING'] }",
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=5ada25b7-69cc-4e12-8f68-3397dc3dec60}{I:'$$control.button'} [Button: set value] �",
+                "displayODFlat": "{Data=5ada25b7-69cc-4e12-8f68-3397dc3dec60}{I:'$$control.button'} [Button]",
+                "displayOD": "{B=White,Light Blue}{Data=5ada25b7-69cc-4e12-8f68-3397dc3dec60}{I:'$$control.button'} [Button]",
+                "displayODtree": "{B=White,Light Blue}{Data=5ada25b7-69cc-4e12-8f68-3397dc3dec60}{I:'$$control.button'} [Button: set value] �",
+                "idInternal": "5ada25b7-69cc-4e12-8f68-3397dc3dec60",
+                "parentContainer": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "repeatingSectionParentId": -1,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                },
+                "crc": "4294957693",
+                "v": {
+                    "buttonText": "set value",
+                    "Class": "<Default>",
+                    "BreakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_3",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text only",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.setValue('StarRating','7')"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3',A5.d.evnts.click,function(e) {\n{dialog.object}.setValue('StarRating','7')\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_3'] = new A5.Button({\n\tlayout: 'text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'set value',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_3'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_3');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                }
+            },
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=f2e52361-bcac-4dbe-9cf7-bc376516d79d}{I:'$$format.list.numbered'} [IntegerValue] �",
+                "displayODFlat": "{Data=f2e52361-bcac-4dbe-9cf7-bc376516d79d}{I:'$$format.list.numbered'} [IntegerValue]",
+                "displayOD": "{B=White,Light Blue}{Data=f2e52361-bcac-4dbe-9cf7-bc376516d79d}{I:'$$format.list.numbered'} [IntegerValue]",
+                "displayODtree": "{B=White,Light Blue}{Data=f2e52361-bcac-4dbe-9cf7-bc376516d79d}{I:'$$format.list.numbered'} [IntegerValue] �",
+                "idInternal": "f2e52361-bcac-4dbe-9cf7-bc376516d79d",
+                "parentContainer": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "repeatingSectionParentId": -1,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 6in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.INTEGERVALUE\" for=\"{grid.componentname}.V.R{grid.rownumber}.INTEGERVALUE\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Integer Value</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.INTEGERVALUE\" name=\"V.R{grid.rownumber}.INTEGERVALUE\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.INTEGERVALUE.CONTROL\"  class=\"{grid.componentName}_INTEGERVALUE\" style=\"overflow: auto; width: 100%; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'INTEGERVALUE': {info: {controlType: 'DataBoundCustomControl'}, hiddenVal: false, type: 'control', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                },
+                "crc": "4294929746",
+                "v": {
+                    "controlType": "DataBoundCustomControl",
+                    "variableName": "IntegerValue",
+                    "type": "Character",
+                    "maxLength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "textboxSubTheme": "",
+                    "textboxAutocorrect": true,
+                    "textboxAutoCapitalize": true,
+                    "label": "Integer Value",
+                    "class": "<Default>",
+                    "breakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "labelClass": "<Default>",
+                    "labelPosition": "Above",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "repeatingSectionColumnHeading": "<FieldLabel>",
+                    "embeddedJavascriptControl": true,
+                    "helpIcon": "images/$$generic.help.png.a5image",
+                    "showHelpIcon": "None",
+                    "helpIconBehavior": "ShowHelpOnClick",
+                    "clientSideFormat": {
+                        "type": "Mask"
+                    },
+                    "onChange_ValidationOption": "Client-side only",
+                    "dataBinding": {
+                        "updateable": true,
+                        "image": {
+                            "type": "JPG",
+                            "noImageFoundImage": "<None>",
+                            "newRecordImage": "<None>"
+                        }
+                    },
+                    "customControl": {
+                        "height": "",
+                        "width": "6in",
+                        "fillPanelContainer": false,
+                        "definitionJSON": "",
+                        "subtype": "IntegerValue",
+                        "class": "",
+                        "style": ""
+                    },
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "precalc": {
+                        "controlHTMLInPanelCard": "in panel card",
+                        "javascript_dataBoundCustomControlData": "{dialog.object}._dataBoundCustomControlData['INTEGERVALUE'] = [[dialog.dataBoundCustomControlData.IntegerValue]]; ",
+                        "javascript_dataBoundCustomControlSettings": "{dialog.object}._dataBoundCustomControlSettings['INTEGERVALUE'] = [[dialog.dataBoundCustomControlSettings.IntegerValue]]; ",
+                        "javascript_dataBoundCustomControl": "{dialog.object}._controls['INTEGERVALUE'] =  { type: 'dataBoundCustomControl',  data: {dialog.object}._dataBoundCustomControlData['INTEGERVALUE'],  onInitialize: function() { if(this._onInitialize) {this._onInitialize();} },  settings: {dialog.object}._dataBoundCustomControlSettings['INTEGERVALUE'] }",
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                }
+            },
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=2931e63f-2436-4873-a568-de21d931f475}{I:'$$device.speaker'} [AudioPlayer] �",
+                "displayODFlat": "{Data=2931e63f-2436-4873-a568-de21d931f475}{I:'$$device.speaker'} [AudioPlayer]",
+                "displayOD": "{B=White,Light Blue}{Data=2931e63f-2436-4873-a568-de21d931f475}{I:'$$device.speaker'} [AudioPlayer]",
+                "displayODtree": "{B=White,Light Blue}{Data=2931e63f-2436-4873-a568-de21d931f475}{I:'$$device.speaker'} [AudioPlayer] �",
+                "idInternal": "2931e63f-2436-4873-a568-de21d931f475",
+                "parentContainer": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "repeatingSectionParentId": -1,
+                "indentTree": 0,
+                "v": {
+                    "controlType": "DataBoundCustomControl",
+                    "variableName": "AudioPlayer",
+                    "type": "Character",
+                    "maxLength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "textboxSubTheme": "",
+                    "textboxAutocorrect": true,
+                    "textboxAutoCapitalize": true,
+                    "label": "Audio Player",
+                    "class": "<Default>",
+                    "breakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "labelClass": "<Default>",
+                    "labelPosition": "Above",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "repeatingSectionColumnHeading": "<FieldLabel>",
+                    "embeddedJavascriptControl": true,
+                    "helpIcon": "images/$$generic.help.png.a5image",
+                    "showHelpIcon": "None",
+                    "helpIconBehavior": "ShowHelpOnClick",
+                    "clientSideFormat": {
+                        "type": "Mask"
+                    },
+                    "onChange_ValidationOption": "Client-side only",
+                    "dataBinding": {
+                        "updateable": true,
+                        "image": {
+                            "type": "JPG",
+                            "noImageFoundImage": "<None>",
+                            "newRecordImage": "<None>"
+                        }
+                    },
+                    "customControl": {
+                        "height": "",
+                        "width": "4in",
+                        "fillPanelContainer": false,
+                        "definitionJSON": "",
+                        "subtype": "AudioPlayer",
+                        "class": "",
+                        "style": ""
+                    },
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "precalc": {
+                        "controlHTMLInPanelCard": "in panel card",
+                        "javascript_dataBoundCustomControlData": "{dialog.object}._dataBoundCustomControlData['AUDIOPLAYER'] = [[dialog.dataBoundCustomControlData.AudioPlayer]]; ",
+                        "javascript_dataBoundCustomControlSettings": "{dialog.object}._dataBoundCustomControlSettings['AUDIOPLAYER'] = [[dialog.dataBoundCustomControlSettings.AudioPlayer]]; ",
+                        "javascript_dataBoundCustomControl": "{dialog.object}._controls['AUDIOPLAYER'] =  { type: 'dataBoundCustomControl',  data: {dialog.object}._dataBoundCustomControlData['AUDIOPLAYER'],  onInitialize: function() { if(this._onInitialize) {this._onInitialize();} },  settings: {dialog.object}._dataBoundCustomControlSettings['AUDIOPLAYER'] }",
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                },
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.AUDIOPLAYER\" for=\"{grid.componentname}.V.R{grid.rownumber}.AUDIOPLAYER\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Audio Player</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.AUDIOPLAYER\" name=\"V.R{grid.rownumber}.AUDIOPLAYER\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.AUDIOPLAYER.CONTROL\"  class=\"{grid.componentName}_AUDIOPLAYER\" style=\"overflow: auto; width: 100%; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'AUDIOPLAYER': {info: {controlType: 'DataBoundCustomControl'}, hiddenVal: false, type: 'control', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                },
+                "crc": "4294936082"
+            },
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=b1e1b2c2-036e-4ede-b6db-8673ab6e6cc7}{I:'$$control.ink'} [ink1] �",
+                "displayODFlat": "{Data=b1e1b2c2-036e-4ede-b6db-8673ab6e6cc7}{I:'$$control.ink'} [ink1]",
+                "displayOD": "{B=White,Light Blue}{Data=b1e1b2c2-036e-4ede-b6db-8673ab6e6cc7}{I:'$$control.ink'} [ink1]",
+                "displayODtree": "{B=White,Light Blue}{Data=b1e1b2c2-036e-4ede-b6db-8673ab6e6cc7}{I:'$$control.ink'} [ink1] �",
+                "idInternal": "b1e1b2c2-036e-4ede-b6db-8673ab6e6cc7",
+                "parentContainer": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "repeatingSectionParentId": -1,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.INK1\" for=\"{grid.componentname}.V.R{grid.rownumber}.INK1\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Ink1</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.INK1\" name=\"V.R{grid.rownumber}.INK1\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.INK1.CONTROL\"  style=\"overflow: auto; width: 100%; height: 5in; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'INK1': {info: {controlType: 'Ink'}, hiddenVal: false, type: 'control', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                },
+                "crc": "4294946648",
+                "v": {
+                    "controlType": "Ink",
+                    "variableName": "ink1",
+                    "type": "Character",
+                    "maxLength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "textboxSubTheme": "",
+                    "textboxAutocorrect": true,
+                    "textboxAutoCapitalize": true,
+                    "label": "Ink1",
+                    "class": "<Default>",
+                    "breakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "labelClass": "<Default>",
+                    "labelPosition": "Above",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "repeatingSectionColumnHeading": "<FieldLabel>",
+                    "embeddedJavascriptControl": true,
+                    "helpIcon": "images/$$generic.help.png.a5image",
+                    "showHelpIcon": "None",
+                    "helpIconBehavior": "ShowHelpOnClick",
+                    "clientSideFormat": {
+                        "type": "Mask"
+                    },
+                    "onChange_ValidationOption": "Client-side only",
+                    "dataBinding": {
+                        "updateable": true,
+                        "image": {
+                            "type": "JPG",
+                            "noImageFoundImage": "<None>",
+                            "newRecordImage": "<None>"
+                        }
+                    },
+                    "ink": {
+                        "height": "5in",
+                        "width": "4in",
+                        "fillPanelContainer": false,
+                        "definitionJSON": "{\n\tinkCSS: '.inkEraser {\\nborder: 1px solid rgba(255,100,150,0.5);\\nborder-radius: 3px;\\nbackground: rgba(255,100,150,0.1);\\n}\\n.inkEditor, .inkView {\\nbackground: #efefef;\\n}\\n.inkPage {\\nborder: 1px solid #ccc;\\nbackground: #fff;\\n-webkit-box-shadow: 0px 3px 6px 3px rgba(0,0,0,0.12);\\n-moz-box-shadow: 0px 3px 6px 3px rgba(0,0,0,0.12);\\nbox-shadow: 0px 3px 6px 3px rgba(0,0,0,0.12);\\n}\\n.inkZoomBox {\\nborder: 1px dashed red;\\n}\\n.inkZoomBoxNav {\\nborder: 1px solid red;\\n}\\n.inkZoomBox:after {\\ncontent: \"\";\\ndisplay: block;\\nposition: absolute;\\nbottom: -1px;\\nright: -1px;\\nborder: solid 5px rgba(255,0,0,.5);\\nborder-top-color: transparent;\\nborder-left-color: transparent;\\n}\\n.inkButton {\\ndisplay: inline-block;\\nwidth: 40px;\\nheight: 40px;\\nborder-radius: 20px;\\nborder: 1px solid #ddd;\\nbackground: rgba(255,255,255,.8);\\nmargin: 2px;\\npadding: 7px 8px;\\noverflow: hidden;\\nvertical-align: top;\\nbox-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\\n}\\n.inkButton .iOS7Icon {\\nopacity: .5;\\n}\\n.inkButtonNoPad {\\npadding: 0px;\\n}\\n.inkButtonEraser {\\nopacity: .5;\\nfill: black;\\nstroke: black;\\n}\\n.inkErasing .inkButtonEraser {\\nopacity: .75;\\nfill: rgb(255,100,150);\\nstroke: rgb(255,100,150);\\n}\\n.inkButtonNav {\\nwidth: 40px;\\nheight: 60px;\\nborder: 1px solid #ddd;\\nbackground: rgba(255,255,255,.5);\\npadding: 17px 8px;\\noverflow: hidden;\\nbox-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\\n}\\n.inkButtonNav .iOS7Icon {\\nopacity: .5;\\n}\\n.inkButtonsNavRight {\\nposition: absolute;\\ntop: 50%;\\nright: 0px;\\nmargin-top: -60px;\\n}\\n.inkButtonsNavRight .inkButtonNav:first-child {\\nborder-right: none;\\nborder-bottom: none;\\nborder-radius: 10px 0px 0px 0px;\\n}\\n.inkButtonsNavRight .inkButtonNav {\\nborder-right: none;\\nborder-radius: 0px 0px 0px 10px;\\n}\\n.inkButtonsNavLeft {\\nposition: absolute;\\ntop: 50%;\\nleft: 0px;\\nmargin-top: -60px;\\n}\\n.inkButtonsNavLeft .inkButtonNav:first-child {\\nborder-left: none;\\nborder-bottom: none;\\nborder-radius: 0px 10px 0px 0px;\\n}\\n.inkButtonsNavLeft .inkButtonNav {\\nborder-left: none;\\nborder-radius: 0px 0px 10px 0px;\\n}\\n.inkStatus {\\npadding: 4px 8px;\\ncolor: #fff;\\nbackground: rgba(0,0,0,.5);\\nborder-radius: 3px;\\n}\\n',\n\tautoCommit: true,\n\tlayout: 'split',\n\tpreviewSize: 512,\n\tsplit: {\n\t\tlayout: 'v-view-editor',\n\t\tsize: '300px'\n\t},\n\tview: {\n\t\tdetached: {\n\t\t\tid: ''\n\t\t},\n\t\tautoScale: true,\n\t\tscale: {\n\t\t\tfit: 'both',\n\t\t\tmargin: 10,\n\t\t\tlock: false\n\t\t},\n\t\tclassName: 'inkView',\n\t\tpage: {\n\t\t\tclassName: 'inkPage',\n\t\t\toffset: 0\n\t\t},\n\t\toverlay: {\n\t\t\tshow: false,\n\t\t\thtml: ''\n\t\t},\n\t\tzoomBox: {\n\t\t\tclassName: 'inkZoomBox',\n\t\t\tnavigateClassName: 'inkZoomBoxNav',\n\t\t\tscale: {\n\t\t\t\tallow: true,\n\t\t\t\tclassName: 'inkZoomBoxScale'\n\t\t\t}\n\t\t}\n\t},\n\teditor: {\n\t\tclassName: 'inkEditor',\n\t\tautoScale: false,\n\t\tscale: {\n\t\t\tfit: 'both',\n\t\t\tmargin: 10,\n\t\t\tlock: false\n\t\t},\n\t\tpage: {\n\t\t\tclassName: 'inkPage',\n\t\t\toffset: 0\n\t\t},\n\t\toverlay: {\n\t\t\tshow: true,\n\t\t\thtml: '<div style=\"position: absolute; top: 5px; width: 100%; text-align: center;\">\\n<div id=\"{id}.STATUS\" class=\"inkStatus\" style=\"position: absolute; left: 10px; top: 5px;\"></div>\\n<div a5-item=\"pen\" class=\"inkButton inkButtonNoPad\" id=\"{id}.PENPREVIEW\"></div>\\n<div a5-item=\"*eraser\" class=\"inkButton inkButtonNoPad\"><svg class=\"inkButtonEraser\" style=\"width: 38px; height: 38px; stroke-width: 2px;\"><path d=\"m 12,16 8,8 -3,2.5 -6.5,0 -4.5,-4.5 z\" style=\"fill: none;\" /><path d=\"m 20,8 8,8 -8,8 -8,-8 z\" /><rect x=\"12\" y=\"26\" height=\"2\" width=\"20\" style=\"stroke: none;\"/></svg></div>\\n\\n<div a5-item=\"*redo\" class=\"inkButton\"><i class=\"{style}Icon {style}IconRedo\"></i></div>\\n<div a5-item=\"*undo\" class=\"inkButton\"><i class=\"{style}Icon {style}IconUndo\"></i></div>\\n<div a5-item=\"toggleFull\" class=\"inkButton\" style=\"position: absolute; right: 5px;\"><svg style=\"margin-left: -1px; width: 24px; height: 24px; fill: none; stroke: black; stroke-width: 1px;\"><path d=\"m 4.5,9 0,-5 5,0\" /><path d=\"m 9.5,19 -5,0 0,-5\" /><path d=\"m 14.5,4 5,0 0,5\" /><path d=\"m 19.5,14 0,5 -5,0\" /><rect x=\"6\" y=\"6\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"16\" y=\"6\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"6\" y=\"15\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"16\" y=\"15\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/></svg></div>\\n</div>\\n<div class=\"inkButtonsNavLeft\">\\n<div a5-item=\"*navigate:left\" class=\"inkButtonNav\"><i class=\"{style}Icon {style}IconLeft\"></i></div>\\n<div a5-item=\"*navigate:right\" class=\"inkButtonNav\"><i class=\"{style}Icon {style}IconRight\"></i></div>\\n</div>\\n<div class=\"inkButtonsNavRight\">\\n<div a5-item=\"*navigate:right\" class=\"inkButtonNav\"><i class=\"{style}Icon {style}IconRight\"></i></div>\\n<div a5-item=\"*navigate:new-line\" class=\"inkButtonNav\"><svg class=\"{style}Icon\" style=\"width: 38px; height: 38px; fill: none; stroke: black; stroke-width: 2px;\"><path d=\"m 17.5,6 9e-5,6.25 c 0,0 0,2.25 -2.25,2.25 l -8,0\" /><path d=\"m 10.5,18 -3.75,-3.75 3.75,-3.75\" /></svg></div>\\n</div>\\n<div id=\"inkPenPal\" class=\"inkPal\" style=\"display: none; position: absolute; top: 0px; left: 0px;\"></div>\\n'\n\t\t}\n\t},\n\titems: [\n\t\t{\n\t\t\tname: 'pen',\n\t\t\tonClick: 'this.setTool(\\'pen\\');\\nthis._penMenu.show(\\'dropdown\\',ele);\\n'\n\t\t},\n\t\t{\n\t\t\tname: 'toggleFull',\n\t\t\tonClick: 'if(this.layout == \\'editor\\'){\\n\\tthis.layout = \\'split\\';\\n\\tele.innerHTML = \\'<svg style=\"margin-left: -1px; width: 24px; height: 24px; fill: none; stroke: black; stroke-width: 1px;\"><path d=\"m 4.5,9 0,-5 5,0\" /><path d=\"m 9.5,19 -5,0 0,-5\" /><path d=\"m 14.5,4 5,0 0,5\" /><path d=\"m 19.5,14 0,5 -5,0\" /><rect x=\"6\" y=\"6\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"16\" y=\"6\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"6\" y=\"15\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"16\" y=\"15\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/></svg>\\';\\n} else{\\n\\tthis.layout = \\'editor\\';\\n\\tele.innerHTML = \\'<svg style=\"margin-left: -1px; width: 24px; height: 24px; fill: none; stroke: black; stroke-width: 1px;\"><path d=\"m 4.5,9 5,0  0,-5\" /><path d=\"m 9.5,19 0,-5 -5,0\" /><path d=\"m 14.5,4 0,5 5,0\" /><path d=\"m 19.5,14 -5,0 0,5\" /><rect x=\"6\" y=\"5\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"16\" y=\"5\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"6\" y=\"16\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/><rect x=\"16\" y=\"16\" width=\"2\" height=\"2\" style=\"stroke: none; fill: black;\"/></svg>\\';\\n}\\nthis.refresh();\\n'\n\t\t}\t\n],\n\ttools: {\n\t\tpen: {\n\t\t\tsmooth: 2,\n\t\t\tactiveClassName: '',\n\t\t\tbase: {\n\t\t\t\tcolor: '#000',\n\t\t\t\twidth: 3,\n\t\t\t\tlineCap: 'round'\n\t\t\t},\n\t\t\tpreview: {\n\t\t\t\tsize: 38,\n\t\t\t\twidth: {\n\t\t\t\t\tshow: 'never'\n\t\t\t\t},\n\t\t\t\tclip: {\n\t\t\t\t\tshape: 'circle'\n\t\t\t\t}\n\t\t\t},\n\t\t\tmemory: {\n\t\t\t\tload: 'current',\n\t\t\t\tclear: 'current'\n\t\t\t}\n\t\t},\n\t\teraser: {\n\t\t\tactiveClassName: 'inkErasing',\n\t\t\tsize: 50,\n\t\t\tareaClassName: 'inkEraser'\n\t\t}\n\t},\n\tevents: {\n\t\tonInitialize: '',\n\t\tonChange: '',\n\t\tonBeforeCommit: '',\n\t\tonCommit: '',\n\t\tonToolChange: '',\n\t\tonPenChange: '',\n\t\tonBackgroundChange: ''\n\t},\n\tpage: {\n\t\twidth: 5,\n\t\theight: 3,\n\t\tunit: 'in',\n\t\tdpu: 300,\n\t\thasLines: false,\n\t\tlineType: 'ruled',\n\t\tlines: {\n\t\t\truled: {\n\t\t\t\tstyle: 'normal',\n\t\t\t\tflow: 'ltr',\n\t\t\t\twidth: 1,\n\t\t\t\tmargin: {\n\t\t\t\t\tcolor: '#f98a6e',\n\t\t\t\t\ttop: 120,\n\t\t\t\t\tleft: 120,\n\t\t\t\t\tright: 120,\n\t\t\t\t\tbottom: 120\n\t\t\t\t},\n\t\t\t\trules: {\n\t\t\t\t\tcolor: '#c7c7c7',\n\t\t\t\t\tsize: 120\n\t\t\t\t}\n\t\t\t},\n\t\t\tgraph: {\n\t\t\t\tstyle: 'normal',\n\t\t\t\tcolor: '#c7c7c7',\n\t\t\t\twidth: 1,\n\t\t\t\tsize: 120,\n\t\t\t\tminor: 0,\n\t\t\t\tmargin: {\n\t\t\t\t\tadjust: false,\n\t\t\t\t\ttop: 0,\n\t\t\t\t\tleft: 0,\n\t\t\t\t\tright: 0,\n\t\t\t\t\tbottom: 0\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\tbackground: {\n\t\t\tcolor: '',\n\t\t\thasImage: false,\n\t\t\timage: {\n\t\t\t\tdata: '',\n\t\t\t\tposition: 'center',\n\t\t\t\tsize: 'contain'\n\t\t\t}\n\t\t}\n\t},\n\tstatus: {\n\t\tmessages: {\n\t\t\ttoolPen: '',\n\t\t\ttoolEraser: 'Eraser',\n\t\t\ttoolPan: 'Drag to pan',\n\t\t\titemNavigate: 'Drag to pan',\n\t\t\titemNavigateNewLine: 'Drag to move between lines'\n\t\t}\n\t}\n}",
+                        "css": ""
+                    },
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "precalc": {
+                        "controlHTMLInPanelCard": "in panel card",
+                        "javascript_ink": "{dialog.object}._controls['INK1'] = { type: 'ink',   settings:  {dialog.object}._inkSettings['INK1']    }",
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=f97c003d_82f8_4f8e_ab1d_d66d26a2baf1}{I:'$$control.button'} [Button: Submit]",
+                "displayODFlat": "{Data=f97c003d_82f8_4f8e_ab1d_d66d26a2baf1}{I:'$$control.button'} [Button]",
+                "idInternal": "f97c003d_82f8_4f8e_ab1d_d66d26a2baf1",
+                "displayOD": "{B=White,Light Blue}{Data=f97c003d_82f8_4f8e_ab1d_d66d26a2baf1}{I:'$$control.button'} [Button]",
+                "displayODtree": "{B=White,Light Blue}{Data=f97c003d_82f8_4f8e_ab1d_d66d26a2baf1}{I:'$$control.button'} [Button: Submit]",
+                "crc": "4294943736",
+                "parentContainer": -1,
+                "repeatingSectionParentId": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "v": {
+                    "buttonText": "Submit",
+                    "Class": "<Default>",
+                    "Style": "width: .75in;",
+                    "BreakType": "None",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_SUBMIT",
+                    "bubbleHelp": "Submit the form.",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.GridRow.SaveRecord.disabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.GridRow.SaveRecord}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.isDirty = true",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.submit();\n//To include current location in the submitted data, use this syntax:\n//{dialog.object}.submit('','',{getLocationData: true})\n\t"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_SUBMIT'] = {\n\t\twatch: [],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar enable = (dialog.isDirty == true);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_SUBMIT'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_SUBMIT')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_SUBMIT'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_SUBMIT'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_SUBMIT'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT',A5.d.evnts.click,function(e) {\n{dialog.object}.submit();\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_SUBMIT'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\ttip: 'Submit the form.',\n\thtml: 'Submit',\n\ticon: '{images.GridRow.SaveRecord}',\n\tdisabledIcon: '{images.GridRow.SaveRecord.disabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_SUBMIT'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_SUBMIT');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=6503a5a2_fb30_4d92_a252_cee2234a8702}{I:'$$control.button'} [Button: Reset] �",
+                "displayODFlat": "{Data=6503a5a2_fb30_4d92_a252_cee2234a8702}{I:'$$control.button'} [Button]",
+                "idInternal": "6503a5a2_fb30_4d92_a252_cee2234a8702",
+                "displayOD": "{B=White,Light Blue}{Data=6503a5a2_fb30_4d92_a252_cee2234a8702}{I:'$$control.button'} [Button]",
+                "displayODtree": "{B=White,Light Blue}{Data=6503a5a2_fb30_4d92_a252_cee2234a8702}{I:'$$control.button'} [Button: Reset] �",
+                "crc": "4294909179",
+                "parentContainer": -1,
+                "repeatingSectionParentId": -1,
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "v": {
+                    "buttonText": "Reset",
+                    "Class": "<Default>",
+                    "Style": "width: .75in;",
+                    "BreakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_RESET",
+                    "bubbleHelp": "Reset the value of all controls in the form.",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.GridRow.UndoChanges.Disabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.GridRow.UndoChanges}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.isDirty = true",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.resetForm();"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_RESET'] = {\n\t\twatch: [],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar enable = (dialog.isDirty == true);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_RESET'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_RESET')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_RESET'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_RESET'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_RESET'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET',A5.d.evnts.click,function(e) {\n{dialog.object}.resetForm();\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_RESET'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\ttip: 'Reset the value of all controls in the form.',\n\thtml: 'Reset',\n\ticon: '{images.GridRow.UndoChanges}',\n\tdisabledIcon: '{images.GridRow.UndoChanges.Disabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_RESET'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_RESET');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            }
+        ],
+        "_style_versionNumber": 3,
+        "style_type": "Alpha Five",
+        "resolveAbstractClassNames": true,
+        "builderVersionNumber": 1,
+        "overrideStyleName": "Default",
+        "FontSize": "Medium",
+        "LocalCss": "<style type=\"text/css\">\n\n</style>",
+        "A5ContainerClassPadding": "0px",
+        "A5ContainerClassPaddingForContainerWidthMode": "4px",
+        "controlflowdirection": "ltr",
+        "SVGLinkedFiles": "",
+        "localsvg": "",
+        "layoutType": "ContainerWidth",
+        "previewMode": "Default",
+        "useDragScrolling": "Auto",
+        "pageTitle": "UX",
+        "waitMsg": {
+            "message": {
+                "text": "Wait...",
+                "waitIcon": "css/A5System/Images/wait.gif"
+            },
+            "cssAnimation": {
+                "size": "32"
+            }
+        },
+        "globalSettings": {
+            "labelWidth": "1in"
+        },
+        "serverSideEvents": {
+            "afterDialogValidate": "function afterDialogValidate as v (e as p)\n'e.dataSubmitted  - contains all values that were submitted by the component. \n'e.oldDataSubmitted - contains the original values in the controls. \n'NOTE: All values in e.dataSubmitted and e.oldDataSubmitted are character type. Use the convert_type() function to convert data to a different type.\n\n'The list of dirty submitted fields is in: e.dirtyColumns. This is a CRLF delimited string of dirty fields (i.e. fields\n'edited by the user). For example:\n'FIRSTNAME\n'QTY_A5INSTANCE3\n\n\ndebug(1)\n'========================================================================================================\n'IMPORTANT: If your event handler modifies a value in the e.dataSubmitted object (and that field has NOT\n'been edited by the user), you MUST explicitly add the field to the e.dirtyColumns value yourself.\n'For example, assume that you want to set the Company field to 'Alpha' and the 'Qty' field in row 1 of a repeating section\n'regardless of whether the user edited the value or not:\n'e.dataSubmitted.COMPANY = \"alpha\"\n'e.dataSubmitted.QTY_A5INSTANCE2 = \"2\"\n'e.dirtyColumns = e.dirtyColumns + crlf()+ \"COMPANY\" + crlf() + \"QTY_A5INSTANCE2\"\n'========================================================================================================\n\n\n'--------------------Repeating Sections ----------------------------------------\n'If your dialog contains repeating sections, data in the repeating sections will be in an array.\n'For example, say that your dialog has a repeating section that includes a field called QTY:\n'e.dataSubmitted.qty[1] - contains data from first repeating section row\n'e.dataSubmitted.qty[2] - contains data from second repeating section row, etc\n'e.dataSubmitted.favoriteColors[2][3] - contains data from the second row - 'favoriteColors' is a multi-select control - returns the 3rd choice the user made\n'e.dataSubmitted.qty.size() - number of entries in the array.\n\n'In addition, the e object will contain information about the repeating sections\n'e.repeatingSectionNames - a comma delimited list of the name (container ID) or each repeating section\n'e.repeatingSectionInfo - a property array with one entry for each repeating section.\n'The e.repeatingSectionInfo[] array will have these properties for each entry:\n' - .activeRow - the row in the repeating section that had focus when the Dialog was submitted\n' - .deletedRows - a CRLF delimited list of rows that were deleted. e.g. 1 and 3\n' - .rowCount - a count of the number of non-deleted rows\n' - .totalRowCount - a count of all rows in the repeating section including rows that were deleted\n' - .fieldsInRepeating section - a CRLF delimited list of fields in the repeating section\n' - .dirtyRowsInSection - a CRLF delimited list of rows in the repeating section that were edited. (A row that was edited, then deleted will still appear in this list).\n' - .dirtyFieldsInSection - a CRLF delimited list of fields in the repeating section that were edited. for example: PARTNO_A5INSTANCE3 is the 'PARTNO' field in row 3.\n\n'-------------------------------------------------------------------------------------------\n\n'Request - The Request object. Includes Request.Variables, which should be used instead of the older e.rv construct\n'Session - The Session object. Should be used instead of the older e.session construct\n\n'Also inside e:\n'e.tmpl = Component definition\n'e.rtc = Runtime calculations - you can use this to store data to be passed to other server side events (Note: the 'rtc' object cannot be used to persist state information - i.e. you can't set a value in rtc and then read that value in a subsequent callback. To persist state info see e._state).\n'e.arguments = SQL::Arguments object with values for each of the arguments defined in this component.  To read a value from arguments: e.arguments.find(\"argumentName\").data\n\n\n'You can can set these properties:\n'e.url - if you want to redirect to another page, set this property\n'e.javascript - if you want to send some javascript back to the browser, set this property.\n\n'TIP: If you want to set the form back to a 'clean' state (which will cause the Submit/Reset buttons to go back to disabled) you should send the following \n'Javascript back to the browser:\n'e.javascript = \"{dialog.object}.resetForm(false); //false suppresses the confirmation mesage\"\n\n'You can set 'state' variables in this event. The value of any state variables will be available in all subsequent ajax callbacks.\n'To set a state variable:\n'e._state.myvar1 = \"value1\"\n'e._state.myvar2 = \"value2\"\n\n'To read the value of a 'state' variable that was previously set:\n'e._state.myvar1\n\n'-------------------Closing the Window in Which the UX Component is Hosted -------------------------\n'In certain cases the UX component will have been opened in a pop-up Ajax window and you will want code in this event handler to close the pop-up window.\n'Here is how you can do this:\n'a) In the action that opens the UX in a window, set the Window title to something like this: MyWindowTitle<span id=\"mywindowid\"></span>\n'b) In this event handler set e.javascript to: \n'\tvar ele = $('mywindowid');\n'\t{dialog.object}.closeContainerWindow(ele);\n\n'NOTE: If you have used Server-side Action Scripting in this event to save the submitted data to a table, then you might want to reference\n'the rtc.flagRecordWasSaved variable (which is set by the Action Script) to decide if the window should be closed or not. In addition, since the\n'Server-side Action will have already set the value of the e.javascript variable, you will want to append your code to e.javascript, as follows:\n'e.javascript = e.javascript + crlf() + var ele = $('mywindowid'); + crlf() + {dialog.object}.closeContainerWindow(ele);\n\n\nend function\n",
+            "canAjaxCallback": "",
+            "afterAjaxCallback": ""
+        },
+        "onTimerEventInterval": 60,
+        "securityDeniedAction": "Redirect to login page",
+        "clientSideEvents": {
+            "_canAjaxCallback": "",
+            "__afterAjaxCallbackComplete": ""
+        },
+        "onlyValidateChangedFields": true,
+        "edit": {
+            "field_error_style": {
+                "type": "Block",
+                "showWarning": true,
+                "icon": "<Specified by Style>",
+                "controlContainer_classname": ""
+            },
+            "row_errors_window_title": "Error",
+            "row_errors_window_style": "color: red; width: 6in; height: 2in;",
+            "fieldValidationErrorMessage": "Form has errors."
+        },
+        "submitDialogIfHasClientSideValidationErrors": true,
+        "activeLanguage": "<Default>",
+        "datePicker": {
+            "dayNames": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+            "monthNames": "January,February,March,April,May,June,July,August,September,October,November,December",
+            "firstDayOfWeek": 1,
+            "todayButtonText": "Today",
+            "closeButtonText": "Close"
+        },
+        "clientSideDateFormat": "MM/dd/yyyy",
+        "fontScalingOption": "All",
+        "helpTableType": "DBF",
+        "fieldHelpWindowStyle": "modal-resizeable",
+        "customization": {
+            "resetFormMessage": "Are you sure you want to reset the form?",
+            "resetFormTitle": "Warning",
+            "resetFormIcon": "<Specified by Style>",
+            "resetFormYesButton": "Yes",
+            "resetFormNoButton": "No",
+            "windowTitleDirection": "ltr",
+            "dirtyWarning": "You must first save your changes or cancel changes by clicking the Reset button.",
+            "dirtyWarningTitle": "Notice",
+            "dirtyWarningIcon": "<Specified by Style>",
+            "deleteRecordWarningTitle": "Delete Record",
+            "deleteRecordWarningMessage": "Are you sure you want to delete this record?"
+        },
+        "dataBinding": {
+            "computeDataBindingCodeAtDesignTimePrompt": "Prompt",
+            "autoRefreshSchemaOnLoad": true,
+            "autoRefreshPromptFirst": "Prompt"
+        },
+        "flagShowCommentsInTree": true,
+        "treeCommentOffset": "6",
+        "showLineNumbersInControlsList": false,
+        "renderUXLocation": {
+            "type": "window",
+            "sizeToElement": true
+        },
+        "customSettingsJSON": "",
+        "saveFileType": "Formatted JSON",
+        "keyboardShortcutsJSON": "",
+        "checkSessionEvery": 1,
+        "warningIntervalBeforeExpiration": 1,
+        "sessionTimeOutWarningMessage": "Your session will expire in {secondsToSessionEnd} seconds. Click the button to extend your session.",
+        "sessionExtendSessionButtonLabel": "Extend Session",
+        "sessionTimeoutWarningDialogTitle": "Warning",
+        "sessionHasExpiredMessage": "Your session has expired.",
+        "sessionHasExpiredButtonLabel": "OK",
+        "sessionHasExpiredAction": "Nothing",
+        "sessionHasExpiredRedirectPage": "<self>",
+        "sessionHasExpiredDialogTitle": "Notice",
+        "sessionHasExpiredOKButtonJavascript": "<ReloadThisPage>",
+        "login": {
+            "errorMessageStyle": "color: red;",
+            "logoutDoesFullPageReload": true
+        },
+        "applyResponsiveDesignSettings": true,
+        "responseDesignRulesMode": "FirstTrue",
+        "localStorage": {
+            "namespace": "<Default>",
+            "variablesToNotPersist": "",
+            "__version": 1,
+            "workingPreviewTestingMode": "Browser"
+        },
+        "preRenderComputeWhen": "Every time component is saved",
+        "selected": "b1e1b2c2-036e-4ede-b6db-8673ab6e6cc7\n",
+        "designPaneIndex": 1,
+        "masterPaneC": "controls",
+        "serverSideEventIndex": 4,
+        "clientSideEventIndex": 1,
+        "clientSideEventIndexC": "1",
+        "lastControlSelected": "insert_dialog_ink",
+        "__WPhostName": "Chrome",
+        "repeatingSectionsAreDirty": true,
+        "openedFromTemplate": false,
+        "precalc": {
+            "customControl": {
+                "js_beforePrepare": "",
+                "js_afterRender": "",
+                "customControl_xbasicFunctions": ""
+            },
+            "injectibleHTML": "",
+            "containerWindowHTML": "",
+            "repeatingsectionInfoJs": "",
+            "framesInfoJS": "{dialog.object}.framesInfo = {\n\n};\n",
+            "jsActionJavascriptGlobalFunctions": "",
+            "xbActionJavascriptGlobalFunctions": "",
+            "javascriptSetupForGridLookups": "{\n}",
+            "javascript": {
+                "showWaitMessage": "",
+                "hideWaitMessage": "",
+                "embeddedUXComponents": ""
+            },
+            "fileUpload_controlInfo": "",
+            "javascript_cascadingDropdowns": "{dialog.object}._cascadingControls = [];\n{dialog.object}._cascadingControlsChildren = [];",
+            "template_html": "<!--div GLOBALERRORS-->\n<div class=\"errorTip\" style=\"margin-bottom: 2px; display: none; width: 8in; \" id=\"{dialog.componentname}.GLOBALERRORS\"></div>\n<!--End div GLOBALERRORS-->\n\n<div id=\"{dialog.componentname}.R1\">\n<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.STARRATING\" for=\"{grid.componentname}.V.R{grid.rownumber}.STARRATING\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Star Rating</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.STARRATING\" name=\"V.R{grid.rownumber}.STARRATING\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.STARRATING.CONTROL\"  class=\"{grid.componentName}_STARRATING\" style=\"overflow: auto; width: 100%; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: 6in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.INTEGERVALUE\" for=\"{grid.componentname}.V.R{grid.rownumber}.INTEGERVALUE\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Integer Value</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.INTEGERVALUE\" name=\"V.R{grid.rownumber}.INTEGERVALUE\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.INTEGERVALUE.CONTROL\"  class=\"{grid.componentName}_INTEGERVALUE\" style=\"overflow: auto; width: 100%; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.AUDIOPLAYER\" for=\"{grid.componentname}.V.R{grid.rownumber}.AUDIOPLAYER\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Audio Player</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.AUDIOPLAYER\" name=\"V.R{grid.rownumber}.AUDIOPLAYER\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.AUDIOPLAYER.CONTROL\"  class=\"{grid.componentName}_AUDIOPLAYER\" style=\"overflow: auto; width: 100%; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.INK1\" for=\"{grid.componentname}.V.R{grid.rownumber}.INK1\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Ink1</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.INK1\" name=\"V.R{grid.rownumber}.INK1\" /><!--JSControlEnd-->\n<div >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.INK1.CONTROL\"  style=\"overflow: auto; width: 100%; height: 5in; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n\n\n</div>\n<!--div DEBUGUPDATECOMMANDS-->\n<div class=\"\" style=\"display: none; \" id=\"{dialog.componentname}.DEBUGUPDATECOMMANDS\"></div>\n<!--End div DEBUGUPDATECOMMANDS-->\n",
+            "panelDisplayNames": "",
+            "controlJavascript": "",
+            "controlJavascriptRepeatingSections": "",
+            "template_js": "",
+            "sessionVarsInShowHideExpns": "",
+            "themeSearchReplaceString": "",
+            "flagHasHTML5ImageCapture": false,
+            "flagUsesCordova": false,
+            "flagUseAmazonS3FileUpload": false,
+            "flagUseStripe": false,
+            "flagUseAudioPlayer": true,
+            "flagUseInk": true,
+            "flagUsesAudioLibrary": false,
+            "flagUsesPhoneGapFileSystemFunctions": false,
+            "flagUsesGetAccurateLocation": false,
+            "editorSet_for_editor": "{dialog.object}._EDITOR_EDITORSET = {};",
+            "otherJS": "",
+            "javascript_layoutRules": "",
+            "javascript_controlNesting": "{\n\n}",
+            "appcacheEvents": ""
+        },
+        "FieldsInRepeatingSectionsDeletedBySecurity": "",
+        "repeatingSectionsToRecalc": "",
+        "dialogObject": "if(typeof {dialog.componentName}_DlgObj == 'object') {dialog.componentName}_DlgObj._destroy();\nvar {dialog.componentName}_DlgObj = new A5.DialogComponentHelper('{dialog.componentName}',{\n\tajaxURL: '{dialog.ajaxUrl}',\n\t_embeddedMode: {dialog.embeddedMode},\n\t_livePreviewInBuilder: {livePreviewInBuilder},\n\tcomponentGUID: '0b7c4192-98ba-487a-8ed6-73e7a7339f5f',\n\tcolumnInfo: {columninfo},\n\toriginalValues: {dialog.jsOriginalValues},\n\tdefaultValues: {dialog.jsDefaultValues},\n\tdatePickerMonthNames: [{datePickerMonthNames}],\n\tdatePickerDayNames: [{datePickerDayNames}],\n\tdatePickerTodayButton: '{datePickerTodayButton}',\n\tdatePickerCloseButton: '{datePickerCloseButton}',\n\tdatePickerFirstDayOfWeek: {datePickerFirstDayOfWeek},\n\tresetFormMessage: '{resetFormMessage}',\n\tresetFormTitle: '{resetFormTitle}',\n\tresetFormIcon: '{resetFormIcon}',\n\tdirtyFormMessage: '{dirtyFormMessage}',\n\tdirtyFormTitle: '{dirtyFormTitle}',\n\tdirtyFormIcon: '{dirtyFormIcon}',\n\tdeleteRecordDialogTitle: '{deleteRecordTitle}',\n\tdeleteRecordDialogMessage: '{deleteRecordMessage}',\t\n\tssDateFormat: '{serverSideDateFormat}',\n\tstyleName: '{dialog.style}',\n\t_fieldHelpers_DIALOG2: [],\n\tparentComponentAlias: '{parentComponentAlias}',\n\tsubmitIfHasClientSideErrors: true, \n\trowErrors: {\n\t\t\t\tshowMessageBox: false,\n\t\t\t\tmessageBoxTitle: 'Error',\n\t\t\t\tstyle: 'color: red; width: 6in; height: 2in;'\n\t\t},\n\tfieldErrors: {\n\t\ttype: 'block', \n\t\tclassName: 'errorText',\n\t\tinputClassName: '[class.gridInputError]',\n\t\tedit: { \n\t\t\tcontainer: { className: '[class.gridInputContainerError]'}\n\t\t},\n\t\ticon: '{images.dialog.editError}',\n\t\tglobal: {\n\t\t\tcontId: '{dialog.componentname}.GLOBALERRORS',\n\t\t\thoverClassName: 'errorTextHighlight',\n\t\t\thoverInputClassName: 'errorInputHighlight'\n\t\t}\n\t}\n\n\t});\n\n",
+        "xbasiccode": {
+            "blankInitialValueIfVarNotFound": "",
+            "setValueProperties": "value.STARRATING=\"\"\nvalue.INTEGERVALUE=\"\"\nvalue.AUDIOPLAYER=\"\"\nvalue.INK1=\"\"",
+            "setValueProperties2": "value.STARRATING=\"\"\nvalue.INTEGERVALUE=\"\"\nvalue.AUDIOPLAYER=\"\"\nvalue.INK1=\"\"",
+            "setValueUnformattedProperties": "value.STARRATING=convert_type(\"\",\"C\")\nvalue.INTEGERVALUE=convert_type(\"\",\"C\")\nvalue.AUDIOPLAYER=convert_type(\"\",\"C\")\nvalue.INK1=convert_type(\"\",\"C\")\n"
+        },
+        "componentType": "Dialog2",
+        "version": 1,
+        "recNav": {
+            "slider": {
+                "showSlider": false
+            }
+        },
+        "containerSubTypeNew": "",
+        "containerSubTypeOld": "",
+        "flagDropdownCascadingChanged": false,
+        "mobileDeviceDefault": "iphone4_v",
+        "showJavascriptActions": false,
+        "showResponsiveLayoutHelp": false,
+        "toolBox_value": "",
+        "addinBuildNumber": "4644",
+        "addinBuildNumberHighestUsed": "4644",
+        "alphaFiveBuildNumber": "12",
+        "builtWithVersionNumer": 1,
+        "securityEnabled": false,
+        "showHideIsUsed": false,
+        "embeddedMode": false
+    }
+}
