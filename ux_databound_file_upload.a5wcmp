@@ -1,0 +1,1331 @@
+{
+    "$schema": "UX",
+    "$definition": {
+        "style_name": "MobBlue",
+        "style_type": "Alpha Five",
+        "resolveabstractclassnames": true,
+        "builderversionnumber": 1,
+        "overridestylename": "Default",
+        "fontsize": "Medium",
+        "a5containerclasspadding": "0px",
+        "a5containerclasspaddingforcontainerwidthmode": "4px",
+        "layouttype": "ContainerWidth",
+        "previewmode": "Default",
+        "usedragscrolling": "Auto",
+        "pagetitle": "UX",
+        "waitmsg": {
+            "message": {
+                "text": "Wait...",
+                "waiticon": "css/A5System/Images/wait.gif"
+            },
+            "cssanimation": {
+                "size": "32"
+            }
+        },
+        "globalsettings": {
+            "labelwidth": "1in"
+        },
+        "serversideevents": {
+            "ondialoginitialize": "function onDialogInitialize as v (e as p)\n\n'To edit this action, place insertion point anywhere in the command, then click the 'Action Scripting' button'.\nExecuteServerSideAction(\"Get Primary Keys for Parent Table::Load Primary Keys\")\n\n\n\n'Request - The Request object. Includes Request.Variables, which should be used instead of the older e.rv construct\n'Session - The Session object. Should be used instead of the older e.session construct\n'Inside e:\n'e.tmpl = Component definition\n'e.rtc = Runtime calculations - you can use this to store data to be passed to other server side events (Note: the 'rtc' object cannot be used to persist state information - i.e. you can't set a value in rtc and then read that value in a subsequent callback. To persist state info see e._state).\n'e.arguments = SQL::Arguments object with values for each of the arguments defined in this component.  To read a value from arguments: e.arguments.find(\"argumentName\").data\n'TIP: You can also set the value of an argument. For example: e.arguments[args.ArgumentNumber(\"country\")].data = \"portugal\"\n\n'You can set the initial value of any field by setting the property (see comment at end for Javascript technique to use when setting values for a large number of controls)\n'e.control.<fieldname>\n'For example:\n'e.control.firstname = \"Fred\"\n'e.control.lastname = \"Jones\"\n\n'For multi-valued controls (such as checkbox, List control configured as multi-select, etc.) you can set the value to a cr-lf list of values or use the special array() syntax.\n'Either of the following two methods will work\n'e.control.colors = \"array(red,green)\"\n'e.control.colors = comma_to_crlf(\"red,green\")\n\n'To set the value of a field in a repeating section, you must use \"_A5INSTANCE\" and the instance number as a suffix on the fieldname.\n'For example:\n'e.control.firstname_A5INSTANCE2 = \"Bob\"  'sets the value in the 2nd row of the repeating section.\n\n'To specify any javascript that you want to execute set the  e.javascript property. For example:\n'e.javascript = \"alert('hello');\"\n\n'You can set 'state' variables in this event. The value of any state variables will be available in all subsequent ajax callbacks.\n'To set a state variable:\n'e._state.myvar1 = \"value1\"\n'e._state.myvar2 = \"value2\"\n\n\n'Using Javascript to Set Control Values and the Row Count in a Repeating Section -- Recommended For Maximum Efficiency (Advanced users)\n'---------------------------------------------------------------------------------------------------------------------------\n'When setting the value of a large number of controls, you will improve performance if you generate the Javascript directly,\n'rather than setting properties in the e.control object (as described above) and then having Alpha Five generate the Javascript from this object.\n'The following example shows Javascript code that sets the number of rows in a Repeating Section and sets the value of various control\n'in the top section and Repeating Section of the Dialog:\n\n'Generate the Javascript to emit\n'dim js as c\n'js = <<%txt%\n'var rows = 7;\n'var setFocusToFirst = true;\n'var nullOutExistingData = true;\n'var repeatingSectionId = 'CONTAINER_1';\n'{dialog.object}._setRepeatingSectionRowCount(repeatingSectionId,rows,setFocusToFirst,nullOutExistingData);\n'var _d = {};\n\n'//Next command is optional. It is ONLY needed if the ._setRepeatingSectionRowCount() method has been called.\n'//The command copies default values into the _d object. Without this command, default values defined in the component will not be set.\n'//$u.o.assign(_d,DLG1_DlgObj.originalValues[0]);\n\n'_d['B'] = 'alpha'; //set the value of a control called 'B'\n'_d['E:2'] = 'beta'; //set the value of a control called 'E' in the 2nd Repeating Section row\n'_d['G:6'] = ['Red','Green']; //set the value of a checkbox called 'G' in the 6th Repeating Section row to 'Red' and 'Green'\n'{dialog.object}.prepare();\n'{dialog.object}.populate(_d);\n'{dialog.object}.refreshClientSideComputations();\n\n'%txt%\n\n'Now, emit the Javascript...\n'e.javascript = js\n\n'NOTE: In the above example, if the ._setRepeating() method is called in the 'onDialogInitialize' event, you are responsible for setting\n'values in ALL of the controls in the component. For example, if you have defined default values for some controls, and then set the values\n'of other controls using the .populate() method, only the values set in the _d object will be set. (The default values will NOT be set).\n'You can, however, put the default values into the _d object using this code:\n'$u.o.assign(_d,{dialog.object}.originalValues[0]);\n\n\n\n\n'Tip: You can use the xbasic varToJSON() function to help generate the Javascript object passed to the .populate() method.\n'For example:\n'dim j as p\n'j.firstname = \"John\"\n'j.lastname = \"Smith\"\n'j.quantity_a5instance1 = \"2\"\n'dim j.colorchoices_a5instance2[3] as c\n'j.colorchoices_a5instance2[1] = \"Red\"\n'j.colorchoices_a5instance2[2] = \"Blue\"\n'dim jsTxt as c\n'jsTxt = varToJSON(j)\n'js = \"{dialog.object}.populate(\" + jsTxt + \"); {dialog.object}.prepare();\"\n\n\n'TIP: To simulate session variables when running in Working Preview you can use this code:\n'if eval_valid(\"request.SERVER_PROTOCOL\") then \n'\tif request.SERVER_PROTOCOL = \"A5RES\" then \n'\t\t'running in working preview\n'\t\tsession.var1 = \"simulated value for var1\"\n'\tend if \n'end if \n\nend function",
+            "afterdialogvalidate": "function afterDialogValidate as v (e as p)\n\n'To edit this action, place insertion point anywhere in the command, then click the 'Action Scripting' button'.\nExecuteServerSideAction(\"Save Data::Save Data\")\n\n\n\n'e.dataSubmitted  - contains all values that were submitted by the component. \n'e.oldDataSubmitted - contains the original values in the controls. \n'NOTE: All values in e.dataSubmitted and e.oldDataSubmitted are character type. Use the convert_type() function to convert data to a different type.\n\n'The list of dirty submitted fields is in: e.dirtyColumns. This is a CRLF delimited string of dirty fields (i.e. fields\n'edited by the user). For example:\n'FIRSTNAME\n'QTY_A5INSTANCE3\n\n'========================================================================================================\n'IMPORTANT: If your event handler modifies a value in the e.dataSubmitted object (and that field has NOT\n'been edited by the user), you MUST explicitly add the field to the e.dirtyColumns value yourself.\n'For example, assume that you want to set the Company field to 'Alpha' and the 'Qty' field in row 1 of a repeating section\n'regardless of whether the user edited the value or not:\n'e.dataSubmitted.COMPANY = \"alpha\"\n'e.dataSubmitted.QTY_A5INSTANCE2 = \"2\"\n'e.dirtyColumns = e.dirtyColumns + crlf()+ \"COMPANY\" + crlf() + \"QTY_A5INSTANCE2\"\n'========================================================================================================\n\n\n'--------------------Repeating Sections ----------------------------------------\n'If your dialog contains repeating sections, data in the repeating sections will be in an array.\n'For example, say that your dialog has a repeating section that includes a field called QTY:\n'e.dataSubmitted.qty[1] - contains data from first repeating section row\n'e.dataSubmitted.qty[2] - contains data from second repeating section row, etc\n'e.dataSubmitted.favoriteColors[2][3] - contains data from the second row - 'favoriteColors' is a multi-select control - returns the 3rd choice the user made\n'e.dataSubmitted.qty.size() - number of entries in the array.\n\n'In addition, the e object will contain information about the repeating sections\n'e.repeatingSectionNames - a comma delimited list of the name (container ID) or each repeating section\n'e.repeatingSectionInfo - a property array with one entry for each repeating section.\n'The e.repeatingSectionInfo[] array will have these properties for each entry:\n' - .activeRow - the row in the repeating section that had focus when the Dialog was submitted\n' - .deletedRows - a CRLF delimited list of rows that were deleted. e.g. 1 and 3\n' - .rowCount - a count of the number of non-deleted rows\n' - .totalRowCount - a count of all rows in the repeating section including rows that were deleted\n' - .fieldsInRepeating section - a CRLF delimited list of fields in the repeating section\n' - .dirtyRowsInSection - a CRLF delimited list of rows in the repeating section that were edited. (A row that was edited, then deleted will still appear in this list).\n' - .dirtyFieldsInSection - a CRLF delimited list of fields in the repeating section that were edited. for example: PARTNO_A5INSTANCE3 is the 'PARTNO' field in row 3.\n\n'-------------------------------------------------------------------------------------------\n\n'Request - The Request object. Includes Request.Variables, which should be used instead of the older e.rv construct\n'Session - The Session object. Should be used instead of the older e.session construct\n\n'Also inside e:\n'e.tmpl = Component definition\n'e.rtc = Runtime calculations - you can use this to store data to be passed to other server side events (Note: the 'rtc' object cannot be used to persist state information - i.e. you can't set a value in rtc and then read that value in a subsequent callback. To persist state info see e._state).\n'e.arguments = SQL::Arguments object with values for each of the arguments defined in this component.  To read a value from arguments: e.arguments.find(\"argumentName\").data\n\n\n'You can can set these properties:\n'e.url - if you want to redirect to another page, set this property\n'e.javascript - if you want to send some javascript back to the browser, set this property.\n\n'TIP: If you want to set the form back to a 'clean' state (which will cause the Submit/Reset buttons to go back to disabled) you should send the following \n'Javascript back to the browser:\n'e.javascript = \"{dialog.object}.resetForm(false); //false suppresses the confirmation mesage\"\n\n'You can set 'state' variables in this event. The value of any state variables will be available in all subsequent ajax callbacks.\n'To set a state variable:\n'e._state.myvar1 = \"value1\"\n'e._state.myvar2 = \"value2\"\n\n'To read the value of a 'state' variable that was previously set:\n'e._state.myvar1\n\n'-------------------Closing the Window in Which the UX Component is Hosted -------------------------\n'In certain cases the UX component will have been opened in a pop-up Ajax window and you will want code in this event handler to close the pop-up window.\n'Here is how you can do this:\n'a) In the action that opens the UX in a window, set the Window title to something like this: MyWindowTitle<span id=\"mywindowid\"></span>\n'b) In this event handler set e.javascript to: \n'\tvar ele = $('mywindowid');\n'\t{dialog.object}.closeContainerWindow(ele);\n\n'NOTE: If you have used Server-side Action Scripting in this event to save the submitted data to a table, then you might want to reference\n'the rtc.flagRecordWasSaved variable (which is set by the Action Script) to decide if the window should be closed or not. In addition, since the\n'Server-side Action will have already set the value of the e.javascript variable, you will want to append your code to e.javascript, as follows:\n'e.javascript = e.javascript + crlf() + var ele = $('mywindowid'); + crlf() + {dialog.object}.closeContainerWindow(ele);\n\n\nend function",
+            "canAjaxCallback": "",
+            "afterAjaxCallback": ""
+        },
+        "ontimereventinterval": 60,
+        "securitydeniedaction": "Redirect to login page",
+        "clientsideevents": {
+            "_canAjaxCallback": "",
+            "__afterAjaxCallbackComplete": ""
+        },
+        "onlyvalidatechangedfields": true,
+        "edit": {
+            "field_error_style": {
+                "type": "Block",
+                "showwarning": true,
+                "icon": "<Specified by Style>",
+                "controlContainer_classname": ""
+            },
+            "row_errors_window_title": "Error",
+            "row_errors_window_style": "color: red; width: 6in; height: 2in;",
+            "fieldvalidationerrormessage": "Form has errors."
+        },
+        "submitdialogifhasclientsidevalidationerrors": true,
+        "activelanguage": "<Default>",
+        "datepicker": {
+            "daynames": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+            "monthnames": "January,February,March,April,May,June,July,August,September,October,November,December",
+            "firstdayofweek": 1,
+            "todaybuttontext": "Today",
+            "closebuttontext": "Close"
+        },
+        "clientsidedateformat": "MM/dd/yyyy",
+        "fontscalingoption": "All",
+        "helptabletype": "DBF",
+        "fieldhelpwindowstyle": "modal-resizeable",
+        "customization": {
+            "resetformmessage": "Are you sure you want to reset the form?",
+            "resetformtitle": "Warning",
+            "resetformicon": "<Specified by Style>",
+            "resetformyesbutton": "Yes",
+            "resetformnobutton": "No",
+            "windowtitledirection": "ltr",
+            "dirtywarning": "You must first save your changes or cancel changes by clicking the Reset button.",
+            "dirtywarningtitle": "Notice",
+            "dirtywarningicon": "<Specified by Style>",
+            "deleterecordwarningtitle": "Delete Record",
+            "deleterecordwarningmessage": "Are you sure you want to delete this record?"
+        },
+        "databinding": {
+            "computedatabindingcodeatdesigntimeprompt": "Prompt",
+            "autorefreshschemaonload": true,
+            "autorefreshpromptfirst": "Prompt",
+            "tableType": "sql",
+            "connectionString": "::Name::mysql_s3",
+            "tables": [
+                {
+                    "alias": "s3files",
+                    "table": "s3files",
+                    "parent": "",
+                    "parentLinkFields": "",
+                    "linkType": "OneToOne",
+                    "linkFields": "",
+                    "tableInfo": "id=N|T|T|Integer32|!!|id\nname=C|F|T|Character|!!|name\nimageName=C|F|T|VaryingCharacter|!!|imageName\nfileName=C|F|T|VaryingCharacter|!!|fileName\n",
+                    "primaryKeyFields": "id",
+                    "primaryKeyIsAutoIncrement": true,
+                    "sequenceName": "",
+                    "UpdateWhereClause": "{id}=id = :old_id\n{name}=(name = :old_name OR name IS NULL AND :old_name IS NULL)\n{imageName}=(imageName = :old_imageName OR imageName IS NULL AND :old_imageName IS NULL)\n{fileName}=(fileName = :old_fileName OR fileName IS NULL AND :old_fileName IS NULL)\n",
+                    "tableInfoCRC": 4294909858,
+                    "flagOverwriteExistingPrimaryKeySettings": false,
+                    "fieldList": "id\nname\nimageName\nfileName\n",
+                    "flagExistingPrimaryKeyIsValid": true,
+                    "badFields": ""
+                }
+            ]
+        },
+        "info": {
+            "createdby": "Selwyn",
+            "datecreated": "2016-3-31",
+            "datelastedited": "2016-3-31"
+        },
+        "flagshowcommentsintree": true,
+        "treecommentoffset": "6",
+        "renderuxlocation": {
+            "type": "window",
+            "sizetoelement": true
+        },
+        "checksessionevery": 1,
+        "warningintervalbeforeexpiration": 1,
+        "sessiontimeoutwarningmessage": "Your session will expire in {secondsToSessionEnd} seconds. Click the button to extend your session.",
+        "sessionextendsessionbuttonlabel": "Extend Session",
+        "sessiontimeoutwarningdialogtitle": "Warning",
+        "sessionhasexpiredmessage": "Your session has expired.",
+        "sessionhasexpiredbuttonlabel": "OK",
+        "sessionhasexpiredaction": "Nothing",
+        "sessionhasexpiredredirectpage": "<self>",
+        "sessionhasexpireddialogtitle": "Notice",
+        "sessionhasexpiredokbuttonjavascript": "<ReloadThisPage>",
+        "login": {
+            "errormessagestyle": "color: red;",
+            "logoutdoesfullpagereload": true
+        },
+        "applyresponsivedesignsettings": true,
+        "responsedesignrulesmode": "FirstTrue",
+        "localstorage": {
+            "namespace": "<Default>",
+            "__version": 1,
+            "workingpreviewtestingmode": "Browser",
+            "variablesToNotPersist": ""
+        },
+        "prerendercomputewhen": "Every time component is saved",
+        "page_fields": [
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=c710d52a-2558-4b68-9cc3-2486412d0162}{I:'$$control.edit'} [id] �",
+                "displayodflat": "{Data=c710d52a-2558-4b68-9cc3-2486412d0162}{I:'$$control.edit'} [id]",
+                "idinternal": "c710d52a-2558-4b68-9cc3-2486412d0162",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=c710d52a-2558-4b68-9cc3-2486412d0162}{I:'$$control.edit'} [id]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=c710d52a-2558-4b68-9cc3-2486412d0162}{I:'$$control.edit'} [id] �",
+                "crc": "4294903601",
+                "v": {
+                    "controltype": "Textbox",
+                    "variablename": "id",
+                    "type": "Numeric",
+                    "maxlength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "precalc": {
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "textboxautocorrect": true,
+                    "textboxautocapitalize": true,
+                    "label": "Id",
+                    "class": "<Default>",
+                    "style": "text-align: right;",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "labelclass": "<Default>",
+                    "labelposition": "Above",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "repeatingsectioncolumnheading": "<FieldLabel>",
+                    "helpicon": "images/$$generic.help.png.a5image",
+                    "showhelpicon": "None",
+                    "helpiconbehavior": "ShowHelpOnClick",
+                    "clientsideformat": {
+                        "type": "Mask"
+                    },
+                    "onchange_validationoption": "Client-side only",
+                    "databinding": {
+                        "updateable": true,
+                        "tablealias": "s3files",
+                        "fieldname": "id",
+                        "fieldtype": "N",
+                        "image": {
+                            "type": "JPG",
+                            "noimagefoundimage": "<None>",
+                            "newrecordimage": "<None>"
+                        }
+                    },
+                    "textboxSubTheme": "",
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "display": false
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 2in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.ID\" for=\"{grid.componentname}.V.R{grid.rownumber}.ID\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Id</label>\n<!--LblE-->\n\t<!--FldS--><input\ttype=\"text\" id=\"{grid.componentname}.V.R{grid.rownumber}.ID\" title=\"\"     class=\"[class.dialogInput]\" style=\"text-align: right; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"    name=\"V.R{grid.rownumber}.ID\"    value=\"\"    />\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'ID': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'N'  }\n"
+                }
+            },
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=c463e45c-d39c-4bc7-8692-52b32af83c7a}{I:'$$control.edit'} [name] �",
+                "displayodflat": "{Data=c463e45c-d39c-4bc7-8692-52b32af83c7a}{I:'$$control.edit'} [name]",
+                "idinternal": "c463e45c-d39c-4bc7-8692-52b32af83c7a",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=c463e45c-d39c-4bc7-8692-52b32af83c7a}{I:'$$control.edit'} [name]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=c463e45c-d39c-4bc7-8692-52b32af83c7a}{I:'$$control.edit'} [name] �",
+                "crc": "4294903139",
+                "v": {
+                    "controltype": "Textbox",
+                    "variablename": "name",
+                    "type": "Character",
+                    "maxlength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "precalc": {
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "textboxautocorrect": true,
+                    "textboxautocapitalize": true,
+                    "label": "Name",
+                    "class": "<Default>",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "labelclass": "<Default>",
+                    "labelposition": "Above",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "repeatingsectioncolumnheading": "<FieldLabel>",
+                    "helpicon": "images/$$generic.help.png.a5image",
+                    "showhelpicon": "None",
+                    "helpiconbehavior": "ShowHelpOnClick",
+                    "clientsideformat": {
+                        "type": "Mask"
+                    },
+                    "onchange_validationoption": "Client-side only",
+                    "databinding": {
+                        "updateable": true,
+                        "tablealias": "s3files",
+                        "fieldname": "name",
+                        "fieldtype": "C",
+                        "image": {
+                            "type": "JPG",
+                            "noimagefoundimage": "<None>",
+                            "newrecordimage": "<None>"
+                        }
+                    },
+                    "textboxSubTheme": "",
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 2in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.NAME\" for=\"{grid.componentname}.V.R{grid.rownumber}.NAME\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Name</label>\n<!--LblE-->\n\t<!--FldS--><input\ttype=\"text\" id=\"{grid.componentname}.V.R{grid.rownumber}.NAME\" title=\"\"     class=\"[class.dialogInput]\" style=\"width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"    name=\"V.R{grid.rownumber}.NAME\"    value=\"\"    />\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'NAME': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                }
+            },
+            {
+                "controltype": "layout_directive_placeholder",
+                "display": "{B=White,Light Blue}{Data=619caa77-0829-410c-81a3-c55ce7f9ca8c}{I:'$$format.border.style.dot'} [Placeholder:PLACEHOLDER_1] �",
+                "displayodflat": "{Data=619caa77-0829-410c-81a3-c55ce7f9ca8c}{I:'$$format.border.style.dot'} [Placeholder]",
+                "idinternal": "619caa77-0829-410c-81a3-c55ce7f9ca8c",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=619caa77-0829-410c-81a3-c55ce7f9ca8c}{I:'$$format.border.style.dot'} [Placeholder]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=619caa77-0829-410c-81a3-c55ce7f9ca8c}{I:'$$format.border.style.dot'} [Placeholder:PLACEHOLDER_1] �",
+                "crc": "4294946818",
+                "v": {
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "PLACEHOLDER_1",
+                    "labelPosition": "None",
+                    "hide": false
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \"  id=\"{dialog.componentName}.V.R{dialog.rownumber}.PLACEHOLDER_1\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\">\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=8f79a5ad-92e7-4f1d-8719-7f1a3b9ac993}{I:'$$control.edit'} [fileName] �",
+                "displayodflat": "{Data=8f79a5ad-92e7-4f1d-8719-7f1a3b9ac993}{I:'$$control.edit'} [fileName]",
+                "idinternal": "8f79a5ad-92e7-4f1d-8719-7f1a3b9ac993",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=8f79a5ad-92e7-4f1d-8719-7f1a3b9ac993}{I:'$$control.edit'} [fileName]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=8f79a5ad-92e7-4f1d-8719-7f1a3b9ac993}{I:'$$control.edit'} [fileName] �",
+                "crc": "4294916889",
+                "v": {
+                    "controltype": "Textbox",
+                    "variablename": "fileName",
+                    "type": "Character",
+                    "maxlength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "precalc": {
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "textboxautocorrect": true,
+                    "textboxautocapitalize": true,
+                    "label": "File Name",
+                    "class": "<Default>",
+                    "width": "6in",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "labelclass": "<Default>",
+                    "labelposition": "Above",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "repeatingsectioncolumnheading": "<FieldLabel>",
+                    "helpicon": "images/$$generic.help.png.a5image",
+                    "showhelpicon": "None",
+                    "helpiconbehavior": "ShowHelpOnClick",
+                    "clientsideformat": {
+                        "type": "Mask"
+                    },
+                    "onchange_validationoption": "Client-side only",
+                    "databinding": {
+                        "tablealias": "s3files",
+                        "fieldname": "fileName",
+                        "fieldtype": "C",
+                        "image": {
+                            "type": "JPG",
+                            "noimagefoundimage": "<None>",
+                            "newrecordimage": "<None>"
+                        }
+                    },
+                    "textboxSubTheme": "",
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 6in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.FILENAME\" for=\"{grid.componentname}.V.R{grid.rownumber}.FILENAME\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">File Name</label>\n<!--LblE-->\n\t<!--FldS--><input\ttype=\"text\" id=\"{grid.componentname}.V.R{grid.rownumber}.FILENAME\" title=\"\"     class=\"[class.dialogInput]\" style=\"width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"    name=\"V.R{grid.rownumber}.FILENAME\"    value=\"\"    />\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'FILENAME': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                }
+            },
+            {
+                "controltype": "layout_directive_fileUpload",
+                "display": "{B=White,Light Blue}{Data=bd829f41-9cb8-4d62-93ae-1220d6865384}{I:'$$file.open'} [File Upload/Download]",
+                "displayodflat": "{Data=bd829f41-9cb8-4d62-93ae-1220d6865384}{I:'$$file.open'} [File Upload/Download]",
+                "idinternal": "bd829f41-9cb8-4d62-93ae-1220d6865384",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=bd829f41-9cb8-4d62-93ae-1220d6865384}{I:'$$file.open'} [File Upload/Download]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=bd829f41-9cb8-4d62-93ae-1220d6865384}{I:'$$file.open'} [File Upload/Download]",
+                "crc": "4294963815",
+                "v": {
+                    "id": "FILEUPLOAD_1",
+                    "databinding": {
+                        "updateable": true,
+                        "tablealias": "s3files",
+                        "fieldname": "fileName",
+                        "fieldtype": "C"
+                    },
+                    "labelPosition": "None",
+                    "variablename": "FILEUPLOAD_1",
+                    "type": "<FileUpload>"
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<input type=\"hidden\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.FILEUPLOAD_1\" name=\"V.R{dialog.rowNumber}.FILEUPLOAD_1_A5FILEUPLOAD\" />\n\t",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=fff92b7e-a3a3-42f2-ba53-a1c75c63927f}{I:'$$control.button'} [Button: File upload]",
+                "displayodflat": "{Data=fff92b7e-a3a3-42f2-ba53-a1c75c63927f}{I:'$$control.button'} [Button]",
+                "idinternal": "fff92b7e-a3a3-42f2-ba53-a1c75c63927f",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=fff92b7e-a3a3-42f2-ba53-a1c75c63927f}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=fff92b7e-a3a3-42f2-ba53-a1c75c63927f}{I:'$$control.button'} [Button: File upload]",
+                "crc": "4294916692",
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_11\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                },
+                "v": {
+                    "buttonText": "File upload",
+                    "Class": "<Default>",
+                    "BreakType": "None",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_11",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text only",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "/* actionJavascript:f3509ffe-c33c-43d0-840c-83b64b8309f8    */\n{grid.componentName}_D_ACTIONBUTTON_1(this);"
+                    },
+                    "abstractJavascriptDeclarationsGlobal": {
+                        "click": "window['{grid.componentName}_D_ACTIONBUTTON_1'] = function(rowNum,rowId,objEle) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": false,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"authenticatedRead\": false,\n\t\"unauthenticatedReadURLFormat\": \"URL\",\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file ([filename]) is not an allowed file type.\"\n\t},\n\t\"afterUploadMessage\": \"Upload completed: [objectName]\",\n\t\"xbasicFunctionName\": \"FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072\",\n\t\"onCompleteAllFiles\": function(e) { if(!e.aborted) {\n\t\t\t\t\t{grid.object}._isDataDirty = true; \n\t\t\t{grid.object}._setRowState(1,true); \n\t\t\tvar ele = $('{dialog.componentName}.V.R1.FILEUPLOAD_1');\n\t\t\tif(ele) $svs(ele,'amazonS3PublicRead:::' + e.targetName + ':::FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072');\n\t\t\t{grid.object}.setValue('FILENAME','Upload completed: '+e.targetName+'');\n\t\t\n\t} else {\n\t\t\n\t};},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{grid.object}.fileUploadAmazonS3(obj);\n}"
+                    },
+                    "abstractXbasicFunctions": {
+                        "click": "function FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072 as p()\nDIM p as P\nDIM p.uploadProperties as P\nDIM p.uploadProperties.target as C = \"AmazonS3\"\nDIM p.uploadProperties.cloudStorage as P\nDIM p.uploadProperties.cloudStorage.specifyCredentials as C = \"Named Storage Connection String\"\nDIM p.uploadProperties.cloudStorage.connectionString as C = \"alphamediacapture\"\nDIM p.uploadProperties.cloudStorage.credentials as P\nDIM p.uploadProperties.cloudStorage.credentials.access_key as C\nDIM p.uploadProperties.cloudStorage.credentials.secret as C\nDIM p.uploadProperties.cloudStorage.bucketName as C\nDIM p.uploadProperties.cloudStorage.allowMultipleFiles as L\nDIM p.uploadProperties.cloudStorage.maxFileSize as N = -1\nDIM p.uploadProperties.cloudStorage.maxFileSizeTotal as N = -1\nDIM p.uploadProperties.cloudStorage.allowedFileTypes as C\nDIM p.uploadProperties.cloudStorage.authenticatedRead as L\nDIM p.uploadProperties.cloudStorage.unauthenticatedReadURLFormat as C = \"URL\"\nDIM p.uploadProperties.cloudStorage.displayProgress as L = .T.\nDIM p.uploadProperties.cloudStorage.allowCancel as L = .T.\nDIM p.uploadProperties.cloudStorage.progressStyle as C = \"Bar\"\nDIM p.uploadProperties.cloudStorage.progressBarColor as C = \"#9fa1e8\"\nDIM p.uploadProperties.cloudStorage.progressBarWidth as C = \"1.5in\"\nDIM p.uploadProperties.cloudStorage.progressDisplayPlaceholder as C = \"PLACEHOLDER_1\"\nDIM p.uploadProperties.cloudStorage.javascript as P\nDIM p.uploadProperties.cloudStorage.javascript.onAfterFilesSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteIndividualFile as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteAllFiles as C\nDIM p.uploadProperties.cloudStorage.javascript.onBeforeFileSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onValidationError as C\nDIM p.uploadProperties.cloudStorage.javascript.onError as C\nDIM p.uploadProperties.cloudStorage.javascript.onProgress as C\nDIM p.uploadProperties.cloudStorage.javascript.targetName as C\nDIM p.uploadProperties.cloudStorage.customization as P\nDIM p.uploadProperties.cloudStorage.customization.maxFileSize as C = \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.totalFileSize as C = \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.fileType as C = \"Selected file ([filename]) is not an allowed file type.\"\nDIM p.uploadProperties.cloudStorage.afterUploadMessage as C = \"Upload completed: [objectName]\"\nDIM p.uploadProperties.uploadFolder as C\nDIM p.uploadProperties.fileExistAction as C = \"Overwrite\"\nDIM p.uploadProperties.storedValueExpression as C\nDIM p.uploadProperties.maxFileSize as C = \"1000000\"\nDIM p.uploadProperties.maxFileSizeExceededMessage as C = \"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\"\nDIM p.uploadProperties.allowedFileExtensions as C\nDIM p.uploadProperties.disallowedfileextensions as C\nDIM p.uploadProperties.invalidExtensionErrorText as C = \"The file you selected is not an allowed file type.\"\nDIM p.uploadProperties.fieldForEmbeddedObjectType as C\nDIM p.uploadProperties.fieldForEmbeddedObjectDescription as C = \"fileName\"\nDIM p.uploadProperties.title as C = \"Select File\"\nDIM p.uploadProperties.uploadButtonText as C = \"Upload\"\nDIM p.uploadProperties.fileBoxWaterMark as C = \"Click button to select file...\"\nDIM p.uploadProperties.selectFileButtonImage as C = \"images/$$folder.open.png.a5image\"\nDIM p.uploadProperties.prompt as C = \"File:\"\nDIM p.uploadProperties.height as C = \"3in\"\nDIM p.uploadProperties.width as C = \"5in\"\nDIM p.uploadProperties.fileUploadWaitMessage as C = \"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\"\nDIM p.uploadProperties.targetFileNameAfterComputeXbasic as C\nDIM p.uploadProperties.showProgress as L = .T.\nDIM p.uploadProperties.uploadAbortMsg as C = \"Abort file upload\"\nDIM p.uploadProperties.abortButtonLabel as C = \"Abort\"\nDIM p.uploadProperties.progressBarType as C = \"A5\"\nDIM p.uploadProperties.closeAfterUpload as L = .T.\nDIM p.uploadProperties.confirmationMessage as C = \"File was uploaded. Click OK to save change, or Cancel to abandon change.\"\nDIM p.uploadProperties.confirmationWindowHasFreeformLayout as L\nDIM p.uploadProperties.confirmationWindowTemplate as C\nDIM p.uploadProperties.autoUpload as L\nDIM p.uploadProperties.errorText_TableNotUpdateable as C = \"Table is not updateable, or you do not have permission to update this table.\"\nDIM p.uploadProperties.errorText_FieldNotUpdateable as C = \"Field is not updateable, or you do not have permission to update this field.\"\nDIM p.uploadProperties.errorText_SessionExpired as C = \"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\"\nDIM p.uploadProperties.errorText_NewRecordRow as C = \"You cannot upload a file to a new record row. You must first save this record, then upload the file.\"\nDIM p.uploadProperties.events as P\nDIM p.uploadProperties.events.serverside as P\nDIM p.uploadProperties.events.serverside.afterUpload as C\nDIM p.uploadProperties.events.clientSide as P\nDIM p.uploadProperties.events.clientSide.afterUpload as C\nDIM p.uploadProperties.events.clientSide.beforeUpload as C\nDIM p.uploadProperties.fileSelectWindowName as C = \"e052b26379c24dfc835fbd761273e835\"\nDIM p.uploadProperties.targetField as C = \"FILEUPLOAD_1\"\nDIM p.uploadProperties.targetFieldIsBlob as L\n\nFileUpload_a48afc5dbd12442aaf0ce8d3e50ff072= p\nend function"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_11',A5.d.evnts.click,function(e) {\n{grid.componentName}_D_ACTIONBUTTON_1(this);\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_11');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_11'] = new A5.Button({\n\tlayout: 'text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'File upload',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_11'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_11');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=8c0a15bc_6e41_4f94_b99b_226b7091ef99}{I:'$$control.button'} [Button: File upload - secure] �",
+                "displayodflat": "{Data=8c0a15bc_6e41_4f94_b99b_226b7091ef99}{I:'$$control.button'} [Button]",
+                "idinternal": "8c0a15bc_6e41_4f94_b99b_226b7091ef99",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=8c0a15bc_6e41_4f94_b99b_226b7091ef99}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=8c0a15bc_6e41_4f94_b99b_226b7091ef99}{I:'$$control.button'} [Button: File upload - secure] �",
+                "crc": "4294936654",
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_12\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                },
+                "v": {
+                    "buttonText": "File upload - secure",
+                    "Class": "<Default>",
+                    "BreakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_12",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text only",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "/* actionJavascript:561300bc-159d-446a-9e4a-cef1493ff85e   */\n{grid.componentName}_D_ACTIONBUTTON_1(this);"
+                    },
+                    "abstractJavascriptDeclarationsGlobal": {
+                        "click": "window['{grid.componentName}_D_ACTIONBUTTON_1'] = function(rowNum,rowId,objEle) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": false,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"authenticatedRead\": true,\n\t\"unauthenticatedReadURLFormat\": \"URL\",\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file ([filename]) is not an allowed file type.\"\n\t},\n\t\"afterUploadMessage\": \"Upload completed: [objectName]\",\n\t\"xbasicFunctionName\": \"FileUpload_0fa522f7535643058dbdd7fa7424aefc\",\n\t\"onCompleteAllFiles\": function(e) { if(!e.aborted) {\n\t\t\t\t\t{grid.object}._isDataDirty = true; \n\t\t\t{grid.object}._setRowState(1,true); \n\t\t\tvar ele = $('{dialog.componentName}.V.R1.FILEUPLOAD_1');\n\t\t\tif(ele) $svs(ele,'amazonS3ProtectedRead:::' + e.targetName + ':::FileUpload_0fa522f7535643058dbdd7fa7424aefc');\n\t\t\t{grid.object}.setValue('FILENAME','Upload completed: '+e.targetName+'');\t\t\t\n\t\t\n\t};},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{grid.object}.fileUploadAmazonS3(obj);\n}"
+                    },
+                    "abstractXbasicFunctions": {
+                        "click": "function FileUpload_0fa522f7535643058dbdd7fa7424aefc as p()\nDIM p as P\nDIM p.uploadProperties as P\nDIM p.uploadProperties.target as C = \"AmazonS3\"\nDIM p.uploadProperties.cloudStorage as P\nDIM p.uploadProperties.cloudStorage.specifyCredentials as C = \"Named Storage Connection String\"\nDIM p.uploadProperties.cloudStorage.connectionString as C = \"alphamediacapture\"\nDIM p.uploadProperties.cloudStorage.credentials as P\nDIM p.uploadProperties.cloudStorage.credentials.access_key as C\nDIM p.uploadProperties.cloudStorage.credentials.secret as C\nDIM p.uploadProperties.cloudStorage.bucketName as C\nDIM p.uploadProperties.cloudStorage.allowMultipleFiles as L\nDIM p.uploadProperties.cloudStorage.maxFileSize as N = -1\nDIM p.uploadProperties.cloudStorage.maxFileSizeTotal as N = -1\nDIM p.uploadProperties.cloudStorage.allowedFileTypes as C\nDIM p.uploadProperties.cloudStorage.authenticatedRead as L = .T.\nDIM p.uploadProperties.cloudStorage.unauthenticatedReadURLFormat as C = \"URL\"\nDIM p.uploadProperties.cloudStorage.displayProgress as L = .T.\nDIM p.uploadProperties.cloudStorage.allowCancel as L = .T.\nDIM p.uploadProperties.cloudStorage.progressStyle as C = \"Bar\"\nDIM p.uploadProperties.cloudStorage.progressBarColor as C = \"#9fa1e8\"\nDIM p.uploadProperties.cloudStorage.progressBarWidth as C = \"1.5in\"\nDIM p.uploadProperties.cloudStorage.progressDisplayPlaceholder as C = \"PLACEHOLDER_1\"\nDIM p.uploadProperties.cloudStorage.javascript as P\nDIM p.uploadProperties.cloudStorage.javascript.onAfterFilesSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteIndividualFile as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteAllFiles as C\nDIM p.uploadProperties.cloudStorage.javascript.onBeforeFileSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onValidationError as C\nDIM p.uploadProperties.cloudStorage.javascript.onError as C\nDIM p.uploadProperties.cloudStorage.javascript.onProgress as C\nDIM p.uploadProperties.cloudStorage.javascript.targetName as C\nDIM p.uploadProperties.cloudStorage.customization as P\nDIM p.uploadProperties.cloudStorage.customization.maxFileSize as C = \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.totalFileSize as C = \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.fileType as C = \"Selected file ([filename]) is not an allowed file type.\"\nDIM p.uploadProperties.cloudStorage.afterUploadMessage as C = \"Upload completed: [objectName]\"\nDIM p.uploadProperties.uploadFolder as C\nDIM p.uploadProperties.fileExistAction as C = \"Overwrite\"\nDIM p.uploadProperties.storedValueExpression as C\nDIM p.uploadProperties.maxFileSize as C = \"1000000\"\nDIM p.uploadProperties.maxFileSizeExceededMessage as C = \"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\"\nDIM p.uploadProperties.allowedFileExtensions as C\nDIM p.uploadProperties.disallowedfileextensions as C\nDIM p.uploadProperties.invalidExtensionErrorText as C = \"The file you selected is not an allowed file type.\"\nDIM p.uploadProperties.fieldForEmbeddedObjectType as C\nDIM p.uploadProperties.fieldForEmbeddedObjectDescription as C = \"fileName\"\nDIM p.uploadProperties.title as C = \"Select File\"\nDIM p.uploadProperties.uploadButtonText as C = \"Upload\"\nDIM p.uploadProperties.fileBoxWaterMark as C = \"Click button to select file...\"\nDIM p.uploadProperties.selectFileButtonImage as C = \"images/$$folder.open.png.a5image\"\nDIM p.uploadProperties.prompt as C = \"File:\"\nDIM p.uploadProperties.height as C = \"3in\"\nDIM p.uploadProperties.width as C = \"5in\"\nDIM p.uploadProperties.fileUploadWaitMessage as C = \"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\"\nDIM p.uploadProperties.targetFileNameAfterComputeXbasic as C\nDIM p.uploadProperties.showProgress as L = .T.\nDIM p.uploadProperties.uploadAbortMsg as C = \"Abort file upload\"\nDIM p.uploadProperties.abortButtonLabel as C = \"Abort\"\nDIM p.uploadProperties.progressBarType as C = \"A5\"\nDIM p.uploadProperties.closeAfterUpload as L = .T.\nDIM p.uploadProperties.confirmationMessage as C = \"File was uploaded. Click OK to save change, or Cancel to abandon change.\"\nDIM p.uploadProperties.confirmationWindowHasFreeformLayout as L\nDIM p.uploadProperties.confirmationWindowTemplate as C\nDIM p.uploadProperties.autoUpload as L\nDIM p.uploadProperties.errorText_TableNotUpdateable as C = \"Table is not updateable, or you do not have permission to update this table.\"\nDIM p.uploadProperties.errorText_FieldNotUpdateable as C = \"Field is not updateable, or you do not have permission to update this field.\"\nDIM p.uploadProperties.errorText_SessionExpired as C = \"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\"\nDIM p.uploadProperties.errorText_NewRecordRow as C = \"You cannot upload a file to a new record row. You must first save this record, then upload the file.\"\nDIM p.uploadProperties.events as P\nDIM p.uploadProperties.events.serverside as P\nDIM p.uploadProperties.events.serverside.afterUpload as C\nDIM p.uploadProperties.events.clientSide as P\nDIM p.uploadProperties.events.clientSide.afterUpload as C\nDIM p.uploadProperties.events.clientSide.beforeUpload as C\nDIM p.uploadProperties.fileSelectWindowName as C = \"5dd092bcaf8044f88686dbc4edf0ec4b\"\nDIM p.uploadProperties.targetField as C = \"FILEUPLOAD_1\"\nDIM p.uploadProperties.targetFieldIsBlob as L\n\nFileUpload_0fa522f7535643058dbdd7fa7424aefc= p\nend function"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_12',A5.d.evnts.click,function(e) {\n{grid.componentName}_D_ACTIONBUTTON_1(this);\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_12');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_12'] = new A5.Button({\n\tlayout: 'text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'File upload - secure',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_12'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_12');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=eb3b4c10_769c_4325_b852_deb5a6515d24}{I:'$$control.button'} [Button: Submit]",
+                "displayodflat": "{Data=eb3b4c10_769c_4325_b852_deb5a6515d24}{I:'$$control.button'} [Button]",
+                "idinternal": "eb3b4c10_769c_4325_b852_deb5a6515d24",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=eb3b4c10_769c_4325_b852_deb5a6515d24}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=eb3b4c10_769c_4325_b852_deb5a6515d24}{I:'$$control.button'} [Button: Submit]",
+                "crc": "4294909992",
+                "v": {
+                    "buttontext": "Submit",
+                    "class": "<Default>",
+                    "style": "width: .75in;",
+                    "breaktype": "None",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_SUBMIT",
+                    "bubblehelp": "Submit the form.",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.GridRow.SaveRecord.disabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.GridRow.SaveRecord}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.isDirty = true",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.submit();\n//To include current location in the submitted data, use this syntax:\n//{dialog.object}.submit('','',{getLocationData: true})\n\t"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_SUBMIT'] = {\n\t\twatch: [],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar enable = (dialog.isDirty == true);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_SUBMIT'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_SUBMIT')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_SUBMIT'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_SUBMIT'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_SUBMIT'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT',A5.d.evnts.click,function(e) {\n{dialog.object}.submit();\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_SUBMIT'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\ttip: 'Submit the form.',\n\thtml: 'Submit',\n\ticon: '{images.GridRow.SaveRecord}',\n\tdisabledIcon: '{images.GridRow.SaveRecord.disabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_SUBMIT'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_SUBMIT');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=15a2c743_cae8_4b98_a1a8_e523aaee4e87}{I:'$$control.button'} [Button: Reset] �",
+                "displayodflat": "{Data=15a2c743_cae8_4b98_a1a8_e523aaee4e87}{I:'$$control.button'} [Button]",
+                "idinternal": "15a2c743_cae8_4b98_a1a8_e523aaee4e87",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=15a2c743_cae8_4b98_a1a8_e523aaee4e87}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=15a2c743_cae8_4b98_a1a8_e523aaee4e87}{I:'$$control.button'} [Button: Reset] �",
+                "crc": "4294944402",
+                "v": {
+                    "buttontext": "Reset",
+                    "class": "<Default>",
+                    "style": "width: .75in;",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_RESET",
+                    "bubblehelp": "Reset the value of all controls in the form.",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.GridRow.UndoChanges.Disabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.GridRow.UndoChanges}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.isDirty = true",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.resetForm();"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_RESET'] = {\n\t\twatch: [],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar enable = (dialog.isDirty == true);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_RESET'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_RESET')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_RESET'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_RESET'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_RESET'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET',A5.d.evnts.click,function(e) {\n{dialog.object}.resetForm();\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_RESET'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\ttip: 'Reset the value of all controls in the form.',\n\thtml: 'Reset',\n\ticon: '{images.GridRow.UndoChanges}',\n\tdisabledIcon: '{images.GridRow.UndoChanges.Disabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_RESET'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_RESET');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=178bb615_78e5_4a20_b23c_17d19da41e76}{I:'$$control.button'} [Button: New Record]",
+                "displayodflat": "{Data=178bb615_78e5_4a20_b23c_17d19da41e76}{I:'$$control.button'} [Button]",
+                "idinternal": "178bb615_78e5_4a20_b23c_17d19da41e76",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=178bb615_78e5_4a20_b23c_17d19da41e76}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=178bb615_78e5_4a20_b23c_17d19da41e76}{I:'$$control.button'} [Button: New Record]",
+                "crc": "4294963213",
+                "v": {
+                    "buttontext": "New Record",
+                    "class": "<Default>",
+                    "breaktype": "None",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_NEWRECORD",
+                    "bubblehelp": "Start entering a new record.",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.dv.newRecord}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{Dialog.Object}.newRecord();"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_NEWRECORD',A5.d.evnts.click,function(e) {\n{Dialog.Object}.newRecord();\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_NEWRECORD');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_NEWRECORD'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\ttip: 'Start entering a new record.',\n\thtml: 'New Record',\n\ticon: '{images.dv.newRecord}',\n\tdisabledIcon: '{images.dv.newRecord}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_NEWRECORD'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_NEWRECORD');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_NEWRECORD\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=9f7e547a_3677_4e83_a52b_215886ae3ae2}{I:'$$control.button'} [Button: Delete Record] �",
+                "displayodflat": "{Data=9f7e547a_3677_4e83_a52b_215886ae3ae2}{I:'$$control.button'} [Button]",
+                "idinternal": "9f7e547a_3677_4e83_a52b_215886ae3ae2",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=9f7e547a_3677_4e83_a52b_215886ae3ae2}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=9f7e547a_3677_4e83_a52b_215886ae3ae2}{I:'$$control.button'} [Button: Delete Record] �",
+                "crc": "4294963296",
+                "v": {
+                    "buttontext": "Delete Record",
+                    "class": "<Default>",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_DELETERECORD",
+                    "bubblehelp": "Delete record",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.disabled.dv.deleteRecord}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.dv.deleteRecord}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.isNewRecord = false",
+                    "ShowExpression": "",
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_DELETERECORD'] = {\n\t\twatch: [],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar enable = (dialog.isNewRecord == false);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_DELETERECORD'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_DELETERECORD')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_DELETERECORD'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_DELETERECORD'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_DELETERECORD'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_DELETERECORD'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\ttip: 'Delete record',\n\thtml: 'Delete Record',\n\ticon: '{images.dv.deleteRecord}',\n\tdisabledIcon: '{images.disabled.dv.deleteRecord}',\n\tonClick: function() { //Tip: For more options (such as suppressing the prompt, or specifying server-side events, etc.) use the Action Javascript builder.\n{dialog.object}.deleteRecord();\n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_DELETERECORD'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_DELETERECORD');"
+                    },
+                    "javascript": {
+                        "onclick": "//Tip: For more options (such as suppressing the prompt, or specifying server-side events, etc.) use the Action Javascript builder.\n{dialog.object}.deleteRecord();"
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DELETERECORD\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=7df9c664_7a03_4c5c_b5a3_19914823af56}{I:'$$control.button'} [Button: First]",
+                "displayodflat": "{Data=7df9c664_7a03_4c5c_b5a3_19914823af56}{I:'$$control.button'} [Button]",
+                "idinternal": "7df9c664_7a03_4c5c_b5a3_19914823af56",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=7df9c664_7a03_4c5c_b5a3_19914823af56}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=7df9c664_7a03_4c5c_b5a3_19914823af56}{I:'$$control.button'} [Button: First]",
+                "crc": "4294915599",
+                "v": {
+                    "buttontext": "First",
+                    "class": "<Default>",
+                    "breaktype": "None",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_DLGNAVBTN_FIRST",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.grid.firstPageDisabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.grid.firstPage}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.firstRecord = false ",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.navigateRecord('first');"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_DLGNAVBTN_FIRST'] = {\n\t\twatch: ['DIALOG_FIRSTRECORD'],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar DIALOG_FIRSTRECORD = {dialog.object}.getValue('DIALOG_FIRSTRECORD',data.rowNumber);\n\tif( A5.isBlank(DIALOG_FIRSTRECORD)) DIALOG_FIRSTRECORD= '';\n\tvar enable = (dialog.firstRecord == false);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_DLGNAVBTN_FIRST'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_DLGNAVBTN_FIRST')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_DLGNAVBTN_FIRST'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_DLGNAVBTN_FIRST'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_DLGNAVBTN_FIRST'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_FIRST',A5.d.evnts.click,function(e) {\n{dialog.object}.navigateRecord('first');\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_FIRST');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_FIRST'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'First',\n\ticon: '{images.grid.firstPage}',\n\tdisabledIcon: '{images.grid.firstPageDisabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_FIRST'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_DLGNAVBTN_FIRST');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_FIRST\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=3177dbb1_dec2_4dc5_9aa3_5bb41d453c91}{I:'$$control.button'} [Button: Prev]",
+                "displayodflat": "{Data=3177dbb1_dec2_4dc5_9aa3_5bb41d453c91}{I:'$$control.button'} [Button]",
+                "idinternal": "3177dbb1_dec2_4dc5_9aa3_5bb41d453c91",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=3177dbb1_dec2_4dc5_9aa3_5bb41d453c91}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=3177dbb1_dec2_4dc5_9aa3_5bb41d453c91}{I:'$$control.button'} [Button: Prev]",
+                "crc": "4294908441",
+                "v": {
+                    "buttontext": "Prev",
+                    "class": "<Default>",
+                    "breaktype": "None",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_DLGNAVBTN_PREV",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Image followed by text",
+                        "disabledImageName": "{images.grid.prevPageDisabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.grid.prevPage}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.navigateRecord('previous');"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_PREV',A5.d.evnts.click,function(e) {\n{dialog.object}.navigateRecord('previous');\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_PREV');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_PREV'] = new A5.Button({\n\tlayout: 'icon text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'Prev',\n\ticon: '{images.grid.prevPage}',\n\tdisabledIcon: '{images.grid.prevPageDisabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_PREV'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_DLGNAVBTN_PREV');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_PREV\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=43d7996d_f59c_4448_857d_c7f12d87d318}{I:'$$control.button'} [Button: Next]",
+                "displayodflat": "{Data=43d7996d_f59c_4448_857d_c7f12d87d318}{I:'$$control.button'} [Button]",
+                "idinternal": "43d7996d_f59c_4448_857d_c7f12d87d318",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=43d7996d_f59c_4448_857d_c7f12d87d318}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=43d7996d_f59c_4448_857d_c7f12d87d318}{I:'$$control.button'} [Button: Next]",
+                "crc": "4294945126",
+                "v": {
+                    "buttontext": "Next",
+                    "class": "<Default>",
+                    "breaktype": "None",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_DLGNAVBTN_NEXT",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text followed by image",
+                        "disabledImageName": "{images.grid.nextPageDisabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.grid.nextPage}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.navigateRecord('next');"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_NEXT',A5.d.evnts.click,function(e) {\n{dialog.object}.navigateRecord('next');\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_NEXT');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_NEXT'] = new A5.Button({\n\tlayout: 'text icon',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'Next',\n\ticon: '{images.grid.nextPage}',\n\tdisabledIcon: '{images.grid.nextPageDisabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_NEXT'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_DLGNAVBTN_NEXT');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_NEXT\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=d4c0b4ff_2d81_4c06_ad9a_85da14efd656}{I:'$$control.button'} [Button: Last]",
+                "displayodflat": "{Data=d4c0b4ff_2d81_4c06_ad9a_85da14efd656}{I:'$$control.button'} [Button]",
+                "idinternal": "d4c0b4ff_2d81_4c06_ad9a_85da14efd656",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=d4c0b4ff_2d81_4c06_ad9a_85da14efd656}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=d4c0b4ff_2d81_4c06_ad9a_85da14efd656}{I:'$$control.button'} [Button: Last]",
+                "crc": "4294911335",
+                "v": {
+                    "buttontext": "Last",
+                    "class": "<Default>",
+                    "breaktype": "None",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_DLGNAVBTN_LAST",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text followed by image",
+                        "disabledImageName": "{images.grid.lastPageDisabled}",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "{images.grid.lastPage}",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "dialog.lastRecord = false ",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "{dialog.object}.navigateRecord('last');"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "{dialog.object}.dialogWatches['ENABLE_BUTTON_DLGNAVBTN_LAST'] = {\n\t\twatch: ['DIALOG_LASTRECORD'],\n\t\tvariables: [],\n\t\tonChange: function(data) {\n\t\n\t\n\tvar dialog = {};\n\tvar summary = {};\n\t{dialog.object}._getDialogVariables(dialog,summary,data);\n\tvar DIALOG_LASTRECORD = {dialog.object}.getValue('DIALOG_LASTRECORD',data.rowNumber);\n\tif( A5.isBlank(DIALOG_LASTRECORD)) DIALOG_LASTRECORD= '';\n\tvar enable = (dialog.lastRecord == false);\n\tvar eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_DLGNAVBTN_LAST'),$('{dialog.componentName}.R'+data.rowNumber));\n\tif(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('{grid.componentname}.'+'V.R' + data.rowNumber + '.BUTTON_DLGNAVBTN_LAST')];\n\tvar pObj = {dialog.object}.getControl('BUTTON_DLGNAVBTN_LAST'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }\n\tif(typeof {dialog.object}._buttons['BUTTON_DLGNAVBTN_LAST'] != 'undefined') {\n\t{dialog.object}._buttons['BUTTON_DLGNAVBTN_LAST'].setDisabled(!enable,eles)\n\t} else {\n\tfor(var i=0; i<eles.length;i++) eles[i].disabled = !enable;\n\t}\n\t;}\n}\n\n",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_LAST',A5.d.evnts.click,function(e) {\n{dialog.object}.navigateRecord('last');\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_LAST');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_LAST'] = new A5.Button({\n\tlayout: 'text icon',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'Last',\n\ticon: '{images.grid.lastPage}',\n\tdisabledIcon: '{images.grid.lastPageDisabled}',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_DLGNAVBTN_LAST'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_DLGNAVBTN_LAST');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_LAST\"    ></button>\n</div>",
+                    "DesignViewHTML": ""
+                }
+            }
+        ],
+        "builderType": "Dialog2",
+        "guid": "61a13b9b-3908-463d-a126-2e4e22fd209d",
+        "componentName": "ux_databound_file_upload",
+        "componentFilename": "C:\\a5v12\\packages\\AJAX_webComponents.WebProjects\\S3.WebProject\\ux_databound_file_upload.a5wcmp",
+        "_style_versionNumber": 2,
+        "controlflowdirection": "ltr",
+        "SVGLinkedFiles": "",
+        "localsvg": "",
+        "showLineNumbersInControlsList": false,
+        "customSettingsJSON": "",
+        "saveFileType": "Formatted JSON",
+        "keyboardShortcutsJSON": "",
+        "selected": "fff92b7e-a3a3-42f2-ba53-a1c75c63927f\n",
+        "designPaneIndex": 1,
+        "masterPaneC": "controls",
+        "serverSideEventIndex": 4,
+        "clientSideEventIndex": 1,
+        "clientSideEventIndexC": "1",
+        "lastControlSelected": "insert_layout_directive_button",
+        "__WPhostName": "Chrome",
+        "repeatingSectionsAreDirty": true,
+        "a_actionJavascript": [
+            {
+                "actionGuid": "f3509ffe-c33c-43d0-840c-83b64b8309f8   ",
+                "scriptMetaData": "<a_ajs<[1]<display=\"{I:'$$file.import'}{F=Tahoma,10}{C=Dark Blue,White}{B=Blue White,Dark Blue}File Upload{T=4}{I:'a5_vertical_line'}\">\n<action=\"File Upload\">\n<icon=\"$$file.import\">\n<isCommentedOut=.F.>\n<comment=\"\">\n<builder=\"a5ajs_FileUpload(v,wf,pv,dlg_mode)\">\n<metaData=<<%str%\n<ajaxWindowPositionAttribute=\"\">\n<ajaxWindowPositionAttributeEnglish=\"\">\n<uploadProperties<target=\"AmazonS3\">\n<cloudStorage<specifyCredentials=\"Named Storage Connection String\">\n<connectionString=\"alphamediacapture\">\n<credentials<access_key=\"\">\n<secret=\"\">\n>\n<bucketName=\"\">\n<allowMultipleFiles=.F.>\n<maxFileSize=-1>\n<maxFileSizeTotal=-1>\n<allowedFileTypes=\"\">\n<authenticatedRead=.F.>\n<unauthenticatedReadURLFormat=\"URL\">\n<displayProgress=.T.>\n<allowCancel=.T.>\n<progressStyle=\"Bar\">\n<progressBarColor=\"#9fa1e8\">\n<progressBarWidth=\"1.5in\">\n<progressDisplayPlaceholder=\"PLACEHOLDER_1\">\n<javascript<onAfterFilesSelect=\"\">\n<onCompleteIndividualFile=\"\">\n<onCompleteAllFiles=\"\">\n<onBeforeFileSelect=\"\">\n<onValidationError=\"\">\n<onError=\"\">\n<onProgress=\"\">\n<targetName=\"\">\n>\n<customization<maxFileSize=\"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\">\n<totalFileSize=\"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\">\n<fileType=\"Selected file ([filename]) is not an allowed file type.\">\n>\n<afterUploadMessage=\"Upload completed: [objectName]\">\n>\n<uploadFolder=\"\">\n<fileExistAction=\"Overwrite\">\n<storedValueExpression=\"\">\n<maxFileSize=\"1000000\">\n<maxFileSizeExceededMessage=\"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\">\n<allowedFileExtensions=\"\">\n<disallowedfileextensions=\"\">\n<invalidExtensionErrorText=\"The file you selected is not an allowed file type.\">\n<fieldForEmbeddedObjectType=\"\">\n<fieldForEmbeddedObjectDescription=\"fileName\">\n<title=\"Select File\">\n<uploadButtonText=\"Upload\">\n<fileBoxWaterMark=\"Click button to select file...\">\n<selectFileButtonImage=\"images/$$folder.open.png.a5image\">\n<prompt=\"File:\">\n<height=\"3in\">\n<width=\"5in\">\n<fileUploadWaitMessage=\"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\">\n<targetFileNameAfterComputeXbasic=\"\">\n<showProgress=.T.>\n<uploadAbortMsg=\"Abort file upload\">\n<abortButtonLabel=\"Abort\">\n<progressBarType=\"A5\">\n<closeAfterUpload=.T.>\n<confirmationMessage=\"File was uploaded. Click OK to save change, or Cancel to abandon change.\">\n<confirmationWindowHasFreeformLayout=.F.>\n<confirmationWindowTemplate=\"\">\n<autoUpload=.F.>\n<errorText_TableNotUpdateable=\"Table is not updateable, or you do not have permission to update this table.\">\n<errorText_FieldNotUpdateable=\"Field is not updateable, or you do not have permission to update this field.\">\n<errorText_SessionExpired=\"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\">\n<errorText_NewRecordRow=\"You cannot upload a file to a new record row. You must first save this record, then upload the file.\">\n<events<serverside<afterUpload=\"\">\n>\n<clientSide<afterUpload=\"\">\n<beforeUpload=\"\">\n>\n>\n<fileSelectWindowName=\"e052b26379c24dfc835fbd761273e835\">\n<targetField=\"FILEUPLOAD_1\">\n<targetFieldIsBlob=.F.>\n>\n<gridField=\"FILEUPLOAD_1 (C)\">\n<cancelButtonLabel=\"Cancel\">\n<okButtonLabel=\"<div style=\\\"width:1in;cursor:default;\\\">OK</div>\">\n%str%>\n<javascriptAttribute=\"{grid.componentName}_D_ACTIONBUTTON_{ACTIONNUMBER}(this);\">\n<Javascriptdeclarations_row=\"\">\n<Javascriptdeclarations_global=<<%str%\nwindow['{grid.componentName}_D_ACTIONBUTTON_{ACTIONNUMBER}'] = function(rowNum,rowId,objEle) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": false,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"authenticatedRead\": false,\n\t\"unauthenticatedReadURLFormat\": \"URL\",\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file ([filename]) is not an allowed file type.\"\n\t},\n\t\"afterUploadMessage\": \"Upload completed: [objectName]\",\n\t\"xbasicFunctionName\": \"FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072\",\n\t\"onCompleteAllFiles\": function(e) { if(!e.aborted) {\n\t\t\t\t\t{grid.object}._isDataDirty = true; \n\t\t\t{grid.object}._setRowState(1,true); \n\t\t\tvar ele = $('{dialog.componentName}.V.R1.FILEUPLOAD_1');\n\t\t\tif(ele) $svs(ele,'amazonS3PublicRead:::' + e.targetName + ':::FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072');\n\t\t\t{grid.object}.setValue('FILENAME','Upload completed: '+e.targetName+'');\n\t\t\n\t} else {\n\t\t\n\t};},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{grid.object}.fileUploadAmazonS3(obj);\n}\n%str%>\n<xbasicFunctions=<<%str%\nfunction FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072 as p()\nDIM p as P\nDIM p.uploadProperties as P\nDIM p.uploadProperties.target as C = \"AmazonS3\"\nDIM p.uploadProperties.cloudStorage as P\nDIM p.uploadProperties.cloudStorage.specifyCredentials as C = \"Named Storage Connection String\"\nDIM p.uploadProperties.cloudStorage.connectionString as C = \"alphamediacapture\"\nDIM p.uploadProperties.cloudStorage.credentials as P\nDIM p.uploadProperties.cloudStorage.credentials.access_key as C\nDIM p.uploadProperties.cloudStorage.credentials.secret as C\nDIM p.uploadProperties.cloudStorage.bucketName as C\nDIM p.uploadProperties.cloudStorage.allowMultipleFiles as L\nDIM p.uploadProperties.cloudStorage.maxFileSize as N = -1\nDIM p.uploadProperties.cloudStorage.maxFileSizeTotal as N = -1\nDIM p.uploadProperties.cloudStorage.allowedFileTypes as C\nDIM p.uploadProperties.cloudStorage.authenticatedRead as L\nDIM p.uploadProperties.cloudStorage.unauthenticatedReadURLFormat as C = \"URL\"\nDIM p.uploadProperties.cloudStorage.displayProgress as L = .T.\nDIM p.uploadProperties.cloudStorage.allowCancel as L = .T.\nDIM p.uploadProperties.cloudStorage.progressStyle as C = \"Bar\"\nDIM p.uploadProperties.cloudStorage.progressBarColor as C = \"#9fa1e8\"\nDIM p.uploadProperties.cloudStorage.progressBarWidth as C = \"1.5in\"\nDIM p.uploadProperties.cloudStorage.progressDisplayPlaceholder as C = \"PLACEHOLDER_1\"\nDIM p.uploadProperties.cloudStorage.javascript as P\nDIM p.uploadProperties.cloudStorage.javascript.onAfterFilesSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteIndividualFile as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteAllFiles as C\nDIM p.uploadProperties.cloudStorage.javascript.onBeforeFileSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onValidationError as C\nDIM p.uploadProperties.cloudStorage.javascript.onError as C\nDIM p.uploadProperties.cloudStorage.javascript.onProgress as C\nDIM p.uploadProperties.cloudStorage.javascript.targetName as C\nDIM p.uploadProperties.cloudStorage.customization as P\nDIM p.uploadProperties.cloudStorage.customization.maxFileSize as C = \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.totalFileSize as C = \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.fileType as C = \"Selected file ([filename]) is not an allowed file type.\"\nDIM p.uploadProperties.cloudStorage.afterUploadMessage as C = \"Upload completed: [objectName]\"\nDIM p.uploadProperties.uploadFolder as C\nDIM p.uploadProperties.fileExistAction as C = \"Overwrite\"\nDIM p.uploadProperties.storedValueExpression as C\nDIM p.uploadProperties.maxFileSize as C = \"1000000\"\nDIM p.uploadProperties.maxFileSizeExceededMessage as C = \"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\"\nDIM p.uploadProperties.allowedFileExtensions as C\nDIM p.uploadProperties.disallowedfileextensions as C\nDIM p.uploadProperties.invalidExtensionErrorText as C = \"The file you selected is not an allowed file type.\"\nDIM p.uploadProperties.fieldForEmbeddedObjectType as C\nDIM p.uploadProperties.fieldForEmbeddedObjectDescription as C = \"fileName\"\nDIM p.uploadProperties.title as C = \"Select File\"\nDIM p.uploadProperties.uploadButtonText as C = \"Upload\"\nDIM p.uploadProperties.fileBoxWaterMark as C = \"Click button to select file...\"\nDIM p.uploadProperties.selectFileButtonImage as C = \"images/$$folder.open.png.a5image\"\nDIM p.uploadProperties.prompt as C = \"File:\"\nDIM p.uploadProperties.height as C = \"3in\"\nDIM p.uploadProperties.width as C = \"5in\"\nDIM p.uploadProperties.fileUploadWaitMessage as C = \"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\"\nDIM p.uploadProperties.targetFileNameAfterComputeXbasic as C\nDIM p.uploadProperties.showProgress as L = .T.\nDIM p.uploadProperties.uploadAbortMsg as C = \"Abort file upload\"\nDIM p.uploadProperties.abortButtonLabel as C = \"Abort\"\nDIM p.uploadProperties.progressBarType as C = \"A5\"\nDIM p.uploadProperties.closeAfterUpload as L = .T.\nDIM p.uploadProperties.confirmationMessage as C = \"File was uploaded. Click OK to save change, or Cancel to abandon change.\"\nDIM p.uploadProperties.confirmationWindowHasFreeformLayout as L\nDIM p.uploadProperties.confirmationWindowTemplate as C\nDIM p.uploadProperties.autoUpload as L\nDIM p.uploadProperties.errorText_TableNotUpdateable as C = \"Table is not updateable, or you do not have permission to update this table.\"\nDIM p.uploadProperties.errorText_FieldNotUpdateable as C = \"Field is not updateable, or you do not have permission to update this field.\"\nDIM p.uploadProperties.errorText_SessionExpired as C = \"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\"\nDIM p.uploadProperties.errorText_NewRecordRow as C = \"You cannot upload a file to a new record row. You must first save this record, then upload the file.\"\nDIM p.uploadProperties.events as P\nDIM p.uploadProperties.events.serverside as P\nDIM p.uploadProperties.events.serverside.afterUpload as C\nDIM p.uploadProperties.events.clientSide as P\nDIM p.uploadProperties.events.clientSide.afterUpload as C\nDIM p.uploadProperties.events.clientSide.beforeUpload as C\nDIM p.uploadProperties.fileSelectWindowName as C = \"e052b26379c24dfc835fbd761273e835\"\nDIM p.uploadProperties.targetField as C = \"FILEUPLOAD_1\"\nDIM p.uploadProperties.targetFieldIsBlob as L\n\nFileUpload_a48afc5dbd12442aaf0ce8d3e50ff072= p\nend function\n%str%>\n>\n>\n<flagRunSynchronously=.F.>\n"
+            },
+            {
+                "actionGuid": "561300bc-159d-446a-9e4a-cef1493ff85e  ",
+                "scriptMetaData": "<a_ajs<[1]<display=\"{I:'$$file.import'}{F=Tahoma,10}{C=Dark Blue,White}{B=Blue White,Dark Blue}File Upload{T=4}{I:'a5_vertical_line'}\">\n<action=\"File Upload\">\n<icon=\"$$file.import\">\n<isCommentedOut=.F.>\n<comment=\"\">\n<builder=\"a5ajs_FileUpload(v,wf,pv,dlg_mode)\">\n<metaData=<<%str%\n<ajaxWindowPositionAttribute=\"\">\n<ajaxWindowPositionAttributeEnglish=\"\">\n<uploadProperties<target=\"AmazonS3\">\n<cloudStorage<specifyCredentials=\"Named Storage Connection String\">\n<connectionString=\"alphamediacapture\">\n<credentials<access_key=\"\">\n<secret=\"\">\n>\n<bucketName=\"\">\n<allowMultipleFiles=.F.>\n<maxFileSize=-1>\n<maxFileSizeTotal=-1>\n<allowedFileTypes=\"\">\n<authenticatedRead=.T.>\n<unauthenticatedReadURLFormat=\"URL\">\n<displayProgress=.T.>\n<allowCancel=.T.>\n<progressStyle=\"Bar\">\n<progressBarColor=\"#9fa1e8\">\n<progressBarWidth=\"1.5in\">\n<progressDisplayPlaceholder=\"PLACEHOLDER_1\">\n<javascript<onAfterFilesSelect=\"\">\n<onCompleteIndividualFile=\"\">\n<onCompleteAllFiles=\"\">\n<onBeforeFileSelect=\"\">\n<onValidationError=\"\">\n<onError=\"\">\n<onProgress=\"\">\n<targetName=\"\">\n>\n<customization<maxFileSize=\"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\">\n<totalFileSize=\"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\">\n<fileType=\"Selected file ([filename]) is not an allowed file type.\">\n>\n<afterUploadMessage=\"Upload completed: [objectName]\">\n>\n<uploadFolder=\"\">\n<fileExistAction=\"Overwrite\">\n<storedValueExpression=\"\">\n<maxFileSize=\"1000000\">\n<maxFileSizeExceededMessage=\"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\">\n<allowedFileExtensions=\"\">\n<disallowedfileextensions=\"\">\n<invalidExtensionErrorText=\"The file you selected is not an allowed file type.\">\n<fieldForEmbeddedObjectType=\"\">\n<fieldForEmbeddedObjectDescription=\"fileName\">\n<title=\"Select File\">\n<uploadButtonText=\"Upload\">\n<fileBoxWaterMark=\"Click button to select file...\">\n<selectFileButtonImage=\"images/$$folder.open.png.a5image\">\n<prompt=\"File:\">\n<height=\"3in\">\n<width=\"5in\">\n<fileUploadWaitMessage=\"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\">\n<targetFileNameAfterComputeXbasic=\"\">\n<showProgress=.T.>\n<uploadAbortMsg=\"Abort file upload\">\n<abortButtonLabel=\"Abort\">\n<progressBarType=\"A5\">\n<closeAfterUpload=.T.>\n<confirmationMessage=\"File was uploaded. Click OK to save change, or Cancel to abandon change.\">\n<confirmationWindowHasFreeformLayout=.F.>\n<confirmationWindowTemplate=\"\">\n<autoUpload=.F.>\n<errorText_TableNotUpdateable=\"Table is not updateable, or you do not have permission to update this table.\">\n<errorText_FieldNotUpdateable=\"Field is not updateable, or you do not have permission to update this field.\">\n<errorText_SessionExpired=\"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\">\n<errorText_NewRecordRow=\"You cannot upload a file to a new record row. You must first save this record, then upload the file.\">\n<events<serverside<afterUpload=\"\">\n>\n<clientSide<afterUpload=\"\">\n<beforeUpload=\"\">\n>\n>\n<fileSelectWindowName=\"5dd092bcaf8044f88686dbc4edf0ec4b\">\n<targetField=\"FILEUPLOAD_1\">\n<targetFieldIsBlob=.F.>\n>\n<gridField=\"FILEUPLOAD_1 (C)\">\n<cancelButtonLabel=\"Cancel\">\n<okButtonLabel=\"<div style=\\\"width:1in;cursor:default;\\\">OK</div>\">\n%str%>\n<javascriptAttribute=\"{grid.componentName}_D_ACTIONBUTTON_{ACTIONNUMBER}(this);\">\n<Javascriptdeclarations_row=\"\">\n<Javascriptdeclarations_global=<<%str%\nwindow['{grid.componentName}_D_ACTIONBUTTON_{ACTIONNUMBER}'] = function(rowNum,rowId,objEle) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": false,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"authenticatedRead\": true,\n\t\"unauthenticatedReadURLFormat\": \"URL\",\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file ([filename]) is not an allowed file type.\"\n\t},\n\t\"afterUploadMessage\": \"Upload completed: [objectName]\",\n\t\"xbasicFunctionName\": \"FileUpload_0fa522f7535643058dbdd7fa7424aefc\",\n\t\"onCompleteAllFiles\": function(e) { if(!e.aborted) {\n\t\t\t\t\t{grid.object}._isDataDirty = true; \n\t\t\t{grid.object}._setRowState(1,true); \n\t\t\tvar ele = $('{dialog.componentName}.V.R1.FILEUPLOAD_1');\n\t\t\tif(ele) $svs(ele,'amazonS3ProtectedRead:::' + e.targetName + ':::FileUpload_0fa522f7535643058dbdd7fa7424aefc');\n\t\t\t{grid.object}.setValue('FILENAME','Upload completed: '+e.targetName+'');\t\t\t\n\t\t\n\t};},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{grid.object}.fileUploadAmazonS3(obj);\n}\n%str%>\n<xbasicFunctions=<<%str%\nfunction FileUpload_0fa522f7535643058dbdd7fa7424aefc as p()\nDIM p as P\nDIM p.uploadProperties as P\nDIM p.uploadProperties.target as C = \"AmazonS3\"\nDIM p.uploadProperties.cloudStorage as P\nDIM p.uploadProperties.cloudStorage.specifyCredentials as C = \"Named Storage Connection String\"\nDIM p.uploadProperties.cloudStorage.connectionString as C = \"alphamediacapture\"\nDIM p.uploadProperties.cloudStorage.credentials as P\nDIM p.uploadProperties.cloudStorage.credentials.access_key as C\nDIM p.uploadProperties.cloudStorage.credentials.secret as C\nDIM p.uploadProperties.cloudStorage.bucketName as C\nDIM p.uploadProperties.cloudStorage.allowMultipleFiles as L\nDIM p.uploadProperties.cloudStorage.maxFileSize as N = -1\nDIM p.uploadProperties.cloudStorage.maxFileSizeTotal as N = -1\nDIM p.uploadProperties.cloudStorage.allowedFileTypes as C\nDIM p.uploadProperties.cloudStorage.authenticatedRead as L = .T.\nDIM p.uploadProperties.cloudStorage.unauthenticatedReadURLFormat as C = \"URL\"\nDIM p.uploadProperties.cloudStorage.displayProgress as L = .T.\nDIM p.uploadProperties.cloudStorage.allowCancel as L = .T.\nDIM p.uploadProperties.cloudStorage.progressStyle as C = \"Bar\"\nDIM p.uploadProperties.cloudStorage.progressBarColor as C = \"#9fa1e8\"\nDIM p.uploadProperties.cloudStorage.progressBarWidth as C = \"1.5in\"\nDIM p.uploadProperties.cloudStorage.progressDisplayPlaceholder as C = \"PLACEHOLDER_1\"\nDIM p.uploadProperties.cloudStorage.javascript as P\nDIM p.uploadProperties.cloudStorage.javascript.onAfterFilesSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteIndividualFile as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteAllFiles as C\nDIM p.uploadProperties.cloudStorage.javascript.onBeforeFileSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onValidationError as C\nDIM p.uploadProperties.cloudStorage.javascript.onError as C\nDIM p.uploadProperties.cloudStorage.javascript.onProgress as C\nDIM p.uploadProperties.cloudStorage.javascript.targetName as C\nDIM p.uploadProperties.cloudStorage.customization as P\nDIM p.uploadProperties.cloudStorage.customization.maxFileSize as C = \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.totalFileSize as C = \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.fileType as C = \"Selected file ([filename]) is not an allowed file type.\"\nDIM p.uploadProperties.cloudStorage.afterUploadMessage as C = \"Upload completed: [objectName]\"\nDIM p.uploadProperties.uploadFolder as C\nDIM p.uploadProperties.fileExistAction as C = \"Overwrite\"\nDIM p.uploadProperties.storedValueExpression as C\nDIM p.uploadProperties.maxFileSize as C = \"1000000\"\nDIM p.uploadProperties.maxFileSizeExceededMessage as C = \"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\"\nDIM p.uploadProperties.allowedFileExtensions as C\nDIM p.uploadProperties.disallowedfileextensions as C\nDIM p.uploadProperties.invalidExtensionErrorText as C = \"The file you selected is not an allowed file type.\"\nDIM p.uploadProperties.fieldForEmbeddedObjectType as C\nDIM p.uploadProperties.fieldForEmbeddedObjectDescription as C = \"fileName\"\nDIM p.uploadProperties.title as C = \"Select File\"\nDIM p.uploadProperties.uploadButtonText as C = \"Upload\"\nDIM p.uploadProperties.fileBoxWaterMark as C = \"Click button to select file...\"\nDIM p.uploadProperties.selectFileButtonImage as C = \"images/$$folder.open.png.a5image\"\nDIM p.uploadProperties.prompt as C = \"File:\"\nDIM p.uploadProperties.height as C = \"3in\"\nDIM p.uploadProperties.width as C = \"5in\"\nDIM p.uploadProperties.fileUploadWaitMessage as C = \"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\"\nDIM p.uploadProperties.targetFileNameAfterComputeXbasic as C\nDIM p.uploadProperties.showProgress as L = .T.\nDIM p.uploadProperties.uploadAbortMsg as C = \"Abort file upload\"\nDIM p.uploadProperties.abortButtonLabel as C = \"Abort\"\nDIM p.uploadProperties.progressBarType as C = \"A5\"\nDIM p.uploadProperties.closeAfterUpload as L = .T.\nDIM p.uploadProperties.confirmationMessage as C = \"File was uploaded. Click OK to save change, or Cancel to abandon change.\"\nDIM p.uploadProperties.confirmationWindowHasFreeformLayout as L\nDIM p.uploadProperties.confirmationWindowTemplate as C\nDIM p.uploadProperties.autoUpload as L\nDIM p.uploadProperties.errorText_TableNotUpdateable as C = \"Table is not updateable, or you do not have permission to update this table.\"\nDIM p.uploadProperties.errorText_FieldNotUpdateable as C = \"Field is not updateable, or you do not have permission to update this field.\"\nDIM p.uploadProperties.errorText_SessionExpired as C = \"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\"\nDIM p.uploadProperties.errorText_NewRecordRow as C = \"You cannot upload a file to a new record row. You must first save this record, then upload the file.\"\nDIM p.uploadProperties.events as P\nDIM p.uploadProperties.events.serverside as P\nDIM p.uploadProperties.events.serverside.afterUpload as C\nDIM p.uploadProperties.events.clientSide as P\nDIM p.uploadProperties.events.clientSide.afterUpload as C\nDIM p.uploadProperties.events.clientSide.beforeUpload as C\nDIM p.uploadProperties.fileSelectWindowName as C = \"5dd092bcaf8044f88686dbc4edf0ec4b\"\nDIM p.uploadProperties.targetField as C = \"FILEUPLOAD_1\"\nDIM p.uploadProperties.targetFieldIsBlob as L\n\nFileUpload_0fa522f7535643058dbdd7fa7424aefc= p\nend function\n%str%>\n>\n>\n<flagRunSynchronously=.F.>\n"
+            }
+        ],
+        "containerSubTypeNew": "",
+        "containerSubTypeOld": "",
+        "flagDropdownCascadingChanged": false,
+        "toolBox_value": "",
+        "addinBuildNumber": "4644",
+        "addinBuildNumberHighestUsed": "4644",
+        "alphaFiveBuildNumber": "12",
+        "openedFromTemplate": false,
+        "builtWithVersionNumer": 1,
+        "securityEnabled": false,
+        "showHideIsUsed": false,
+        "precalc": {
+            "customControl": {
+                "js_beforePrepare": "",
+                "js_afterRender": "",
+                "customControl_xbasicFunctions": ""
+            },
+            "injectibleHTML": "",
+            "containerWindowHTML": "",
+            "repeatingsectionInfoJs": "",
+            "framesInfoJS": "{dialog.object}.framesInfo = {\n\n};\n",
+            "jsActionJavascriptGlobalFunctions": "window['{grid.componentName}_D_ACTIONBUTTON_1'] = function(rowNum,rowId,objEle) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": false,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"authenticatedRead\": false,\n\t\"unauthenticatedReadURLFormat\": \"URL\",\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file ([filename]) is not an allowed file type.\"\n\t},\n\t\"afterUploadMessage\": \"Upload completed: [objectName]\",\n\t\"xbasicFunctionName\": \"FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072\",\n\t\"onCompleteAllFiles\": function(e) { if(!e.aborted) {\n\t\t\t\t\t{grid.object}._isDataDirty = true; \n\t\t\t{grid.object}._setRowState(1,true); \n\t\t\tvar ele = $('{dialog.componentName}.V.R1.FILEUPLOAD_1');\n\t\t\tif(ele) $svs(ele,'amazonS3PublicRead:::' + e.targetName + ':::FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072');\n\t\t\t{grid.object}.setValue('FILENAME','Upload completed: '+e.targetName+'');\n\t} else {\n\t};},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n{grid.object}.fileUploadAmazonS3(obj);\n}\nwindow['{grid.componentName}_D_ACTIONBUTTON_1'] = function(rowNum,rowId,objEle) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": false,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"authenticatedRead\": true,\n\t\"unauthenticatedReadURLFormat\": \"URL\",\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file ([filename]) is not an allowed file type.\"\n\t},\n\t\"afterUploadMessage\": \"Upload completed: [objectName]\",\n\t\"xbasicFunctionName\": \"FileUpload_0fa522f7535643058dbdd7fa7424aefc\",\n\t\"onCompleteAllFiles\": function(e) { if(!e.aborted) {\n\t\t\t\t\t{grid.object}._isDataDirty = true; \n\t\t\t{grid.object}._setRowState(1,true); \n\t\t\tvar ele = $('{dialog.componentName}.V.R1.FILEUPLOAD_1');\n\t\t\tif(ele) $svs(ele,'amazonS3ProtectedRead:::' + e.targetName + ':::FileUpload_0fa522f7535643058dbdd7fa7424aefc');\n\t\t\t{grid.object}.setValue('FILENAME','Upload completed: '+e.targetName+'');\t\t\t\n\t};},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n{grid.object}.fileUploadAmazonS3(obj);\n}",
+            "xbActionJavascriptGlobalFunctions": "function FileUpload_a48afc5dbd12442aaf0ce8d3e50ff072 as p()\nDIM p as P\nDIM p.uploadProperties as P\nDIM p.uploadProperties.target as C = \"AmazonS3\"\nDIM p.uploadProperties.cloudStorage as P\nDIM p.uploadProperties.cloudStorage.specifyCredentials as C = \"Named Storage Connection String\"\nDIM p.uploadProperties.cloudStorage.connectionString as C = \"alphamediacapture\"\nDIM p.uploadProperties.cloudStorage.credentials as P\nDIM p.uploadProperties.cloudStorage.credentials.access_key as C\nDIM p.uploadProperties.cloudStorage.credentials.secret as C\nDIM p.uploadProperties.cloudStorage.bucketName as C\nDIM p.uploadProperties.cloudStorage.allowMultipleFiles as L\nDIM p.uploadProperties.cloudStorage.maxFileSize as N = -1\nDIM p.uploadProperties.cloudStorage.maxFileSizeTotal as N = -1\nDIM p.uploadProperties.cloudStorage.allowedFileTypes as C\nDIM p.uploadProperties.cloudStorage.authenticatedRead as L\nDIM p.uploadProperties.cloudStorage.unauthenticatedReadURLFormat as C = \"URL\"\nDIM p.uploadProperties.cloudStorage.displayProgress as L = .T.\nDIM p.uploadProperties.cloudStorage.allowCancel as L = .T.\nDIM p.uploadProperties.cloudStorage.progressStyle as C = \"Bar\"\nDIM p.uploadProperties.cloudStorage.progressBarColor as C = \"#9fa1e8\"\nDIM p.uploadProperties.cloudStorage.progressBarWidth as C = \"1.5in\"\nDIM p.uploadProperties.cloudStorage.progressDisplayPlaceholder as C = \"PLACEHOLDER_1\"\nDIM p.uploadProperties.cloudStorage.javascript as P\nDIM p.uploadProperties.cloudStorage.javascript.onAfterFilesSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteIndividualFile as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteAllFiles as C\nDIM p.uploadProperties.cloudStorage.javascript.onBeforeFileSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onValidationError as C\nDIM p.uploadProperties.cloudStorage.javascript.onError as C\nDIM p.uploadProperties.cloudStorage.javascript.onProgress as C\nDIM p.uploadProperties.cloudStorage.javascript.targetName as C\nDIM p.uploadProperties.cloudStorage.customization as P\nDIM p.uploadProperties.cloudStorage.customization.maxFileSize as C = \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.totalFileSize as C = \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.fileType as C = \"Selected file ([filename]) is not an allowed file type.\"\nDIM p.uploadProperties.cloudStorage.afterUploadMessage as C = \"Upload completed: [objectName]\"\nDIM p.uploadProperties.uploadFolder as C\nDIM p.uploadProperties.fileExistAction as C = \"Overwrite\"\nDIM p.uploadProperties.storedValueExpression as C\nDIM p.uploadProperties.maxFileSize as C = \"1000000\"\nDIM p.uploadProperties.maxFileSizeExceededMessage as C = \"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\"\nDIM p.uploadProperties.allowedFileExtensions as C\nDIM p.uploadProperties.disallowedfileextensions as C\nDIM p.uploadProperties.invalidExtensionErrorText as C = \"The file you selected is not an allowed file type.\"\nDIM p.uploadProperties.fieldForEmbeddedObjectType as C\nDIM p.uploadProperties.fieldForEmbeddedObjectDescription as C = \"fileName\"\nDIM p.uploadProperties.title as C = \"Select File\"\nDIM p.uploadProperties.uploadButtonText as C = \"Upload\"\nDIM p.uploadProperties.fileBoxWaterMark as C = \"Click button to select file...\"\nDIM p.uploadProperties.selectFileButtonImage as C = \"images/$$folder.open.png.a5image\"\nDIM p.uploadProperties.prompt as C = \"File:\"\nDIM p.uploadProperties.height as C = \"3in\"\nDIM p.uploadProperties.width as C = \"5in\"\nDIM p.uploadProperties.fileUploadWaitMessage as C = \"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\"\nDIM p.uploadProperties.targetFileNameAfterComputeXbasic as C\nDIM p.uploadProperties.showProgress as L = .T.\nDIM p.uploadProperties.uploadAbortMsg as C = \"Abort file upload\"\nDIM p.uploadProperties.abortButtonLabel as C = \"Abort\"\nDIM p.uploadProperties.progressBarType as C = \"A5\"\nDIM p.uploadProperties.closeAfterUpload as L = .T.\nDIM p.uploadProperties.confirmationMessage as C = \"File was uploaded. Click OK to save change, or Cancel to abandon change.\"\nDIM p.uploadProperties.confirmationWindowHasFreeformLayout as L\nDIM p.uploadProperties.confirmationWindowTemplate as C\nDIM p.uploadProperties.autoUpload as L\nDIM p.uploadProperties.errorText_TableNotUpdateable as C = \"Table is not updateable, or you do not have permission to update this table.\"\nDIM p.uploadProperties.errorText_FieldNotUpdateable as C = \"Field is not updateable, or you do not have permission to update this field.\"\nDIM p.uploadProperties.errorText_SessionExpired as C = \"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\"\nDIM p.uploadProperties.errorText_NewRecordRow as C = \"You cannot upload a file to a new record row. You must first save this record, then upload the file.\"\nDIM p.uploadProperties.events as P\nDIM p.uploadProperties.events.serverside as P\nDIM p.uploadProperties.events.serverside.afterUpload as C\nDIM p.uploadProperties.events.clientSide as P\nDIM p.uploadProperties.events.clientSide.afterUpload as C\nDIM p.uploadProperties.events.clientSide.beforeUpload as C\nDIM p.uploadProperties.fileSelectWindowName as C = \"e052b26379c24dfc835fbd761273e835\"\nDIM p.uploadProperties.targetField as C = \"FILEUPLOAD_1\"\nDIM p.uploadProperties.targetFieldIsBlob as L\nFileUpload_a48afc5dbd12442aaf0ce8d3e50ff072= p\nend function\nfunction FileUpload_0fa522f7535643058dbdd7fa7424aefc as p()\nDIM p as P\nDIM p.uploadProperties as P\nDIM p.uploadProperties.target as C = \"AmazonS3\"\nDIM p.uploadProperties.cloudStorage as P\nDIM p.uploadProperties.cloudStorage.specifyCredentials as C = \"Named Storage Connection String\"\nDIM p.uploadProperties.cloudStorage.connectionString as C = \"alphamediacapture\"\nDIM p.uploadProperties.cloudStorage.credentials as P\nDIM p.uploadProperties.cloudStorage.credentials.access_key as C\nDIM p.uploadProperties.cloudStorage.credentials.secret as C\nDIM p.uploadProperties.cloudStorage.bucketName as C\nDIM p.uploadProperties.cloudStorage.allowMultipleFiles as L\nDIM p.uploadProperties.cloudStorage.maxFileSize as N = -1\nDIM p.uploadProperties.cloudStorage.maxFileSizeTotal as N = -1\nDIM p.uploadProperties.cloudStorage.allowedFileTypes as C\nDIM p.uploadProperties.cloudStorage.authenticatedRead as L = .T.\nDIM p.uploadProperties.cloudStorage.unauthenticatedReadURLFormat as C = \"URL\"\nDIM p.uploadProperties.cloudStorage.displayProgress as L = .T.\nDIM p.uploadProperties.cloudStorage.allowCancel as L = .T.\nDIM p.uploadProperties.cloudStorage.progressStyle as C = \"Bar\"\nDIM p.uploadProperties.cloudStorage.progressBarColor as C = \"#9fa1e8\"\nDIM p.uploadProperties.cloudStorage.progressBarWidth as C = \"1.5in\"\nDIM p.uploadProperties.cloudStorage.progressDisplayPlaceholder as C = \"PLACEHOLDER_1\"\nDIM p.uploadProperties.cloudStorage.javascript as P\nDIM p.uploadProperties.cloudStorage.javascript.onAfterFilesSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteIndividualFile as C\nDIM p.uploadProperties.cloudStorage.javascript.onCompleteAllFiles as C\nDIM p.uploadProperties.cloudStorage.javascript.onBeforeFileSelect as C\nDIM p.uploadProperties.cloudStorage.javascript.onValidationError as C\nDIM p.uploadProperties.cloudStorage.javascript.onError as C\nDIM p.uploadProperties.cloudStorage.javascript.onProgress as C\nDIM p.uploadProperties.cloudStorage.javascript.targetName as C\nDIM p.uploadProperties.cloudStorage.customization as P\nDIM p.uploadProperties.cloudStorage.customization.maxFileSize as C = \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.totalFileSize as C = \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\"\nDIM p.uploadProperties.cloudStorage.customization.fileType as C = \"Selected file ([filename]) is not an allowed file type.\"\nDIM p.uploadProperties.cloudStorage.afterUploadMessage as C = \"Upload completed: [objectName]\"\nDIM p.uploadProperties.uploadFolder as C\nDIM p.uploadProperties.fileExistAction as C = \"Overwrite\"\nDIM p.uploadProperties.storedValueExpression as C\nDIM p.uploadProperties.maxFileSize as C = \"1000000\"\nDIM p.uploadProperties.maxFileSizeExceededMessage as C = \"You have selected a file that exceeds the maximum allowed file size of {filesize} bytes.\"\nDIM p.uploadProperties.allowedFileExtensions as C\nDIM p.uploadProperties.disallowedfileextensions as C\nDIM p.uploadProperties.invalidExtensionErrorText as C = \"The file you selected is not an allowed file type.\"\nDIM p.uploadProperties.fieldForEmbeddedObjectType as C\nDIM p.uploadProperties.fieldForEmbeddedObjectDescription as C = \"fileName\"\nDIM p.uploadProperties.title as C = \"Select File\"\nDIM p.uploadProperties.uploadButtonText as C = \"Upload\"\nDIM p.uploadProperties.fileBoxWaterMark as C = \"Click button to select file...\"\nDIM p.uploadProperties.selectFileButtonImage as C = \"images/$$folder.open.png.a5image\"\nDIM p.uploadProperties.prompt as C = \"File:\"\nDIM p.uploadProperties.height as C = \"3in\"\nDIM p.uploadProperties.width as C = \"5in\"\nDIM p.uploadProperties.fileUploadWaitMessage as C = \"<img src=\\\"css/A5System/Images/wait.gif\\\" /> Uploading files...\"\nDIM p.uploadProperties.targetFileNameAfterComputeXbasic as C\nDIM p.uploadProperties.showProgress as L = .T.\nDIM p.uploadProperties.uploadAbortMsg as C = \"Abort file upload\"\nDIM p.uploadProperties.abortButtonLabel as C = \"Abort\"\nDIM p.uploadProperties.progressBarType as C = \"A5\"\nDIM p.uploadProperties.closeAfterUpload as L = .T.\nDIM p.uploadProperties.confirmationMessage as C = \"File was uploaded. Click OK to save change, or Cancel to abandon change.\"\nDIM p.uploadProperties.confirmationWindowHasFreeformLayout as L\nDIM p.uploadProperties.confirmationWindowTemplate as C\nDIM p.uploadProperties.autoUpload as L\nDIM p.uploadProperties.errorText_TableNotUpdateable as C = \"Table is not updateable, or you do not have permission to update this table.\"\nDIM p.uploadProperties.errorText_FieldNotUpdateable as C = \"Field is not updateable, or you do not have permission to update this field.\"\nDIM p.uploadProperties.errorText_SessionExpired as C = \"Session has expired, or some other error has occurred, and the uploaded file cannot be found. Please upload the file again.\"\nDIM p.uploadProperties.errorText_NewRecordRow as C = \"You cannot upload a file to a new record row. You must first save this record, then upload the file.\"\nDIM p.uploadProperties.events as P\nDIM p.uploadProperties.events.serverside as P\nDIM p.uploadProperties.events.serverside.afterUpload as C\nDIM p.uploadProperties.events.clientSide as P\nDIM p.uploadProperties.events.clientSide.afterUpload as C\nDIM p.uploadProperties.events.clientSide.beforeUpload as C\nDIM p.uploadProperties.fileSelectWindowName as C = \"5dd092bcaf8044f88686dbc4edf0ec4b\"\nDIM p.uploadProperties.targetField as C = \"FILEUPLOAD_1\"\nDIM p.uploadProperties.targetFieldIsBlob as L\nFileUpload_0fa522f7535643058dbdd7fa7424aefc= p\nend function",
+            "javascriptSetupForGridLookups": "{\n}",
+            "javascript": {
+                "showWaitMessage": "",
+                "hideWaitMessage": "",
+                "embeddedUXComponents": ""
+            },
+            "fileUpload_controlInfo": "'FILEUPLOAD_1' : {type: 'fileUpload,fileUpload',isCalc: false,hlp: '',isArray: false,dataType: 'C'}\n",
+            "javascript_cascadingDropdowns": "{dialog.object}._cascadingControls = [];\n{dialog.object}._cascadingControlsChildren = [];",
+            "template_html": "<!--div GLOBALERRORS-->\n<div class=\"errorTip\" style=\"margin-bottom: 2px; display: none; width: 8in; \" id=\"{dialog.componentname}.GLOBALERRORS\"></div>\n<!--End div GLOBALERRORS-->\n\n<div id=\"{dialog.componentname}.R1\">\n<div class=\"A5CWLayout\" style=\"width: 2in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.ID\" for=\"{grid.componentname}.V.R{grid.rownumber}.ID\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Id</label>\n<!--LblE-->\n\t<!--FldS--><input\ttype=\"text\" id=\"{grid.componentname}.V.R{grid.rownumber}.ID\" title=\"\"     class=\"[class.dialogInput]\" style=\"text-align: right; width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"    name=\"V.R{grid.rownumber}.ID\"    value=\"\"    />\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: 2in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.NAME\" for=\"{grid.componentname}.V.R{grid.rownumber}.NAME\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">Name</label>\n<!--LblE-->\n\t<!--FldS--><input\ttype=\"text\" id=\"{grid.componentname}.V.R{grid.rownumber}.NAME\" title=\"\"     class=\"[class.dialogInput]\" style=\"width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"    name=\"V.R{grid.rownumber}.NAME\"    value=\"\"    />\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \"  id=\"{dialog.componentName}.V.R{dialog.rownumber}.PLACEHOLDER_1\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\">\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: 6in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.FILENAME\" for=\"{grid.componentname}.V.R{grid.rownumber}.FILENAME\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">File Name</label>\n<!--LblE-->\n\t<!--FldS--><input\ttype=\"text\" id=\"{grid.componentname}.V.R{grid.rownumber}.FILENAME\" title=\"\"     class=\"[class.dialogInput]\" style=\"width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"    name=\"V.R{grid.rownumber}.FILENAME\"    value=\"\"    />\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<input type=\"hidden\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.FILEUPLOAD_1\" name=\"V.R{dialog.rowNumber}.FILEUPLOAD_1_A5FILEUPLOAD\" />\n\t\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_11\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_12\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_SUBMIT\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_RESET\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_NEWRECORD\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DELETERECORD\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_FIRST\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_PREV\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_NEXT\"    ></button>\n</div>\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_DLGNAVBTN_LAST\"    ></button>\n</div>\n\n\n</div>\n<!--div DEBUGUPDATECOMMANDS-->\n<div class=\"\" style=\"display: none; \" id=\"{dialog.componentname}.DEBUGUPDATECOMMANDS\"></div>\n<!--End div DEBUGUPDATECOMMANDS-->\n",
+            "panelDisplayNames": "",
+            "controlJavascript": "",
+            "controlJavascriptRepeatingSections": "",
+            "template_js": "",
+            "sessionVarsInShowHideExpns": "",
+            "themeSearchReplaceString": "",
+            "flagHasHTML5ImageCapture": false,
+            "flagUsesCordova": false,
+            "flagUseAmazonS3FileUpload": true,
+            "flagUseStripe": false,
+            "flagUseAudioPlayer": false,
+            "flagUseInk": false,
+            "flagUsesAudioLibrary": false,
+            "flagUsesPhoneGapFileSystemFunctions": false,
+            "flagUsesGetAccurateLocation": false,
+            "editorSet_for_editor": "{dialog.object}._EDITOR_EDITORSET = {};",
+            "otherJS": "",
+            "javascript_layoutRules": "",
+            "javascript_controlNesting": "{\n\n}",
+            "appcacheEvents": ""
+        },
+        "FieldsInRepeatingSectionsDeletedBySecurity": "",
+        "repeatingSectionsToRecalc": "",
+        "dialogObject": "if(typeof {dialog.componentName}_DlgObj == 'object') {dialog.componentName}_DlgObj._destroy();\nvar {dialog.componentName}_DlgObj = new A5.DialogComponentHelper('{dialog.componentName}',{\n\tajaxURL: '{dialog.ajaxUrl}',\n\t_embeddedMode: {dialog.embeddedMode},\n\t_livePreviewInBuilder: {livePreviewInBuilder},\n\tcomponentGUID: '61a13b9b-3908-463d-a126-2e4e22fd209d',\n\tcolumnInfo: {columninfo},\n\toriginalValues: {dialog.jsOriginalValues},\n\tdefaultValues: {dialog.jsDefaultValues},\n\tdatePickerMonthNames: [{datePickerMonthNames}],\n\tdatePickerDayNames: [{datePickerDayNames}],\n\tdatePickerTodayButton: '{datePickerTodayButton}',\n\tdatePickerCloseButton: '{datePickerCloseButton}',\n\tdatePickerFirstDayOfWeek: {datePickerFirstDayOfWeek},\n\tresetFormMessage: '{resetFormMessage}',\n\tresetFormTitle: '{resetFormTitle}',\n\tresetFormIcon: '{resetFormIcon}',\n\tdirtyFormMessage: '{dirtyFormMessage}',\n\tdirtyFormTitle: '{dirtyFormTitle}',\n\tdirtyFormIcon: '{dirtyFormIcon}',\n\tdeleteRecordDialogTitle: '{deleteRecordTitle}',\n\tdeleteRecordDialogMessage: '{deleteRecordMessage}',\t\n\tssDateFormat: '{serverSideDateFormat}',\n\tstyleName: '{dialog.style}',\n\t_fieldHelpers_DIALOG2: [],\n\tparentComponentAlias: '{parentComponentAlias}',\n\tsubmitIfHasClientSideErrors: true, \n\trowErrors: {\n\t\t\t\tshowMessageBox: false,\n\t\t\t\tmessageBoxTitle: 'Error',\n\t\t\t\tstyle: 'color: red; width: 6in; height: 2in;'\n\t\t},\n\tfieldErrors: {\n\t\ttype: 'block', \n\t\tclassName: 'errorText',\n\t\tinputClassName: '[class.gridInputError]',\n\t\tedit: { \n\t\t\tcontainer: { className: '[class.gridInputContainerError]'}\n\t\t},\n\t\ticon: '{images.dialog.editError}',\n\t\tglobal: {\n\t\t\tcontId: '{dialog.componentname}.GLOBALERRORS',\n\t\t\thoverClassName: 'errorTextHighlight',\n\t\t\thoverInputClassName: 'errorInputHighlight'\n\t\t}\n\t}\n\n\t});\n\n",
+        "xbasiccode": {
+            "blankInitialValueIfVarNotFound": "",
+            "setValueProperties": "value.ID=\"\"\nvalue.NAME=\"\"\nvalue.FILENAME=\"\"\nvalue.FILEUPLOAD_1_A5FILEUPLOAD = \"\"",
+            "setValueProperties2": "value.ID=\"\"\nvalue.NAME=\"\"\nvalue.FILENAME=\"\"\nvalue.FILEUPLOAD_1_A5FILEUPLOAD = \"\"",
+            "setValueUnformattedProperties": "value.ID=convert_type(\"\",\"N\")\nvalue.NAME=convert_type(\"\",\"C\")\nvalue.FILENAME=convert_type(\"\",\"C\")\n"
+        },
+        "componentType": "Dialog2",
+        "version": 1,
+        "recNav": {
+            "slider": {
+                "showSlider": false,
+                "sliderContainerId": "",
+                "showSliderMessage": true,
+                "sliderMessage": "({recordNumber} of {recordcount}) &nbsp;<b>{PrimaryKeyDescription}</b> ",
+                "sliderWidth": "6in",
+                "sliderMessagePrefix": "Record:",
+                "hideSliderMessageWhenMouseNotOverSlider": false,
+                "sliderMessagePosition": "Above",
+                "sliderOnSlideEventHandlerFunction": "",
+                "sliderOnChangeEventHadlerFunction": "",
+                "newRecordMessage": "New",
+                "noRecordsMessage": "No records"
+            },
+            "listView": {
+                "showlistView": false,
+                "listViewContainerId": "",
+                "height": "4in",
+                "width": "3in",
+                "initialMessage": "Loading data....",
+                "hasFreeformDisplay": false,
+                "freeFormTemplate": "",
+                "freeFormTemplateColumnHeading": "",
+                "fillPanelContainer": true,
+                "targetPanelOnClick": "<NextPanel>",
+                "javascript": {
+                    "onSelect": ""
+                },
+                "hasCustomListViewRecordNavigator": false,
+                "customListViewNavigatorIds": ""
+            },
+            "includePrimaryKeyDescription": false
+        },
+        "Livepreview_permissions": "",
+        "_flagDoTreeview": false,
+        "serverSideActionsArray": [
+            {
+                "name": "Load Primary Keys",
+                "xbasic": "\n\nif e.tmpl.databinding.tabletype <> \"SQL\" then \n\te.showGlobalError = .t.\n\tdim errorText as c \n\terrorText = \"The Data Binding table type for this Component appears to have been changed from SQL to DBF. The code in your server side action scripts needs to be re-generated. Please edit your server-side actions (in the onDialogInitialize, afterDialogValidate, etc. events) and then resave them to re-generate the code. \"\n\terrorText = stritran(errorText,crlf(),\"<br>\")\n\tjsErrorMessage = \"var ele = $('\"+e.tmpl.alias+\".GLOBALERRORS')\" +crlf()+\\\n\t\"if(ele) $svs(ele,'\"+js_escape(errorText)+\"'); \" + crlf()+\\\n\t\"if(ele) ele.style.display = '';\"\n\te.javascript = jsErrorMessage\n\texit function \nend if \n\n\ndim primaryKeyTemplate as c \nprimaryKeyTemplate = \"\"\n\n\n\nrtc.fatalError = .f.\ndim javascriptSetPrimaryKeys as c = \"\"\ndim tmpl as p\ntmpl = e.tmpl\ndim cn as sql::connection \ndim flag as l \ndim connstring as c \ndim args as sql::arguments \n\nconnstring = tmpl.databinding.connectionstring\nif variable_exists(\"session\") = .f. then \n\tflag = cn.open(connstring)\nelse\n\tflag = a5SQLConnectionOpen(cn,connstring,session)\nend if \nif flag = .f. then \n\trtc.fatalError = .t.\n\trtc.errorText = \"Could not connect to database. Error reported was: \" + cn.CallResult.text \nend if \n\nif rtc.fatalError = .f. then \n\t\n\tdim sqlNoLimit as c \n\tsqlNoLimit = \"SELECT id AS k FROM s3files s3files\"\n\t\n\tdim flagOracle as l = .f.\n\tif cn.CurrentSyntax = \"oracle\" then \n\t\tflagOracle = .t.\n\tend if \n\t\n\t\n\t\n\tif flagOracle then \n\t\tsqlNoLimit = stritran(sqlNoLimit,\"OracleLower(\",\"lower(\")\n\t\tsqlNoLimit = stritran(sqlNoLimit,\"OracleRtrim(\",\"rtrim(\")\n\telse\n\t\tsqlNoLimit = stritran(sqlNoLimit,\"OracleLower(\",\"\")\n\t\tsqlNoLimit = stritran(sqlNoLimit,\"OracleRtrim(\",\"\")\n\tend if \n\n\t\n\t\n\tif atc(\"session.\",sqlNoLimit) > 0 then \n\t\tif eval_valid(\"session\") then \n\t\t\tsqlNoLimit = replace_variables_in_string(sqlNoLimit,session,\"session\",.t.,.t.)\n\t\tend if  \n\tend if \n\t\n\t\n\t\n\tdim sql as c \n\tsql = \"SELECT FIRST 1000 id AS k FROM s3files s3files\"\n\t\n\tif flagOracle then \n\t\tsql = stritran(sql,\"OracleLower(\",\"lower(\")\n\t\tsql = stritran(sql,\"OracleRtrim(\",\"rtrim(\")\n\telse\n\t\tsql = stritran(sql,\"OracleLower(\",\"\")\n\t\tsql = stritran(sql,\"OracleRtrim(\",\"\")\n\tend if \n\n\t\n\t\n\tif atc(\"session.\",sql) > 0 then \n\t\tif eval_valid(\"session\") then \n\t\t\tsql = replace_variables_in_string(sql,session,\"session\",.t.,.t.)\n\t\tend if  \n\tend if \n\t\n\t\n\tcn.PortableSQLEnabled = .t.\n\tdim args as sql::arguments \n\tif eval_valid(\"e.arguments\") then \n\t\targs = e.arguments\n\tend if \n\t\n\tdim pc as p\n\t\n\tpc = a5_sql_getcount(cn,sqlNoLimit,args)\t\n\n\tif pc.error = .t. then \n\t\trtc.fatalError = .t.\n\t\trtc.errorText = \"Error getting count of records in query.\"\n\t\tcn.close()\n\tend if \n\t\n\t'if pc.count = -1 then could not get count of records in query\n\tif pc.count = -1 then \n\t\tcn.close()\n\tend if \n\trtc.recordsInQuery = pc.count \n\t\n\t\n\t\n\tif rtc.fatalError = .f. then \n\t\tflag = cn.Execute(sql,args)\n\t\tif flag = .f. then \n\t\t\trtc.fatalError = .t.\n\t\t\trtc.errorText = \"Could not execute query to get keys. Error reported was: \" + cn.CallResult.text \n\t\t\tcn.close()\n\t\tend if \n\tend if \nend if \n\ndim flagFatalError as l = .t.\nif rtc.fatalError = .f. then \n\tif pc.count > -1 then \n\t\tflagFatalError = .f.\n\tend if \nend if \n\nif flagFatalError = .f. then \n\tdim rs as sql::ResultSet\n\trs = cn.ResultSet\n\tdim txt_JSONKeys as c \n\tif primaryKeyTemplate = \"\" then \n\t\ttxt_JSONKeys = rs.ToJSONObjectSyntax()\n\telse\n\t\ttxt_JSONKeys = a5_mergeDataIntoTemplate(primaryKeyTemplate,rs)\n\tend if \n\ttxt_JSONKeys = \"[\" + crlf_to_comma(txt_JSONKeys) + \"]\"\n\t'make sure {k is lower case - some databases, such as Oracle will generate upper case names by default\n\ttxt_JSONKeys = stritran(txt_JSONKeys,\"{K\",\"{k\")\n\ttxt_JSONKeys = stritran(txt_JSONKeys,\"{\\\"K\",\"{\\\"k\")\n\t\n\t\n\t\tdim sliderCode as c = \"\"\n\tdim listViewCode as c = \"\"\n\t\n\tsliderCode = <<%txt%\n\n\t%txt%\n\n\t\n\tlistViewCode = <<%txt%\n\n\t%txt%\n\t\n\tjavascriptSetPrimaryKeys = \"{dialog.object}._primaryKeyList = \" + txt_JSONKeys  + \";\"\n\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + sliderCode + crlf()\n\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + \"{dialog.object}._navigationSliderSetMax('FullyQualified',{dialog.object}._primaryKeyList.length);\"\n\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + listViewCode + crlf()\n\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + \"if({dialog.object}._primaryKeyListNavigator) { var lObj = {dialog.object}._primaryKeyListNavigator; var data = {dialog.object}._primaryKeyList ; lObj.populate(data); if(data.length > 0) lObj.setValue(0,false); }\" + crlf()\n\t\n\t\n\tdim filter as c\n\tdim order as c \n\tdim maxNumberOfkeys as n \n\tfilter = \"\"\n\torder = \"\"\n\tmaxNumberOfKeys = \"1000\"\n\tdim pjs as p \n\tpjs.__keys_Filter = filter\n\tpjs.__keys_Order = order\n\t'pjs.__keys_FilterArguments = args.XML\n\tpjs.__keys_FilterArgumentsJSON = argumentsToJSON(args,.t.)\n\tpjs.__keys_MaxKeys = \"\" + maxNumberOfKeys\n\tdim jsState as c \n\tjsState = vartojson(pjs,.f.,.t.)\n\tjsState = tmpl.alias  + \"_DlgObj.setStateInfo(\" + jsState + \");\"\n\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + jsState\n\n\tif rtc.recordsInQuery > 0 then\n\t\t'--------------------------------------\n\t\t'get the javascript now to populate the controls for the first record - don't do another callback\n\t\tdim pp as p \n\t\tif txt_JSONKeys <> \"\" then\n\t\t\tpp = json_parse(txt_JSONKeys)\n\t\t\tdim keyFirst as c \n\t\t\tkeyFirst = pp[1].k\n\t\t\tdim ops as p\n\t\t\tops.primaryKey = keyFirst\n\t\t\tops.showDebugInfo = .f.\n\t\t\tdim js_getRecord as c \n\t\t\tdim eTemp as p\n\t\t\teTemp.tmpl = tmpl\n\t\t\t\n\t\t\tif eval_valid(\"e.rtc._state.__dtfmt\") then\n\t\t\t\tops.__dtfmt = e.rtc._state.__dtfmt\n\t\t\telse if eval_valid(\"rtc._state.__dtfmt\") then \n\t\t\t\tops.__dtfmt = rtc._state.__dtfmt\n\t\t\telse if eval_valid(\"request.variables._state.__dtfmt\") then \n\t\t\t\tops.__dtfmt = request.variables._state.__dtfmt\n\t\t\tend if \n\t\t\t\n\t\t\t\n\t\t\tjs_getRecord = a5_UX_Action(eTemp,ops,\"populateControlsFromTable\")\n\t\t\tjs_getRecord = js_getRecord + \";\" + crlf() + \"{dialog.object}._currentRecordNumber = 1;\"\n\t\t\t\n\t\t\tdim e.javascriptEmitAtEnd as c = default \"\"\n\t\t\tif e.javascriptEmitAtEnd <> \"\" then \n\t\t\t\te.javascriptEmitAtEnd = alltrim(e.javascriptEmitAtEnd) + \";\"\n\t\t\tend if \n\t\t\te.javascriptEmitAtEnd = e.javascriptEmitAtEnd + crlf() +js_getRecord\n\t\t\t\n\n\t\telse\n\t\t\tjs_getRecord = \"{dialog.object}.navigateRecord('first');\"\n\t\tend if \n\t\t\n\t\t\n\t\t'----------------------------------------------------\n\t\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + js_getRecord\n\t\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + <<%txt%\n\t\t\n\t\t%txt%\n\telse\n\t\n\t\n\t\t'-\n\t\t'----------------new record javascript -------------\n\t\tdim ops as p\n\t\tops.showDebugInfo = .f.\n\t\tdim js_getNewRecord as c \n\t\tdim eTemp as p\n\t\tops.arguments = e.arguments \n\t\teTemp.tmpl = tmpl\n\t\tif eval_valid(\"e.rtc._state.__dtfmt\") then\n\t\t\tops.__dtfmt = e.rtc._state.__dtfmt\n\t\telse if eval_valid(\"rtc._state.__dtfmt\") then \n\t\t\tops.__dtfmt = rtc._state.__dtfmt\n\t\telse if eval_valid(\"request.variables._state.__dtfmt\") then \n\t\t\tops.__dtfmt = request.variables._state.__dtfmt\n\t\tend if \n\t\t'get the javascript for the new record now, rather than making another callback\n\t\tjs_getNewRecord = a5_UX_Action(eTemp,ops,\"newrecord\")\n\t\tjavascriptSetPrimaryKeys = javascriptSetPrimaryKeys + js_getNewRecord\n\t\t'------------------------------------------------------\n\n\t\t'javascriptSetPrimaryKeys = javascriptSetPrimaryKeys + \"{Dialog.Object}.newRecord();\"\n\tend if \n\n\n\t\n\t\n\tcn.close()\nend if \n\nif rtc.fatalError = .t. then \n\te.showGlobalError = .t.\n\tdim errorText as c \n\terrorText = rtc.errorText\n\terrorText = stritran(errorText,crlf(),\"<br>\")\n\tjsErrorMessage = \"var ele = $('\"+tmpl.alias+\".GLOBALERRORS')\" +crlf()+\\\n\t\"if(ele) $svs(ele,'\"+js_escape(errorText)+\"'); \" + crlf()+\\\n\t\"if(ele) ele.style.display = '';\"\nelse\n\tjsErrorMessage = \"var ele = $('\"+tmpl.alias+\".GLOBALERRORS')\" +crlf()+\\\n\t\"if(ele) $svs(ele,'\"+js_escape(\"\")+\"'); \" + crlf()+\\\n\t\"if(ele) ele.style.display = 'none';\"\n\t\nend if \n\n\n\n\n\ndim e.javascript as c = default \"\"\ne.javascript = \te.javascript + crlf()+\\\n\t\t\t\tjavascriptSetPrimaryKeys  + crlf()+\\\n\t\t\t\tjsErrorMessage\n\t\t\t\t\ndim e.javascriptEmitAtEnd as c = default \"\"\n\ndim js_getRecord as c = default \"\"\ndim js_getNewRecord as c = default \"\"\ne.javascriptEmitAtEnd = js_getRecord + js_getNewRecord\n\ndim tmpl.embeddedMode as l = default .f.\nif tmpl.embeddedMode then \n\te.javascript = a5GridHelper_FixWorkingPreview_EmbeddedIcons(e.javascript)\t\t\t\t\nend if \n\t\t\t\t\n\t\t\t\t\n",
+                "metadata": "<maxNumberOfKeys=1000>\n<flagFilterTable=.F.>\n<flagOrderTable=.F.>\n<specifyFilterMethod=\"SpecifyNow\">\n<filter=\"\">\n<specifyOrderMethod=\"SpecifyNow\">\n<order=\"\">\n<includePrimaryKeyDescription=.F.>\n<columns>\n<flagDescriptionColumnsDefined=.F.>\n<filterVarname=\"\">\n<orderVarName=\"\">\n<showSlider=.F.>\n<sliderContainerId=\"\">\n<showSliderMessage=.T.>\n<sliderMessage=\"({recordNumber} of {recordcount}) &nbsp;<b>{PrimaryKeyDescription}</b> \">\n<sliderWidth=\"6in\">\n<sliderMessagePrefix=\"Record:\">\n<hideSliderMessageWhenMouseNotOverSlider=.F.>\n<sliderMessagePosition=\"Above\">\n<sliderOnSlideEventHandlerFunction=\"\">\n<sliderOnChangeEventHadlerFunction=\"\">\n<newRecordMessage=\"New\">\n<noRecordsMessage=\"No records\">\n<showSliderC=\"No\">\n<showlistView=.F.>\n<listViewContainerId=\"\">\n<height=\"4in\">\n<width=\"3in\">\n<initialMessage=\"Loading data....\">\n<hasFreeformDisplay=.F.>\n<freeFormTemplate=\"\">\n<freeFormTemplateColumnHeading=\"\">\n<fillPanelContainer=.T.>\n<targetPanelOnClick=\"<NextPanel>\">\n<javascript<onSelect=\"\">\n>\n<hasCustomListViewRecordNavigator=.F.>\n<customListViewNavigatorIds=\"\">\n<showListViewC=\"No\">\n<recordNotFoundMessage=\"Record not found\">\n",
+                "builder": "getKeyValues"
+            },
+            {
+                "name": "Save Data",
+                "xbasic": "dim flagUseTransactions as l \nflagUseTransactions = .f.\ndim rtc as p\ndim tmpl as p\ntmpl = e.tmpl\n\ndim serverSideEvents as p\n\n\n\ndim geography as p \nwith geography\nDIM geocodeFieldDefinition as C\nDIM locationFieldDefinition as C\n\nend with \n\ndim opx as p\nopx.serverSideEvents = serverSideEvents\nopx.geography = geography\nopx.afterSaveAction = \"Edit record just submitted\"\nopx.listControlsToRefresh = \"\"\n\n\n\n\na5DialogHelper_SaveData(tmpl, e, rtc,flagUseTransactions, opx)\n\ndim jsShowErrors as c = \"\"\ndim jsEnterNewRecord as c = \"\"\ndim jsToFireAfterSaveEvent as c = \"\"\ndim jsShowUpdateCommands as c = \"\"\n\ndim jsConfirmationMessage as c = \"\"\n\n\n\nif rtc.fatalError = .t. then \n\t'must set this flag to prevent the Dialog from clearing the error messages.\n\te.showGlobalError = .t.\n\tdim errorText as c \n\terrorText = rtc.errorText\n\t'errorText = stritran(errorText,crlf(),\"<br>\")\n\t\n\tjsShowErrors = \"{dialog.object}.showGlobalErrors('<Default>','\" + js_escape(errorText) + \"'); \" + crlf()\n\t\n\trtc.javascript.refreshAllControls = \"\"\n\trtc.javascript.setPrimaryKeyinStateObject = \"\"\n\trtc.javascript.prepareDialog = \"\"\n\tjsToFireAfterSaveEvent = \"\"\n\tjsEnterNewRecord = \"\"\n\t\n\t\nend if \n\n\nif rtc.flagRecordWasSaved then \n\t\nelse\n\tjsEnterNewRecord = \"\"\nend if \n\n\n\n\n\n\n\n\n\ndim jsToShow as c \njstoshow = rtc.javascript.refreshAllControls + crlf() +\\\n\t\t\t\trtc.javascript.setPrimaryKeyinStateObject + crlf()+\\\n\t\t\t\trtc.javascript.prepareDialog + crlf() +\\\n\t\t\t\tjsToFireAfterSaveEvent + crlf()+\\\n\t\t\t\tjsEnterNewRecord + crlf()+\\\n\t\t\t\tjsConfirmationMessage\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\njsToShow = remove_blank_lines(jsToShow)\n\t\t\t\t\njsToShow = \"<br><br><b>Javascript to Refresh Controls:</b><br>\" + jsToShow\n\njstoshow = stritran(jstoshow,crlf(),\"<br>\")\t\t\n\ndim debuggingInfo as c \ndebuggingInfo = rtc.htmlUpdateCommands + jsToShow\n'---------------------------------\ndim HTML_JavascriptToPopulateControls as c \nHTML_JavascriptToPopulateControls = \"<div id=\\\"{dialog.componentName}.DISPLAYJAVASCRIPT\\\" style=\\\"display:none;\\\">\" + jstoshow + crlf() + \"</div>\"\nHTML_JavascriptToPopulateControls = \"<a class=\\\"{dialog.style}Link\\\" href=\\\"#\\\" onclick=\\\"A5.u.element.toggle($('{dialog.componentName}.DISPLAYJAVASCRIPT'),{show: {type: 'slide',duration: 'slow'},hide: {type: 'slide',duration: 'slow'}} )\\\">Click here to show/hide Javascript commands</a><br>\" + HTML_JavascriptToPopulateControls\n\ndim HTML_Xbasic as c\nHTML_Xbasic = rtc.htmlUpdateCommands\nHTML_Xbasic = \"<div id=\\\"{dialog.componentName}.DISPLAYXBASIC\\\" style=\\\"display:none;\\\">\" + HTML_Xbasic + crlf() + \"</div>\"\nHTML_Xbasic = \"<a class=\\\"{dialog.style}Link\\\" href=\\\"#\\\" onclick=\\\"A5.u.element.toggle($('{dialog.componentName}.DISPLAYXBASIC'),{show: {type: 'slide',duration: 'slow'},hide: {type: 'slide',duration: 'slow'}} )\\\">Click here to show/hide Server-side commands</a><br>\" + HTML_Xbasic\n\ndebuggingInfo = HTML_Xbasic + crlf() + HTML_JavascriptToPopulateControls\n'---------------------------------\n\t\n\t\n\n'debug(1)\ndim placeholderForDebuggingInfo as c \nplaceholderForDebuggingInfo = \"<Default>\"\n\njsShowUpdateCommands = \"$svs('\"+tmpl.alias+\".DEBUGUPDATECOMMANDS','\"+js_escape(debuggingInfo)+\"'); \" + crlf()+\\\n\"$('\"+tmpl.alias+\".DEBUGUPDATECOMMANDS').style.display = '';\"\n\njsShowUpdateCommands = \"{dialog.object}.showDebuggingInfo('\"+placeholderForDebuggingInfo+\"','\"+js_escape(debuggingInfo)+\"');\" \n\n\n\ndim rtc.javascript.refreshAllControls as c = default \"\"\ndim rtc.javascript.prepareDialog as c = default \"\"\n'This flag must be set to .t., else the Javascript that sets the primaryKey in the state object will be overwritten.\ne.rtc.flagUpdatePrimaryKeysInStateObject = .t.\ndim rtc.javascript.setPrimaryKeyinStateObject as c = default \"\"\ndim e.javascript as c = default \"\"\n\ndim rtc.javascript.refreshDependentListControls as c = default \"\"\t\n\n\n\n \n\ne.javascript = \trtc.javascript.refreshDependentListControls + \";\" + crlf()+\\\n\t\t\t\te.javascript + \";\" + crlf()  +\\\n\t\t\t\tjsShowUpdateCommands + crlf() +\\\n\t\t\t\tjsShowErrors + crlf()+\\\n                rtc.javascript.refreshAllControls + crlf() +\\\n\t\t\t\trtc.javascript.setPrimaryKeyinStateObject + crlf()+\\\n\t\t\t\trtc.javascript.prepareDialog + crlf() +\\\n\t\t\t\tjsToFireAfterSaveEvent + crlf()+\\\n\t\t\t\tjsEnterNewRecord + crlf()+\\\n\t\t\t\tjsConfirmationMessage\n\t\t\t\t\n\ne.setPrimaryKeyinStateObject = rtc.javascript.setPrimaryKeyinStateObject\t\t\t\t\n\t\t\t\t\n",
+                "metadata": "<afterSubmitAction=\"Edit record just submitted\">\n<targetPage=\"\">\n<displayDebuggingInfo=.T.>\n<clientSideAfterSave=\"\">\n<useTransactions=.F.>\n<clientSideArguments=\"\">\n<clientSideAfterSaveSuccessJavascript=\"\">\n<clientSideAfterSaveFailedJavascript=\"\">\n<clientSideAfterSaveSuccessPanelToActivate=\"\">\n<displayFadeOutMessage=.F.>\n<fadeOutMessage=\"Record was saved\">\n<fadeOutMessagePosition=\"\">\n<fadeOutMessageDuration=\"2000\">\n<fadeOutMessageStyle=\"Default\">\n<flagsynchronizeListControls=.F.>\n<listControlsToSynchronize=\"\">\n<globalErrorsPlaceholder=\"<Default>\">\n<debuggingInformationPlaceholder=\"<Default>\">\n<flagStoreLocationInformation=.F.>\n<flagStoreLocationInformationC=\"No\">\n<latField=\"\">\n<lngField=\"\">\n<flagUpdateLocationField=.F.>\n<locationFieldNameForLatLng=\"\">\n<storeLocationWhen=\"InsertAndUpdate\">\n<serverSideEvent<beforeRecordInsert=\"\">\n<afterRecordInsert=\"\">\n<beforeRecordUpdate=\"\">\n<afterRecordUpdate=\"\">\n<beforeRecordDelete=\"\">\n<afterRecordDelete=\"\">\n<afterSectionRowRefresh=\"\">\n<onSQLError=\"\">\n>\n<geography<geocodeFieldDefinition=\"\">\n<locationFieldDefinition=\"\">\n>\n",
+                "builder": "saveDataToTables"
+            }
+        ],
+        "embeddedMode": false
+    }
+}
