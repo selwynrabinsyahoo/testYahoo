@@ -1,0 +1,1305 @@
+{
+    "$schema": "UX",
+    "$definition": {
+        "style_name": "GrBlue",
+        "style_type": "Alpha Five",
+        "resolveabstractclassnames": true,
+        "builderversionnumber": 1,
+        "overridestylename": "Default",
+        "fontsize": "Medium",
+        "a5containerclasspadding": "0px",
+        "a5containerclasspaddingforcontainerwidthmode": "4px",
+        "layouttype": "ContainerWidth",
+        "previewmode": "Default",
+        "usedragscrolling": "Auto",
+        "pagetitle": "UX",
+        "waitmsg": {
+            "message": {
+                "text": "Wait...",
+                "waiticon": "css/A5System/Images/wait.gif"
+            },
+            "cssanimation": {
+                "size": "32"
+            }
+        },
+        "globalsettings": {
+            "labelwidth": "1in"
+        },
+        "serversideevents": {
+            "canAjaxCallback": "",
+            "afterAjaxCallback": ""
+        },
+        "xbasicfunctiondeclarations": "function xb as c (e as p)\n\tdim msg as c \n\tmsg = \"time on server: \" + now()\n\txb = \"alert('\" + js_escape(msg) + \"');\"\n\t\nend function ",
+        "ontimereventinterval": 60,
+        "securitydeniedaction": "Redirect to login page",
+        "clientsideevents": {
+            "_canAjaxCallback": "",
+            "__afterAjaxCallbackComplete": ""
+        },
+        "onlyvalidatechangedfields": true,
+        "edit": {
+            "field_error_style": {
+                "type": "Block",
+                "showwarning": true,
+                "icon": "<Specified by Style>",
+                "controlContainer_classname": ""
+            },
+            "row_errors_window_title": "Error",
+            "row_errors_window_style": "color: red; width: 6in; height: 2in;",
+            "fieldvalidationerrormessage": "Form has errors."
+        },
+        "submitdialogifhasclientsidevalidationerrors": true,
+        "activelanguage": "<Default>",
+        "datepicker": {
+            "daynames": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+            "monthnames": "January,February,March,April,May,June,July,August,September,October,November,December",
+            "firstdayofweek": 1,
+            "todaybuttontext": "Today",
+            "closebuttontext": "Close"
+        },
+        "clientsidedateformat": "MM/dd/yyyy",
+        "fontscalingoption": "All",
+        "helptabletype": "DBF",
+        "fieldhelpwindowstyle": "modal-resizeable",
+        "customization": {
+            "resetformmessage": "Are you sure you want to reset the form?",
+            "resetformtitle": "Warning",
+            "resetformicon": "<Specified by Style>",
+            "resetformyesbutton": "Yes",
+            "resetformnobutton": "No",
+            "windowtitledirection": "ltr",
+            "dirtywarning": "You must first save your changes or cancel changes by clicking the Reset button.",
+            "dirtywarningtitle": "Notice",
+            "dirtywarningicon": "<Specified by Style>",
+            "deleterecordwarningtitle": "Delete Record",
+            "deleterecordwarningmessage": "Are you sure you want to delete this record?"
+        },
+        "databinding": {
+            "computedatabindingcodeatdesigntimeprompt": "Prompt",
+            "autorefreshschemaonload": true,
+            "autorefreshpromptfirst": "Prompt"
+        },
+        "info": {
+            "createdby": "Selwyn",
+            "datecreated": "2016-3-29",
+            "datelastedited": "2016-3-31"
+        },
+        "flagshowcommentsintree": true,
+        "treecommentoffset": "6",
+        "renderuxlocation": {
+            "type": "window",
+            "sizetoelement": true
+        },
+        "checksessionevery": 1,
+        "warningintervalbeforeexpiration": 1,
+        "sessiontimeoutwarningmessage": "Your session will expire in {secondsToSessionEnd} seconds. Click the button to extend your session.",
+        "sessionextendsessionbuttonlabel": "Extend Session",
+        "sessiontimeoutwarningdialogtitle": "Warning",
+        "sessionhasexpiredmessage": "Your session has expired.",
+        "sessionhasexpiredbuttonlabel": "OK",
+        "sessionhasexpiredaction": "Nothing",
+        "sessionhasexpiredredirectpage": "<self>",
+        "sessionhasexpireddialogtitle": "Notice",
+        "sessionhasexpiredokbuttonjavascript": "<ReloadThisPage>",
+        "login": {
+            "errormessagestyle": "color: red;",
+            "logoutdoesfullpagereload": true
+        },
+        "applyresponsivedesignsettings": true,
+        "responsedesignrulesmode": "FirstTrue",
+        "localstorage": {
+            "namespace": "<Default>",
+            "__version": 1,
+            "workingpreviewtestingmode": "Browser",
+            "variablesToNotPersist": ""
+        },
+        "prerendercomputewhen": "Every time component is saved",
+        "page_fields": [
+            {
+                "controltype": "layout_directive_placeholder",
+                "display": "{B=White,Light Blue}{Data=8dc22d81-340f-4a0b-be0d-9408a1d43dd0}{I:'$$format.border.style.dot'} [Placeholder:PLACEHOLDER_1] �",
+                "displayodflat": "{Data=8dc22d81-340f-4a0b-be0d-9408a1d43dd0}{I:'$$format.border.style.dot'} [Placeholder]",
+                "idinternal": "8dc22d81-340f-4a0b-be0d-9408a1d43dd0",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=8dc22d81-340f-4a0b-be0d-9408a1d43dd0}{I:'$$format.border.style.dot'} [Placeholder]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=8dc22d81-340f-4a0b-be0d-9408a1d43dd0}{I:'$$format.border.style.dot'} [Placeholder:PLACEHOLDER_1] �",
+                "crc": "4294949334",
+                "v": {
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "PLACEHOLDER_1",
+                    "labelPosition": "None",
+                    "hide": false
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \"  id=\"{dialog.componentName}.V.R{dialog.rownumber}.PLACEHOLDER_1\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\">\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=8358e2de-851a-4da8-bfe7-dd4eda1cea1c}{I:'$$control.button'} [Button: Upload to S3] �",
+                "displayodflat": "{Data=8358e2de-851a-4da8-bfe7-dd4eda1cea1c}{I:'$$control.button'} [Button]",
+                "idinternal": "8358e2de-851a-4da8-bfe7-dd4eda1cea1c",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=8358e2de-851a-4da8-bfe7-dd4eda1cea1c}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=8358e2de-851a-4da8-bfe7-dd4eda1cea1c}{I:'$$control.button'} [Button: Upload to S3] �",
+                "crc": "4294952279",
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_1\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                },
+                "v": {
+                    "buttonText": "Upload to S3",
+                    "Class": "<Default>",
+                    "BreakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_1",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text only",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "/* actionJavascript:6294c221-2d76-43db-a587-18baa2e82d87       */\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": true,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"additionalInfoToSubmitJavascript\": \"\",\n\t\"authenticatedRead\": false,\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file (type [filetype]) is not an allowed file type.\"\n\t},\n\t\"fileSelectionMethod\": \"User selects file(s)\",\n\t\"jstogetb64data\": \"\",\n\t\"onCompleteAllFiles\": function(e) { alert('all done');\n\nvar arr = [];\nfor(var i = 0; i < e.fileArray.length; i++) { \n\tarr.push({filename: e.fileArray[i].targetName})\n}\n\nvar lObj = {dialog.object}.getControl('list1');\nlObj.populate(arr);},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{dialog.object}.fileUploadAmazonS3(obj);"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_1',A5.d.evnts.click,function(e) {\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": true,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"additionalInfoToSubmitJavascript\": \"\",\n\t\"authenticatedRead\": false,\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file (type [filetype]) is not an allowed file type.\"\n\t},\n\t\"fileSelectionMethod\": \"User selects file(s)\",\n\t\"jstogetb64data\": \"\",\n\t\"onCompleteAllFiles\": function(e) { alert('all done');\n\nvar arr = [];\nfor(var i = 0; i < e.fileArray.length; i++) { \n\tarr.push({filename: e.fileArray[i].targetName})\n}\n\nvar lObj = {dialog.object}.getControl('list1');\nlObj.populate(arr);},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{dialog.object}.fileUploadAmazonS3(obj);\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_1');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_1'] = new A5.Button({\n\tlayout: 'text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'Upload to S3',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_1'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_1');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                }
+            },
+            {
+                "controltype": "dialog_formcontrol",
+                "display": "{B=White,Light Blue}{Data=a01cbfb6-5087-48be-9157-ceea75571317}{I:'$$control.browse'} [list1] �",
+                "displayodflat": "{Data=a01cbfb6-5087-48be-9157-ceea75571317}{I:'$$control.browse'} [list1]",
+                "idinternal": "a01cbfb6-5087-48be-9157-ceea75571317",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=a01cbfb6-5087-48be-9157-ceea75571317}{I:'$$control.browse'} [list1]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=a01cbfb6-5087-48be-9157-ceea75571317}{I:'$$control.browse'} [list1] �",
+                "crc": "4294909508",
+                "v": {
+                    "controltype": "List",
+                    "variablename": "list1",
+                    "type": "Character",
+                    "maxlength": -1,
+                    "watermark": {
+                        "text": "<FieldLabel>"
+                    },
+                    "precalc": {
+                        "controlHTMLInPanelCard": "in panel card",
+                        "javascript_listViewData": "{dialog.object}._listViewData['LIST1'] = [[dialog.listViewData.list1]]; ",
+                        "javascript_listViewSettings": "{dialog.object}._listViewSettings['LIST1'] = [[dialog.listViewSettings.list1]]; ",
+                        "javascript_listview": "{dialog.object}._controls['LIST1'] =  { type: 'list',  data: {dialog.object}._listViewData['LIST1'],  settings: {dialog.object}._listViewSettings['LIST1'] }",
+                        "javascriptAbstractSetupCode": ""
+                    },
+                    "textboxautocorrect": true,
+                    "textboxautocapitalize": true,
+                    "label": "List1",
+                    "class": "<Default>",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "labelclass": "<Default>",
+                    "labelposition": "Above",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "repeatingsectioncolumnheading": "<FieldLabel>",
+                    "embeddedjavascriptcontrol": true,
+                    "helpicon": "images/$$generic.help.png.a5image",
+                    "showhelpicon": "None",
+                    "helpiconbehavior": "ShowHelpOnClick",
+                    "clientsideformat": {
+                        "type": "Mask"
+                    },
+                    "onchange_validationoption": "Client-side only",
+                    "databinding": {
+                        "updateable": true,
+                        "image": {
+                            "type": "JPG",
+                            "noimagefoundimage": "<None>",
+                            "newrecordimage": "<None>"
+                        }
+                    },
+                    "textboxSubTheme": "",
+                    "listView": {
+                        "class": "<Default>",
+                        "style": "",
+                        "dataSourceType": "Static",
+                        "flagIsDefined": true,
+                        "staticData": "filename",
+                        "staticJSONData": "",
+                        "height": "3in",
+                        "width": "4in",
+                        "hasParentList": false,
+                        "parentListId": "",
+                        "preLoadData": false,
+                        "objectNameInParentListForData": "",
+                        "linkingFields": {
+                            "parent": "",
+                            "this": ""
+                        },
+                        "hasDataHeader": false,
+                        "readonlyList": false,
+                        "headerHTML": "",
+                        "noRecordsMessage": {
+                            "has": false,
+                            "HTML": "No records in list.",
+                            "centerH": true,
+                            "centerV": true
+                        },
+                        "templateItemsJSON": "",
+                        "hasDataFooter": false,
+                        "footerHTML": "",
+                        "headerStyle": "",
+                        "footerStyle": "",
+                        "hasFixedHeader": false,
+                        "fixedHeaderHTML": "",
+                        "fixedHeaderStyle": "",
+                        "fixedHeaderClassName": "",
+                        "hasFixedFooter": false,
+                        "fixedFooterHTML": "",
+                        "fixedFooterStyle": "",
+                        "fixedFooterClassName": "",
+                        "fillPanelContainer": false,
+                        "static": {
+                            "dataReturnType": "Field",
+                            "dataReturnField": "",
+                            "dataReturnExpression": ""
+                        },
+                        "jsFuncDS": {
+                            "functionName": "",
+                            "columnNames": "",
+                            "dataReturnType": "Field",
+                            "dataReturnField": "",
+                            "dataReturnExpression": "",
+                            "sampleData": ""
+                        },
+                        "clientSideFilterExpression": "",
+                        "clientSideOrderExpression": "",
+                        "custom": {
+                            "xbasicfunctionname": "",
+                            "localXbasic": false,
+                            "localXbasicDef": "",
+                            "javascriptfunctionname": "",
+                            "dataReturnType": "Field",
+                            "dataReturnField": "",
+                            "dataReturnExpression": "",
+                            "serverSideAfterQueryEvent": ""
+                        },
+                        "dataSeriesSeriesName": "",
+                        "dataSeries": {
+                            "dataReturnType": "Field",
+                            "dataReturnField": ""
+                        },
+                        "sql": {
+                            "dataReturnType": "Field",
+                            "dataReturnField": "",
+                            "dataReturnExpression": "",
+                            "refreshSchemaOnEdit": true,
+                            "storedSchemaJSON": "",
+                            "flagTableInfoHasBeenUpdated": false,
+                            "connectionString": "",
+                            "selectType": "FieldsFromTable",
+                            "tablename": "",
+                            "fieldlist": "",
+                            "filter": "",
+                            "distinct": false,
+                            "order": "",
+                            "sqlstatement": "",
+                            "portableSQL": true,
+                            "first": -1,
+                            "primaryKey": "",
+                            "serverSideAfterQueryEvent": "",
+                            "serverSideBeforeQueryEvent": ""
+                        },
+                        "dbf": {
+                            "dataReturnType": "Field",
+                            "dataReturnField": "",
+                            "dataReturnExpression": "",
+                            "serverSideAfterQueryEvent": "",
+                            "isDefined": false,
+                            "fieldmap": "",
+                            "filter": "",
+                            "order": ""
+                        },
+                        "variablename": "",
+                        "showTitleRow": false,
+                        "titleText": "",
+                        "hasFreeformTemplate": false,
+                        "freeformTemplate": "",
+                        "javascript": {
+                            "onBeforePopulate": "",
+                            "onPopulate": "",
+                            "onBeforeAddRows": "",
+                            "onBeforeRemoveRows": "",
+                            "onBeforeUpdateRow": "",
+                            "onAddRows": "",
+                            "onRemoveRows": "",
+                            "onUpdateRow": "",
+                            "onBeforeListDraw": "",
+                            "onInitialize": "",
+                            "onBeforeItemDraw": "",
+                            "onListDraw": "",
+                            "onItemDraw": "",
+                            "onNavigate": "",
+                            "onSelect": "",
+                            "onBeforeSelect": "",
+                            "onDblClick": "",
+                            "onClick": "",
+                            "onRightClick": "",
+                            "onTap": "",
+                            "onDblTap": "",
+                            "onDownHold": "",
+                            "onFocus": "",
+                            "onFieldClick": "",
+                            "onFieldDblClick": "",
+                            "onFieldRightClick": "",
+                            "onBlur": "",
+                            "beforeFetchMore": "",
+                            "afterFetchMore": "",
+                            "beforePageNavigate": "",
+                            "afterPageNavigate": "",
+                            "beforeRefreshRow": "",
+                            "afterRefreshRow": "",
+                            "afterRenderComplete": "",
+                            "afterAjaxCallback": "",
+                            "beforeClientSideFilter": "",
+                            "afterClientSideFilter": "",
+                            "beforeServerSideSort": "",
+                            "afterServerSideSort": "",
+                            "afterServerSideSummaryCompute": "",
+                            "afterClientSideSummaryCompute": "",
+                            "beforeClientSideSort": "",
+                            "afterClientSideSort": "",
+                            "onSwipe": "",
+                            "onScroll": "",
+                            "onPullRelease": "",
+                            "onPullEnd": "",
+                            "onPull": "",
+                            "afterSearchComplete": "",
+                            "beforeSearch": "",
+                            "onSearchResultTooLarge": "",
+                            "onSearchResultTooLargeForLocalStorage": "",
+                            "onBeforePersistToLocalStorage": "",
+                            "onPersistToLocalStorage": "",
+                            "onRestoreFromLocalStorage": ""
+                        },
+                        "pullpastEnd": {
+                            "YSetting": "auto",
+                            "XSetting": "auto"
+                        },
+                        "displayTextForNulls": "",
+                        "hasMoreEventsDefined": false,
+                        "hasMultipleLayouts": false,
+                        "autoselectLayoutOnOrientationChange": false,
+                        "autoSelectLandscape": "",
+                        "autoSelectPortrait": "",
+                        "subTheme": "",
+                        "dragScrollDirection": "Both",
+                        "scrolling": {
+                            "isDefined": false,
+                            "indicator": {
+                                "v": {
+                                    "show": true,
+                                    "className": "",
+                                    "barClassName": "",
+                                    "location": "right",
+                                    "offset": "0px",
+                                    "top": "0px",
+                                    "bottom": "0px"
+                                },
+                                "h": {
+                                    "show": true,
+                                    "className": "",
+                                    "barClassName": "",
+                                    "location": "right",
+                                    "offset": "0px",
+                                    "left": "0px",
+                                    "right": "0px"
+                                }
+                            }
+                        },
+                        "hasSearchPart": false,
+                        "searchPart": {
+                            "fieldMap": "",
+                            "searchFieldProperties": "",
+                            "searchStyle": "IndividualControls",
+                            "keywordsearchControl": "",
+                            "keywordSearchFields": "",
+                            "showDebugInfo": false,
+                            "debugInfoPlaceholder": "",
+                            "delayPopulateListTillActiveSearch": false,
+                            "searchErrorPlaceholder": "",
+                            "setMaxProperties": false,
+                            "maxSearchSizeJSON": ""
+                        },
+                        "includeCRC": false,
+                        "persistDataToLocalStorage": false,
+                        "versionNumber": 1,
+                        "hasDetailView": false,
+                        "detailView": {
+                            "method": "FieldMap",
+                            "fieldMap": "",
+                            "container": "",
+                            "serverSideUpdateRules": "DirtyFieldsOnly",
+                            "showDebuggingInfo": false,
+                            "placeholderForDebuggingInfo": "",
+                            "placeholderGlobalErrors": "",
+                            "suppressGlobalErrorAlerts": false,
+                            "globalErrorStyle": "font-family: Arial; font-size: 10pt; color: red; border: solid 1px red; width: 100%;",
+                            "showFadeOutConfirmationMessage": false,
+                            "fadeOutMessagePlaceholder": "",
+                            "fadeOutMessageText": "",
+                            "fadeOutMessageDuration": 2000,
+                            "fadeOutMessageStyle": "Default",
+                            "submitLocationInformation": false,
+                            "noRecordInListIsSelectedSetting": "None",
+                            "newRecordPolicy": "UseControlDefault",
+                            "useServerSideSyncLog": false,
+                            "clearServerSideSyncLog": true,
+                            "synchronizationHandler": "",
+                            "synchronizationRefreshHandler": "",
+                            "refreshListIncrementalHandler": "",
+                            "synchronizationLevel": "EachListInHierarchy",
+                            "phoneGap": {
+                                "mediaFilesSettingsJSON": ""
+                            },
+                            "customization": {
+                                "clientSideErrorWarning": "Cannot save because there are validation errors.",
+                                "dirtyDetailViewRecord": {
+                                    "title": "Warning",
+                                    "icon": "<Defined in Style>",
+                                    "message": "You must first save or undo the changes you have made to the List's Detail View."
+                                },
+                                "confirmFormResetWarning": {
+                                    "title": "Warning",
+                                    "icon": "<Defined in Style>",
+                                    "message": "Are you sure you want to undo changes made to the List's Detail View?"
+                                },
+                                "confirmRowResetWarning": {
+                                    "title": "Warning",
+                                    "icon": "<Defined in Style>",
+                                    "message": "Are you sure you want to undo changes made to this record?"
+                                },
+                                "confirmDeleteWarning": {
+                                    "title": "Warning",
+                                    "icon": "<Defined in Style>",
+                                    "message": "Are you sure you want to delete this record?"
+                                },
+                                "writeConflict": {
+                                    "message": "Write conflict. Tap here to resolve.",
+                                    "useMineMessage": "Use mine ('{myvalue}')",
+                                    "useTheirsMessage": "Use theirs ('{theirvalue}')",
+                                    "useMineAll": "Use mine for all fields",
+                                    "useTheirsAll": "Use theirs for all fields"
+                                },
+                                "databaseError": {
+                                    "update": "Record was not updated.|More...|Less",
+                                    "insert": "Record was not inserted.|More...|Less",
+                                    "delete": "Record was not deleted.|More...|Less"
+                                },
+                                "useCustomClasses": false,
+                                "customClasses": "",
+                                "setClassonEditedRows": true,
+                                "css": {
+                                    "dirtyRecord": "",
+                                    "newRecord": "",
+                                    "serverSideError": "",
+                                    "deletedRecord": "",
+                                    "dirtyRecordRow": "",
+                                    "newRecordRow": "",
+                                    "serverSideErrorRow": "",
+                                    "deletedRecordRow": ""
+                                }
+                            },
+                            "refreshRowOnSelect": false,
+                            "synchronizeImmediately": false,
+                            "pushServerUpdatesToClientOnCommit": false,
+                            "tablePropertiesDefined": false,
+                            "autoCommitDetailViewEdits": true,
+                            "syncBatchSize": 0,
+                            "synchProgressPlaceholder": "",
+                            "synchProgressProperties": "",
+                            "dirtyControlClassName": "",
+                            "javascript": {
+                                "canUpdateList": "",
+                                "afterUpdateList": "",
+                                "canSynchronizeList": "",
+                                "afterSynchronizeList": "",
+                                "afterRefreshListIncremental": "",
+                                "hasClientSideValidationErrors": "",
+                                "afterSynchronizeListBatch": "",
+                                "beforeSynchronizeListBatchStart": "",
+                                "afterSynchronizeListBatchEnd": "",
+                                "canCancelBatch": "",
+                                "afterCancelBatch": "",
+                                "afterListRowSelectCancelled": "",
+                                "canResetRow": "",
+                                "canDeleteRow": "",
+                                "afterDeleteRow": "",
+                                "canUndoEdits": "",
+                                "afterResetRow": "",
+                                "afterUndoEdits": "",
+                                "canNewRecord": "",
+                                "afterNewRecord": "",
+                                "modeChanged": "",
+                                "afterDetailViewPopulate": "",
+                                "beforeMediaFilesUploaded": "",
+                                "afterMediaFilesUploaded": "",
+                                "onMediaFilesUploadErrors": "",
+                                "beforeMediaFilesDownloaded": "",
+                                "afterMediaFilesDownloaded": "",
+                                "beforeDeleteOrphanMediaFiles": "",
+                                "afterDeleteOrphanMediaFiles": ""
+                            },
+                            "hasClientSideEventsDefined": false,
+                            "serverSideEvent": {
+                                "validate": "",
+                                "errorMessageTranslate": "",
+                                "onsynchronize": ""
+                            }
+                        },
+                        "dragScrollMomentum": true,
+                        "dragScroll": {
+                            "hasCustomSnapSettings": false,
+                            "snap": {
+                                "x": {
+                                    "use": false,
+                                    "offset": "0",
+                                    "step": "1"
+                                },
+                                "y": {
+                                    "use": false,
+                                    "offset": "0",
+                                    "step": "1"
+                                }
+                            }
+                        },
+                        "behavior": {
+                            "pulltorefresh": false,
+                            "pulltoRefreshSettingsJSON": ""
+                        },
+                        "clientSideVirtualColumns": "",
+                        "clientSideLookupColumnsJSON": "",
+                        "clientSideGroupBreaksHas": false,
+                        "clientSideGroupBreakJSON": "",
+                        "listNavigatorHas": false,
+                        "listNavigatorJSON": "",
+                        "serverSideRowStyle": "",
+                        "clientSideRowStyle": "",
+                        "defaults": {
+                            "indexLayout": 1
+                        },
+                        "fieldsArray": {
+                            "fields": [
+                                {
+                                    "name": "filename",
+                                    "type": "C",
+                                    "displayFormat": "",
+                                    "serverSideInlineStyle": "",
+                                    "serverSideConditionalStyle": "",
+                                    "securityGroups": "",
+                                    "javascriptAddressible": false,
+                                    "serversideShowhideExpn": "",
+                                    "clientSideShowHideExpn": "",
+                                    "controlType": "Label",
+                                    "clientsideInlineStyle": "",
+                                    "wordwrap": false,
+                                    "wordwrapOption": "normal",
+                                    "clientsideClass": "",
+                                    "baseExpression": "",
+                                    "searchPropertiesJSON": "",
+                                    "image": {
+                                        "base64Encode": false,
+                                        "type": "JPG",
+                                        "scale": "",
+                                        "fileNameTransformation": "",
+                                        "imageDataType": "Name",
+                                        "base64Prefix": "data:image/jpg;base64,",
+                                        "noImageFoundImage": ""
+                                    },
+                                    "sourceTableType": "",
+                                    "detailview": {
+                                        "serversidevalidation": "",
+                                        "defaultValueJavascript": "",
+                                        "onDetailViewPopulateJavascript": "",
+                                        "onListUpdateFromDetailView": "",
+                                        "updateable": true,
+                                        "checkforwriteConflicts": true,
+                                        "blankIsNull": false,
+                                        "updatePermissionSecurityGroups": "",
+                                        "serverSidePermissionExpression": "",
+                                        "imageCapturePropertiesJSON": "",
+                                        "ExifCapturePropertiesJSON": ""
+                                    },
+                                    "button": {
+                                        "label": "Button",
+                                        "bubblehelp": "",
+                                        "class": "",
+                                        "style": "",
+                                        "onClick": "",
+                                        "stopPropagation": false,
+                                        "giveFocusToRowOnClick": false
+                                    },
+                                    "hyperlink": {
+                                        "label": "Hyperlink",
+                                        "bubblehelp": "",
+                                        "class": "",
+                                        "style": "",
+                                        "onClick": "",
+                                        "actionType": "Javascript",
+                                        "href": "",
+                                        "target": "New Window",
+                                        "stopPropagation": false,
+                                        "giveFocusToRowOnClick": false
+                                    },
+                                    "unboundtype": "",
+                                    "dynamicImage": {
+                                        "definition": "",
+                                        "class": "",
+                                        "style": "",
+                                        "bubbleHelp": "",
+                                        "onClick": "",
+                                        "stopPropagation": false
+                                    },
+                                    "serverSideSummaryFieldsHas": false,
+                                    "serverSideSummaryFields": "",
+                                    "clientSideSummaryFieldsHas": false,
+                                    "clientSideTypeTransform": "None",
+                                    "clientSideDateTemplate": "MM-dd-yyyy",
+                                    "clientSideDateFormat": "<None>",
+                                    "clientSideNumericFormat": "",
+                                    "customControl": {
+                                        "definition": ""
+                                    },
+                                    "isComputedColumn": false,
+                                    "ink": {
+                                        "width": "300",
+                                        "height": "",
+                                        "sizeMethod": "Width-Height",
+                                        "scale": 0.25,
+                                        "zoom": "50%",
+                                        "boundsType": "Page",
+                                        "boundsMargin": 10,
+                                        "boundsX": 0,
+                                        "boundsY": 0,
+                                        "boundsWidth": 100,
+                                        "boundsHeight": 100
+                                    },
+                                    "unboundField": false,
+                                    "baseName": "filename",
+                                    "display": "{data=1}{I:'$$control.smartField'} filename (C)",
+                                    "deleteField": false
+                                }
+                            ]
+                        },
+                        "layoutsArray": {
+                            "layouts": [
+                                {
+                                    "Name": "Default",
+                                    "Type": "Column",
+                                    "friendlyName": "",
+                                    "showColumnTitles": true,
+                                    "template": "",
+                                    "isDefaultLayout": true,
+                                    "snakingLayoutWidth": "1in",
+                                    "itemHeight": "",
+                                    "freeformType": "Vertical",
+                                    "className": "",
+                                    "hoverclassName": "",
+                                    "selectedClassName": "",
+                                    "style": "",
+                                    "titleClassName": "",
+                                    "separatorClassName": "",
+                                    "hasListItemFooter": false,
+                                    "listItemFooter": "",
+                                    "listItemFooterInitialState": "Open",
+                                    "dragScroll": {
+                                        "hasCustomSnapSettings": false,
+                                        "snap": {
+                                            "x": {
+                                                "use": false,
+                                                "offset": "0",
+                                                "step": "1"
+                                            },
+                                            "y": {
+                                                "use": false,
+                                                "offset": "0",
+                                                "step": "1"
+                                            }
+                                        }
+                                    },
+                                    "dragScrollMomentum": true,
+                                    "columns": [
+                                        {
+                                            "heading": "Filename",
+                                            "headingInlineStyle": "",
+                                            "headingClassName": "",
+                                            "Template": "{filename}",
+                                            "dataInlineStyle": "",
+                                            "canSort": true,
+                                            "sortColumnName": "filename",
+                                            "columnWidth": "flex(1)",
+                                            "sortWhere": "ClientSide",
+                                            "sortJavascript": "",
+                                            "serverSideSortExpression": "",
+                                            "javascript": {
+                                                "onclick": "",
+                                                "onrightclick": ""
+                                            },
+                                            "hideColumnIfFieldHidden": true,
+                                            "hideColumnReferenceField": "filename",
+                                            "columnIsResizeable": false,
+                                            "name": "filename",
+                                            "display": "{I:'$$control.smartField'} filename"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "odata": {
+                            "url": "http://services.odata.org/V4/Northwind/Northwind.svc",
+                            "serviceType": "OData",
+                            "requiresAuthentication": false,
+                            "usesCSRFToken": false,
+                            "authType": "Basic",
+                            "authUsername": "",
+                            "authPassword": "",
+                            "containerName": "",
+                            "columns": "",
+                            "filter": "",
+                            "order": "",
+                            "max_rows": -1,
+                            "dataReturnType": "Field",
+                            "dataReturnField": "",
+                            "primarykey": "",
+                            "primaryKeyType": ""
+                        },
+                        "paginateData": false,
+                        "pageSize": 20,
+                        "paginateMethod": "FetchMore",
+                        "fetchMoreButtonHTML": "More records...",
+                        "fetchMoreButtonType": "Button",
+                        "fetchMoreButtonStyle": "",
+                        "fetchMoreButtonContainerStyle": "text-align: center;",
+                        "breaks": {
+                            "has": false,
+                            "field": "",
+                            "sortDescending": false,
+                            "sortOnBreakField": true,
+                            "fieldChars": -1,
+                            "template": "",
+                            "stringDictionary": "",
+                            "caseSensitive": false,
+                            "breakType": "Automatic",
+                            "userDefinedBreakGroups": "",
+                            "geographyUnits": "Meters|Meters"
+                        },
+                        "allowNullSelection": true,
+                        "allowNullDeselection": false,
+                        "loopNavigate": false,
+                        "loopNavigateNullSelection": false,
+                        "delayRenderTillVisible": false,
+                        "delayRenderTillRefresh": false,
+                        "multiSelect": false,
+                        "multiSelectMode": "Control-click",
+                        "localCSS": "",
+                        "virtualization": {
+                            "type": "None",
+                            "size": 50,
+                            "maxSize": 0,
+                            "offset": 10,
+                            "navigation": {
+                                "pull": true,
+                                "pullSize": 40,
+                                "prevHTML": "Previous",
+                                "prevClassName": "",
+                                "prevPressedClassName": "",
+                                "nextHTML": "Next",
+                                "nextClassName": "",
+                                "nextPressedClassName": ""
+                            }
+                        },
+                        "scroller": {
+                            "has": false,
+                            "messageType": "Template",
+                            "messageTemplate": "",
+                            "messageJS": "",
+                            "customizationIsDefined": false,
+                            "flow": "ttb",
+                            "location": "after",
+                            "className": "",
+                            "focusClassName": "",
+                            "dialClassName": "",
+                            "style": "",
+                            "offset": {
+                                "top": "0px",
+                                "bottom": "0px",
+                                "left": "0px",
+                                "right": "0px"
+                            },
+                            "slider": {
+                                "className": "",
+                                "innerClassName": "",
+                                "handle": {
+                                    "className": "",
+                                    "style": ""
+                                },
+                                "shadow": {
+                                    "show": true,
+                                    "className": "",
+                                    "style": ""
+                                },
+                                "message": {
+                                    "show": "auto",
+                                    "className": "",
+                                    "topClassName": "",
+                                    "bottomClassName": "",
+                                    "leftClassName": "",
+                                    "rightClassName": "",
+                                    "style": "",
+                                    "lowSwitch": 75,
+                                    "highSwitch": 75
+                                }
+                            },
+                            "dial": {
+                                "show": "drag",
+                                "invertDrag": false,
+                                "className": "",
+                                "message": {
+                                    "className": ""
+                                },
+                                "style": "",
+                                "pixelStep": 4,
+                                "size": 2
+                            }
+                        },
+                        "precalc": {
+                            "javascriptOnOrientationChange": ""
+                        }
+                    },
+                    "datePicker": {
+                        "displayTimePicker": false,
+                        "openMethod": "ClickIcon",
+                        "dateFormat": "<Default>",
+                        "iconNumber": 2,
+                        "OKButtonLabel": "OK",
+                        "CancelButtonLabel": "Cancel",
+                        "userMustSelectFromDatePicker": false,
+                        "multiple": {
+                            "allow": false,
+                            "separators": ".."
+                        },
+                        "hasMask": false,
+                        "format": {
+                            "mask": ""
+                        },
+                        "timePickerOptionsDefined": false,
+                        "display": false
+                    },
+                    "displayAsSlider": false,
+                    "flags": {
+                        "clientSideDefinition": false
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.LIST1\" for=\"{grid.componentname}.V.R{grid.rownumber}.LIST1\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">List1</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.LIST1\" name=\"V.R{grid.rownumber}.LIST1\" /><!--JSControlEnd-->\n<div  class=\"{dialog.style}List\"   style=\"padding:0px; \"  >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.LIST1.CONTROL\"  class=\"{grid.componentName}_LIST1\" style=\"overflow: auto; width: 100%; height: 3in; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": "",
+                    "columnInfo": "'LIST1': {info: {controlType: 'List'}, hiddenVal: false, type: 'control', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }\n"
+                },
+                "CB": 0,
+                "LPRESERVED": "",
+                "LPDESKTOP": "",
+                "LPTITLE": "",
+                "DWX": 0,
+                "DWY": 0,
+                "DWXSIZE": 0,
+                "DWYSIZE": 0,
+                "DWXCOUNTCHARS": 0,
+                "DWYCOUNTCHARS": 0,
+                "DWFILLATTRIBUTE": 0,
+                "DWFLAGS": 0,
+                "WSHOWWINDOW": 0,
+                "CBRESERVED2": 0,
+                "HSTDINPUT": 0,
+                "HSTDOUTPUT": 0,
+                "HSTDERROR": 0
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=b2848fc4-3450-4686-93a6-1268896deabe}{I:'$$control.button'} [Button: Download from S3] �",
+                "displayodflat": "{Data=b2848fc4-3450-4686-93a6-1268896deabe}{I:'$$control.button'} [Button]",
+                "idinternal": "b2848fc4-3450-4686-93a6-1268896deabe",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=b2848fc4-3450-4686-93a6-1268896deabe}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=b2848fc4-3450-4686-93a6-1268896deabe}{I:'$$control.button'} [Button: Download from S3] �",
+                "crc": "4294925924",
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_2\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                },
+                "v": {
+                    "buttonText": "Download from S3",
+                    "Class": "<Default>",
+                    "BreakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "BUTTON_2",
+                    "advancedButtonStyling": true,
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text only",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "/* actionJavascript:3ba7e2b4-289e-4eb8-a534-b3af2451ed69     */\n{dialog.object}._functions.BUTTON_2_ACTIONBUTTON_1();"
+                    },
+                    "abstractJavascriptDeclarationsGlobal": {
+                        "click": "{dialog.object}._functions.BUTTON_2_ACTIONBUTTON_1 = function() {\n\nvar activeLanguage = {dialog.object}._activeLanguage;\n\nvar _d = {\n\txbasicPropertyFunction: 'FileDownload_472cb337a0534e2d99ae712a71a7796b',\n\tobjectName: 'snow.JPG'\n};\nvar data = '_downloadSettings=' + urlencode(JSON.stringify(_d));\nvar obj = { \n\t\n}\n{dialog.object}.ajaxCallback('','','a5DialogHelper_amazonS3FileDownload','',data,obj);\n}"
+                    },
+                    "abstractXbasicFunctions": {
+                        "click": "function FileDownload_472cb337a0534e2d99ae712a71a7796b as p()\nDIM p as P\nDIM p.downloadType as C = \"Amazon S3 Storage\"\nDIM p.absoluteFilename as C\nDIM p.gridFieldName_ReferencedFilename as C\nDIM p.gridFieldName_ImageField as C\nDIM p.tableFieldName_ObjectField as C\nDIM p.exportFilename as C\nDIM p.folderNamePrefix as C\nDIM p.clientSideFilename as C = \"<Default>\"\nDIM p.fileNotFoundAction as C = \"Display message\"\nDIM p.fileNotFoundMessage as C = \"File {shortFilename} not found.\"\nDIM p.javascriptfilename as C\nDIM p.xbasicCallbackFunction as C\nDIM p.embeddedFileType as C\nDIM p.embeddedFileTypeMode as C = \"Dynamic\"\nDIM p.embeddedFileTypeFixed as C\nDIM p.javascriptEvent as P\nDIM p.javascriptEvent.canFileDownload as C\nDIM p.javascriptEvent.afterFileDownload as C\nDIM p.displayPermissionDeniedMessage as L = .T.\nDIM p.amazonS3 as P\nDIM p.amazonS3.credentialMode as C = \"Specify Now\"\nDIM p.amazonS3.credentialsMethod as C = \"ConnectionString\"\nDIM p.amazonS3.connectionString as C = \"alphamediacapture\"\nDIM p.amazonS3.credentials as P\nDIM p.amazonS3.credentials.secret as C\nDIM p.amazonS3.credentials.access_key as C\nDIM p.amazonS3.credentials.bucket as C\nDIM p.amazonS3.type as C = \"Explicit\"\nDIM p.amazonS3.explicitObjectName as C = \"snow.JPG\"\nDIM p.amazonS3.javascriptFunctionForObjectName as C\nDIM p.amazonS3.storageConnectionString as C\nDIM p.amazonS3.fieldname as C\nDIM p.amazonS3.downloadMode as C = \"Direct\"\nDIM p.amazonS3.directMode as P\nDIM p.amazonS3.directMode.elementForImages as C = \"img1\"\nDIM p.amazonS3.directMode.iFrameForPDFs as C\nDIM p.amazonS3.part as C = \"Dialog2\"\n\nFileDownload_472cb337a0534e2d99ae712a71a7796b= p\nend function"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_2',A5.d.evnts.click,function(e) {\n{dialog.object}._functions.BUTTON_2_ACTIONBUTTON_1();\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_2');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_2'] = new A5.Button({\n\tlayout: 'text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'Download from S3',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_2'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_2');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                }
+            },
+            {
+                "controltype": "layout_directive_statictext",
+                "display": "{B=White,Light Blue}{Data=3c15b538-c8b5-4b72-8a27-455bf72d19ea}{I:'$$format.text'} [Static Text: ] �",
+                "displayodflat": "{Data=3c15b538-c8b5-4b72-8a27-455bf72d19ea}{I:'$$format.text'} [Static Text]",
+                "idinternal": "3c15b538-c8b5-4b72-8a27-455bf72d19ea",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=3c15b538-c8b5-4b72-8a27-455bf72d19ea}{I:'$$format.text'} [Static Text]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=3c15b538-c8b5-4b72-8a27-455bf72d19ea}{I:'$$format.text'} [Static Text: ] �",
+                "crc": "4294948043",
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<div id=\"{dialog.componentName}.V.R{dialog.rownumber}.STATICTEXT_1\" title=\"\"  class=\"\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"   ><img id=\"img1\" /></div>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                },
+                "v": {
+                    "StaticText": "<img id=\"img1\" />",
+                    "Class": "<Default>",
+                    "BreakType": "After",
+                    "breakHeight": ".1in",
+                    "breakHorizontalSpace": ".1in",
+                    "id": "STATICTEXT_1",
+                    "labelClass": "<Default>",
+                    "labelPosition": "None",
+                    "labelWidth": "{Global.LabelWidth}",
+                    "labelAlignment": "Left",
+                    "precalc": {
+                        "javascriptAbstractSetupCode": ""
+                    }
+                }
+            },
+            {
+                "controltype": "layout_directive_statictext",
+                "display": "{B=White,Light Blue}{Data=5609956d-6ea3-4c97-b6f0-c646f467227c}{I:'$$format.text'} [Static Text: While a long-running] �",
+                "displayodflat": "{Data=5609956d-6ea3-4c97-b6f0-c646f467227c}{I:'$$format.text'} [Static Text]",
+                "idinternal": "5609956d-6ea3-4c97-b6f0-c646f467227c",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=5609956d-6ea3-4c97-b6f0-c646f467227c}{I:'$$format.text'} [Static Text]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=5609956d-6ea3-4c97-b6f0-c646f467227c}{I:'$$format.text'} [Static Text: While a long-running] �",
+                "crc": "4294956349",
+                "v": {
+                    "statictext": "While a long-running upload is in progress, server remains responsive.",
+                    "class": "<Default>",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "STATICTEXT_2",
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "precalc": {
+                        "javascriptAbstractSetupCode": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<div id=\"{dialog.componentName}.V.R{dialog.rownumber}.STATICTEXT_2\" title=\"\"  class=\"\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"   >While a long-running upload is in progress, server remains responsive.</div>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            },
+            {
+                "controltype": "layout_directive_button",
+                "display": "{B=White,Light Blue}{Data=91d17b7f-0910-4953-bd26-422430256740}{I:'$$control.button'} [Button: Ajax callback] �",
+                "displayodflat": "{Data=91d17b7f-0910-4953-bd26-422430256740}{I:'$$control.button'} [Button]",
+                "idinternal": "91d17b7f-0910-4953-bd26-422430256740",
+                "parentcontainer": -1,
+                "displayod": "{B=White,Light Blue}{Data=91d17b7f-0910-4953-bd26-422430256740}{I:'$$control.button'} [Button]",
+                "repeatingsectionparentid": -1,
+                "displayodtree": "{B=White,Light Blue}{Data=91d17b7f-0910-4953-bd26-422430256740}{I:'$$control.button'} [Button: Ajax callback] �",
+                "crc": "4294948838",
+                "v": {
+                    "buttontext": "Ajax callback",
+                    "class": "<Default>",
+                    "breaktype": "After",
+                    "breakheight": ".1in",
+                    "breakhorizontalspace": ".1in",
+                    "id": "BUTTON_3",
+                    "advancedbuttonstyling": true,
+                    "labelclass": "<Default>",
+                    "labelposition": "None",
+                    "labelwidth": "{Global.LabelWidth}",
+                    "labelalignment": "Left",
+                    "advancedButton": {
+                        "subTheme": "",
+                        "buttonClass": "",
+                        "buttonClassDisabled": "",
+                        "buttonClassHover": "",
+                        "buttonClassPressed": "",
+                        "buttonInlineStyle": "",
+                        "buttonstyle": "Text only",
+                        "disabledImageName": "",
+                        "hoverImageName": "",
+                        "displayDropdownIconOnButton": false,
+                        "displayAsSplitButton": false,
+                        "hyperlinkClass": "[class.gridHyperlinkButton]",
+                        "hyperlinkImagePosition": "None",
+                        "hyperlinkInlineStyle": "",
+                        "imageClass": "",
+                        "imageInlineStyle": "",
+                        "imageName": "",
+                        "pressedImageName": "",
+                        "textClass": "",
+                        "textInlineStyle": "",
+                        "type": "Button"
+                    },
+                    "securityGroups": "",
+                    "showHideExpn": "",
+                    "clientSideconditionalStyle": "",
+                    "CalcExpression": "",
+                    "EnableExpression": "",
+                    "ShowExpression": "",
+                    "abstractJavascript": {
+                        "click": "/* actionJavascript:ad8dc2ce-b73a-4b5b-8ba0-49b5e2431882 */\n{dialog.object}.ajaxCallback('','','xb','','',{deviceOfflineFunction: function() {   }});"
+                    },
+                    "precalc": {
+                        "javascriptClientSideWatches": "",
+                        "javascriptAbstractSetupCode": "$e.add('{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3',A5.d.evnts.click,function(e) {\n{dialog.object}.ajaxCallback('','','xb','','',{deviceOfflineFunction: function() {   }});\n},this,false,'{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3');\n",
+                        "javascriptAdvancedButton": "",
+                        "javascriptAdvancedButton_control": "{dialog.object}._buttons['BUTTON_3'] = new A5.Button({\n\tlayout: 'text',\n\tstyle: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',\n\thtml: 'Ajax callback',\n\tonClick: function() { \n\n},\n\ttheme: '{grid.style}'\n});",
+                        "javascriptAdvancedButton_bind": "{dialog.object}._buttons['BUTTON_3'].bind('{DIALOG.COMPONENTNAME}.V.R{DIALOG.ROWNUMBER}.BUTTON_3');"
+                    },
+                    "javascript": {
+                        "onclick": ""
+                    }
+                },
+                "inPanelCard": false,
+                "inTreeControl": false,
+                "indentTree": 0,
+                "precalc": {
+                    "ControlHTML": "<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->",
+                    "DesignViewHTML": ""
+                }
+            }
+        ],
+        "builderType": "Dialog2",
+        "guid": "ae5edbd5-a2d0-4323-afa8-b6085988e2aa",
+        "componentName": "s3Upload2",
+        "componentFilename": "C:\\a5v12\\packages\\AJAX_webComponents.WebProjects\\S3.WebProject\\s3Upload2.a5wcmp",
+        "_style_versionNumber": -1,
+        "controlflowdirection": "ltr",
+        "SVGLinkedFiles": "",
+        "localsvg": "",
+        "showLineNumbersInControlsList": false,
+        "customSettingsJSON": "",
+        "saveFileType": "Formatted JSON",
+        "keyboardShortcutsJSON": "",
+        "selected": "3c15b538-c8b5-4b72-8a27-455bf72d19ea\n",
+        "designPaneIndex": 1,
+        "masterPaneC": "controls",
+        "serverSideEventIndex": 1,
+        "clientSideEventIndex": 1,
+        "clientSideEventIndexC": "1",
+        "lastControlSelected": "insert_dialog_list",
+        "__WPhostName": "Chrome",
+        "repeatingSectionsAreDirty": true,
+        "showJavascriptActions": false,
+        "showResponsiveLayoutHelp": false,
+        "a_actionJavascript": [
+            {
+                "actionGuid": "6294c221-2d76-43db-a587-18baa2e82d87      ",
+                "scriptMetaData": "<a_ajs<[1]<display=\"{I:'$$file.export'}{F=Tahoma,10}{C=Dark Blue,White}{B=Blue White,Dark Blue}File Upload - Amazon S3 Storage or Alpha Anywhere Server{T=4}{I:'a5_vertical_line'}\">\n<action=\"File Upload - Amazon S3 Storage or Alpha Anywhere Server\">\n<icon=\"$$file.export\">\n<isCommentedOut=.F.>\n<comment=\"\">\n<builder=\"a5ajs_fileUpload_AmazonS3(v,wf,pv,dlg_mode)\">\n<metaData=<<%str1%\n<specifyCredentials=\"Named Storage Connection String\">\n<connectionString=\"alphamediacapture\">\n<credentials<access_key=\"\">\n<secret=\"\">\n>\n<bucketName=\"\">\n<allowMultipleFiles=.T.>\n<maxFileSize=-1>\n<maxFileSizeTotal=-1>\n<allowedFileTypes=\"\">\n<targetServer=\"S3\">\n<additionalInfoToSubmitJavascript=\"\">\n<xbasicFunction=\"\">\n<authenticatedRead=.F.>\n<displayProgress=.T.>\n<allowCancel=.T.>\n<progressStyle=\"Bar\">\n<progressBarColor=\"#9fa1e8\">\n<progressBarWidth=\"1.5in\">\n<progressDisplayPlaceholder=\"PLACEHOLDER_1\">\n<javascript<onAfterFilesSelect=\"\">\n<onCompleteIndividualFile=\"\">\n<onCompleteAllFiles=<<%str%\nalert('all done');\n\nvar arr = [];\nfor(var i = 0; i < e.fileArray.length; i++) { \n\tarr.push({filename: e.fileArray[i].targetName})\n}\n\nvar lObj = {dialog.object}.getControl('list1');\nlObj.populate(arr);%str%>\n<onBeforeFileSelect=\"\">\n<onValidationError=\"\">\n<onError=\"\">\n<onProgress=\"\">\n<targetName=\"\">\n>\n<customization<maxFileSize=\"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\">\n<totalFileSize=\"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\">\n<fileType=\"Selected file (type [filetype]) is not an allowed file type.\">\n>\n<fileSelectionMethod=\"User selects file(s)\">\n<jstogetb64data=\"\">\n%str1%>\n<javascriptAttribute=<<%str%\nvar obj = {\n\t\"specifyCredentials\": \"Named Storage Connection String\",\n\t\"connectionString\": \"alphamediacapture\",\n\t\"allowMultipleFiles\": true,\n\t\"maxFileSize\": -1,\n\t\"maxFileSizeTotal\": -1,\n\t\"allowedFileTypes\": \"\",\n\t\"additionalInfoToSubmitJavascript\": \"\",\n\t\"authenticatedRead\": false,\n\t\"displayProgress\": true,\n\t\"allowCancel\": true,\n\t\"progressStyle\": \"bar\",\n\t\"progressBarColor\": \"#9fa1e8\",\n\t\"progressBarWidth\": \"1.5in\",\n\t\"progressDisplayPlaceholder\": \"PLACEHOLDER_1\",\n\t\"customization\": {\n\t\t\"maxFileSize\": \"Selected file [filename] (size [filesize]) exceeds the maximum allowed file size of [maxfilesize].\",\n\t\t\"totalFileSize\": \"Selected files ([filecount] files, total size [totalfilesize]) exceed the maximum allowed total file size of [maxtotalfilesize].\",\n\t\t\"fileType\": \"Selected file (type [filetype]) is not an allowed file type.\"\n\t},\n\t\"fileSelectionMethod\": \"User selects file(s)\",\n\t\"jstogetb64data\": \"\",\n\t\"onCompleteAllFiles\": function(e) { alert('all done');\n\nvar arr = [];\nfor(var i = 0; i < e.fileArray.length; i++) { \n\tarr.push({filename: e.fileArray[i].targetName})\n}\n\nvar lObj = {dialog.object}.getControl('list1');\nlObj.populate(arr);},\n\t\"part\": \"ux\",\n\t\"rowNumber\": 1,\n\t\"__alias\": \"{dialog.componentName}\",\n\t\"_flagMobile\": false,\n\t\"target\": \"S3\"\n};\n\n\n{dialog.object}.fileUploadAmazonS3(obj);%str%>\n<Javascriptdeclarations_row=\"\">\n<Javascriptdeclarations_global=\"\">\n<xbasicFunctions=\"\">\n>\n>\n<flagRunSynchronously=.F.>\n"
+            },
+            {
+                "actionGuid": "3ba7e2b4-289e-4eb8-a534-b3af2451ed69    ",
+                "scriptMetaData": "<a_ajs<[1]<display=\"{I:'$$file.export'}{F=Tahoma,10}{C=Dark Blue,White}{B=Blue White,Dark Blue}File Download{T=4}{I:'a5_vertical_line'}\">\n<action=\"File Download\">\n<icon=\"$$file.export\">\n<isCommentedOut=.F.>\n<comment=\"\">\n<builder=\"a5ajs_fileDownload(v,wf,pv,dlg_mode)\">\n<metaData=<<%str%\n<downloadType=\"Amazon S3 Storage\">\n<absoluteFilename=\"\">\n<gridFieldName_ReferencedFilename=\"\">\n<gridFieldName_ImageField=\"\">\n<tableFieldName_ObjectField=\"\">\n<exportFilename=\"\">\n<folderNamePrefix=\"\">\n<clientSideFilename=\"<Default>\">\n<fileNotFoundAction=\"Display message\">\n<fileNotFoundMessage=\"File {shortFilename} not found.\">\n<javascriptfilename=\"\">\n<xbasicCallbackFunction=\"\">\n<embeddedFileType=\"\">\n<embeddedFileTypeMode=\"Dynamic\">\n<embeddedFileTypeFixed=\"\">\n<javascriptEvent<canFileDownload=\"\">\n<afterFileDownload=\"\">\n>\n<displayPermissionDeniedMessage=.T.>\n<amazonS3<credentialMode=\"Specify Now\">\n<credentialsMethod=\"ConnectionString\">\n<connectionString=\"alphamediacapture\">\n<credentials<secret=\"\">\n<access_key=\"\">\n<bucket=\"\">\n>\n<type=\"Explicit\">\n<explicitObjectName=\"snow.JPG\">\n<javascriptFunctionForObjectName=\"\">\n<storageConnectionString=\"\">\n<fieldname=\"\">\n<downloadMode=\"Direct\">\n<directMode<elementForImages=\"img1\">\n<iFrameForPDFs=\"\">\n>\n<part=\"Dialog2\">\n>\n%str%>\n<javascriptAttribute=\"{dialog.object}._functions.BUTTON_2_ACTIONBUTTON_{ACTIONNUMBER}();\">\n<Javascriptdeclarations_row=\"\">\n<Javascriptdeclarations_global=<<%str%\n{dialog.object}._functions.BUTTON_2_ACTIONBUTTON_{ACTIONNUMBER} = function() {\n\nvar activeLanguage = {dialog.object}._activeLanguage;\n\nvar _d = {\n\txbasicPropertyFunction: 'FileDownload_472cb337a0534e2d99ae712a71a7796b',\n\tobjectName: 'snow.JPG'\n};\nvar data = '_downloadSettings=' + urlencode(JSON.stringify(_d));\nvar obj = { \n\t\n}\n{dialog.object}.ajaxCallback('','','a5DialogHelper_amazonS3FileDownload','',data,obj);\n}\n%str%>\n<xbasicFunctions=<<%str%\nfunction FileDownload_472cb337a0534e2d99ae712a71a7796b as p()\nDIM p as P\nDIM p.downloadType as C = \"Amazon S3 Storage\"\nDIM p.absoluteFilename as C\nDIM p.gridFieldName_ReferencedFilename as C\nDIM p.gridFieldName_ImageField as C\nDIM p.tableFieldName_ObjectField as C\nDIM p.exportFilename as C\nDIM p.folderNamePrefix as C\nDIM p.clientSideFilename as C = \"<Default>\"\nDIM p.fileNotFoundAction as C = \"Display message\"\nDIM p.fileNotFoundMessage as C = \"File {shortFilename} not found.\"\nDIM p.javascriptfilename as C\nDIM p.xbasicCallbackFunction as C\nDIM p.embeddedFileType as C\nDIM p.embeddedFileTypeMode as C = \"Dynamic\"\nDIM p.embeddedFileTypeFixed as C\nDIM p.javascriptEvent as P\nDIM p.javascriptEvent.canFileDownload as C\nDIM p.javascriptEvent.afterFileDownload as C\nDIM p.displayPermissionDeniedMessage as L = .T.\nDIM p.amazonS3 as P\nDIM p.amazonS3.credentialMode as C = \"Specify Now\"\nDIM p.amazonS3.credentialsMethod as C = \"ConnectionString\"\nDIM p.amazonS3.connectionString as C = \"alphamediacapture\"\nDIM p.amazonS3.credentials as P\nDIM p.amazonS3.credentials.secret as C\nDIM p.amazonS3.credentials.access_key as C\nDIM p.amazonS3.credentials.bucket as C\nDIM p.amazonS3.type as C = \"Explicit\"\nDIM p.amazonS3.explicitObjectName as C = \"snow.JPG\"\nDIM p.amazonS3.javascriptFunctionForObjectName as C\nDIM p.amazonS3.storageConnectionString as C\nDIM p.amazonS3.fieldname as C\nDIM p.amazonS3.downloadMode as C = \"Direct\"\nDIM p.amazonS3.directMode as P\nDIM p.amazonS3.directMode.elementForImages as C = \"img1\"\nDIM p.amazonS3.directMode.iFrameForPDFs as C\nDIM p.amazonS3.part as C = \"Dialog2\"\n\nFileDownload_472cb337a0534e2d99ae712a71a7796b= p\nend function\n%str%>\n>\n>\n<flagRunSynchronously=.F.>\n"
+            },
+            {
+                "actionGuid": "ad8dc2ce-b73a-4b5b-8ba0-49b5e2431882",
+                "scriptMetaData": "<a_ajs<[1]<display=\"{I:'$$edit.redo'}{F=Tahoma,10}{C=Dark Blue,White}{B=Blue White,Dark Blue}Ajax Callback{T=4}{I:'a5_vertical_line'}\">\n<action=\"Ajax Callback\">\n<icon=\"$$edit.redo\">\n<isCommentedOut=.F.>\n<comment=\"\">\n<builder=\"a5ajs_AjaxCallBack(v, dlg_mode, wf)\">\n<metaData=<<%str%\n<flagSubmitData=.T.>\n<part=\"Grid\">\n<GridRowNumber=\"{Grid.RowNumber}\">\n<ajaxCallbackType=\"InternalXbasicFunction\">\n<functionName=\"xb\">\n<callbackURL=\"\">\n<callbackActionName=\"\">\n<otherData=\"\">\n<computeCurrentRowdata=.F.>\n<submitLocationInfo=.F.>\n<ajaxFailedJavascript=\"\">\n<offlineJavascript=\"\">\n<afterCallbackCompleteJavascript=\"\">\n<locationHighAccuracy=.T.>\n<locationTimeout=15000>\n<locationMaxAge=30000>\n<ajaxcallbacktimeout=\"<Default>\">\n%str%>\n<javascriptAttribute=\"{dialog.object}.ajaxCallback('','','xb','','',{deviceOfflineFunction: function() {   }});\">\n<Javascriptdeclarations_row=\"\">\n<Javascriptdeclarations_global=\"\">\n<xbasicFunctions=\"\">\n>\n>\n<flagRunSynchronously=.F.>\n"
+            }
+        ],
+        "containerSubTypeNew": "",
+        "containerSubTypeOld": "",
+        "flagDropdownCascadingChanged": false,
+        "toolBox_value": "",
+        "addinBuildNumber": "4644",
+        "addinBuildNumberHighestUsed": "4644",
+        "alphaFiveBuildNumber": "12",
+        "openedFromTemplate": false,
+        "builtWithVersionNumer": 1,
+        "securityEnabled": false,
+        "showHideIsUsed": false,
+        "precalc": {
+            "customControl": {
+                "js_beforePrepare": "",
+                "js_afterRender": "",
+                "customControl_xbasicFunctions": ""
+            },
+            "injectibleHTML": "",
+            "containerWindowHTML": "",
+            "repeatingsectionInfoJs": "",
+            "framesInfoJS": "{dialog.object}.framesInfo = {\n\n};\n",
+            "jsActionJavascriptGlobalFunctions": "{dialog.object}._functions.BUTTON_2_ACTIONBUTTON_1 = function() {\nvar activeLanguage = {dialog.object}._activeLanguage;\nvar _d = {\n\txbasicPropertyFunction: 'FileDownload_472cb337a0534e2d99ae712a71a7796b',\n\tobjectName: 'snow.JPG'\n};\nvar data = '_downloadSettings=' + urlencode(JSON.stringify(_d));\nvar obj = { \n}\n{dialog.object}.ajaxCallback('','','a5DialogHelper_amazonS3FileDownload','',data,obj);\n}",
+            "xbActionJavascriptGlobalFunctions": "function FileDownload_472cb337a0534e2d99ae712a71a7796b as p()\nDIM p as P\nDIM p.downloadType as C = \"Amazon S3 Storage\"\nDIM p.absoluteFilename as C\nDIM p.gridFieldName_ReferencedFilename as C\nDIM p.gridFieldName_ImageField as C\nDIM p.tableFieldName_ObjectField as C\nDIM p.exportFilename as C\nDIM p.folderNamePrefix as C\nDIM p.clientSideFilename as C = \"<Default>\"\nDIM p.fileNotFoundAction as C = \"Display message\"\nDIM p.fileNotFoundMessage as C = \"File {shortFilename} not found.\"\nDIM p.javascriptfilename as C\nDIM p.xbasicCallbackFunction as C\nDIM p.embeddedFileType as C\nDIM p.embeddedFileTypeMode as C = \"Dynamic\"\nDIM p.embeddedFileTypeFixed as C\nDIM p.javascriptEvent as P\nDIM p.javascriptEvent.canFileDownload as C\nDIM p.javascriptEvent.afterFileDownload as C\nDIM p.displayPermissionDeniedMessage as L = .T.\nDIM p.amazonS3 as P\nDIM p.amazonS3.credentialMode as C = \"Specify Now\"\nDIM p.amazonS3.credentialsMethod as C = \"ConnectionString\"\nDIM p.amazonS3.connectionString as C = \"alphamediacapture\"\nDIM p.amazonS3.credentials as P\nDIM p.amazonS3.credentials.secret as C\nDIM p.amazonS3.credentials.access_key as C\nDIM p.amazonS3.credentials.bucket as C\nDIM p.amazonS3.type as C = \"Explicit\"\nDIM p.amazonS3.explicitObjectName as C = \"snow.JPG\"\nDIM p.amazonS3.javascriptFunctionForObjectName as C\nDIM p.amazonS3.storageConnectionString as C\nDIM p.amazonS3.fieldname as C\nDIM p.amazonS3.downloadMode as C = \"Direct\"\nDIM p.amazonS3.directMode as P\nDIM p.amazonS3.directMode.elementForImages as C = \"img1\"\nDIM p.amazonS3.directMode.iFrameForPDFs as C\nDIM p.amazonS3.part as C = \"Dialog2\"\nFileDownload_472cb337a0534e2d99ae712a71a7796b= p\nend function",
+            "javascriptSetupForGridLookups": "{\n}",
+            "javascript": {
+                "showWaitMessage": "",
+                "hideWaitMessage": "",
+                "embeddedUXComponents": ""
+            },
+            "fileUpload_controlInfo": "",
+            "javascript_cascadingDropdowns": "{dialog.object}._cascadingControls = [];\n{dialog.object}._cascadingControlsChildren = [];",
+            "template_html": "<!--div GLOBALERRORS-->\n<div class=\"errorTip\" style=\"margin-bottom: 2px; display: none; width: 8in; \" id=\"{dialog.componentname}.GLOBALERRORS\"></div>\n<!--End div GLOBALERRORS-->\n\n<div id=\"{dialog.componentname}.R1\">\n<div class=\"A5CWLayout\" style=\"width: \"  id=\"{dialog.componentName}.V.R{dialog.rownumber}.PLACEHOLDER_1\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\">\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_1\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: 4in\" >\n\t<!--LblS--><label id=\"{grid.componentname}.LBL.R{grid.rownumber}.LIST1\" for=\"{grid.componentname}.V.R{grid.rownumber}.LIST1\" title=\"\" class=\"[class.dialogFieldLabel]\" style=\"display:block;\">List1</label>\n<!--LblE-->\n\t<!--FldS--><!--JSControlStart--><input type=\"hidden\" id=\"{grid.componentname}.V.R{grid.rownumber}.LIST1\" name=\"V.R{grid.rownumber}.LIST1\" /><!--JSControlEnd-->\n<div  class=\"{dialog.style}List\"   style=\"padding:0px; \"  >\n\t<div id=\"{grid.componentname}.V.R{grid.rownumber}.LIST1.CONTROL\"  class=\"{grid.componentName}_LIST1\" style=\"overflow: auto; width: 100%; height: 3in; \"></div>\n</div>\n<!--FldE-->\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_2\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<div id=\"{dialog.componentName}.V.R{dialog.rownumber}.STATICTEXT_1\" title=\"\"  class=\"\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"   ><img id=\"img1\" /></div>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<div id=\"{dialog.componentName}.V.R{dialog.rownumber}.STATICTEXT_2\" title=\"\"  class=\"\" style=\"box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;\"   >While a long-running upload is in progress, server remains responsive.</div>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n<div class=\"A5CWLayout\" style=\"width: \" >\n\t<button type=\"button\" id=\"{dialog.componentName}.V.R{dialog.rownumber}.BUTTON_3\"    ></button>\n</div><!--breakbegin--><br  style=\"clear:both; \" /><!--breakend-->\n\n\n</div>\n<!--div DEBUGUPDATECOMMANDS-->\n<div class=\"\" style=\"display: none; \" id=\"{dialog.componentname}.DEBUGUPDATECOMMANDS\"></div>\n<!--End div DEBUGUPDATECOMMANDS-->\n",
+            "panelDisplayNames": "",
+            "controlJavascript": "",
+            "controlJavascriptRepeatingSections": "",
+            "template_js": "",
+            "sessionVarsInShowHideExpns": "",
+            "themeSearchReplaceString": "",
+            "flagHasHTML5ImageCapture": false,
+            "flagUsesCordova": false,
+            "flagUseAmazonS3FileUpload": true,
+            "flagUseStripe": false,
+            "flagUseAudioPlayer": false,
+            "flagUseInk": false,
+            "flagUsesAudioLibrary": false,
+            "flagUsesPhoneGapFileSystemFunctions": false,
+            "flagUsesGetAccurateLocation": false,
+            "editorSet_for_editor": "{dialog.object}._EDITOR_EDITORSET = {};",
+            "otherJS": "",
+            "javascript_layoutRules": "",
+            "javascript_controlNesting": "{\n\n}",
+            "appcacheEvents": ""
+        },
+        "FieldsInRepeatingSectionsDeletedBySecurity": "",
+        "repeatingSectionsToRecalc": "",
+        "dialogObject": "if(typeof {dialog.componentName}_DlgObj == 'object') {dialog.componentName}_DlgObj._destroy();\nvar {dialog.componentName}_DlgObj = new A5.DialogComponentHelper('{dialog.componentName}',{\n\tajaxURL: '{dialog.ajaxUrl}',\n\t_embeddedMode: {dialog.embeddedMode},\n\t_livePreviewInBuilder: {livePreviewInBuilder},\n\tcomponentGUID: 'ae5edbd5-a2d0-4323-afa8-b6085988e2aa',\n\tcolumnInfo: {columninfo},\n\toriginalValues: {dialog.jsOriginalValues},\n\tdefaultValues: {dialog.jsDefaultValues},\n\tdatePickerMonthNames: [{datePickerMonthNames}],\n\tdatePickerDayNames: [{datePickerDayNames}],\n\tdatePickerTodayButton: '{datePickerTodayButton}',\n\tdatePickerCloseButton: '{datePickerCloseButton}',\n\tdatePickerFirstDayOfWeek: {datePickerFirstDayOfWeek},\n\tresetFormMessage: '{resetFormMessage}',\n\tresetFormTitle: '{resetFormTitle}',\n\tresetFormIcon: '{resetFormIcon}',\n\tdirtyFormMessage: '{dirtyFormMessage}',\n\tdirtyFormTitle: '{dirtyFormTitle}',\n\tdirtyFormIcon: '{dirtyFormIcon}',\n\tdeleteRecordDialogTitle: '{deleteRecordTitle}',\n\tdeleteRecordDialogMessage: '{deleteRecordMessage}',\t\n\tssDateFormat: '{serverSideDateFormat}',\n\tstyleName: '{dialog.style}',\n\t_fieldHelpers_DIALOG2: [],\n\tparentComponentAlias: '{parentComponentAlias}',\n\tsubmitIfHasClientSideErrors: true, \n\trowErrors: {\n\t\t\t\tshowMessageBox: false,\n\t\t\t\tmessageBoxTitle: 'Error',\n\t\t\t\tstyle: 'color: red; width: 6in; height: 2in;'\n\t\t},\n\tfieldErrors: {\n\t\ttype: 'block', \n\t\tclassName: 'errorText',\n\t\tinputClassName: '[class.gridInputError]',\n\t\tedit: { \n\t\t\tcontainer: { className: '[class.gridInputContainerError]'}\n\t\t},\n\t\ticon: '{images.dialog.editError}',\n\t\tglobal: {\n\t\t\tcontId: '{dialog.componentname}.GLOBALERRORS',\n\t\t\thoverClassName: 'errorTextHighlight',\n\t\t\thoverInputClassName: 'errorInputHighlight'\n\t\t}\n\t}\n\n\t});\n\n",
+        "xbasiccode": {
+            "blankInitialValueIfVarNotFound": "",
+            "setValueProperties": "value.LIST1=\"\"",
+            "setValueProperties2": "value.LIST1=\"\"",
+            "setValueUnformattedProperties": "value.LIST1=convert_type(\"\",\"C\")\n"
+        },
+        "componentType": "Dialog2",
+        "version": 1,
+        "recNav": {
+            "slider": {
+                "showSlider": false
+            }
+        },
+        "Livepreview_permissions": ""
+    }
+}
